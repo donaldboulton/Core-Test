@@ -1,0 +1,75 @@
+﻿
+a {
+    color: #71ba70 !important;
+    text-decoration: none !important
+}
+    a:hover {
+        color: rgb(40,167,69) !important;
+        text-decoration: none !important
+    }
+
+.btn-primary {
+    background-color: #71ba70 !important;
+    border-color: #71ba70 !important;
+    color:#fff!important;
+    text-decoration: none !important
+}
+    .btn-primary:hover {
+        background-color: rgb(40,167,69) !important;
+        border-color: rgb(40,167,69) !important;
+        color: #fff !important;
+        text-decoration: none !important
+    }
+#section{padding:3rem!important}
+ul.social-buttons li a {
+    color: #fff !important;
+    background-color: #212529!important;
+}
+    ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
+        background-color: #28a745 !important
+    }
+.btn-link {
+    color: #71ba70 !important;
+}
+    .btn-link:hover {
+        color: rgb(40,167,69) !important;
+        text-decoration: none !important
+    }
+.btn-xl {
+    color: #fff !important;
+    border-color: #71ba70 !important;
+    background-color: #71ba70 !important;
+}
+    .btn-xl:hover {
+        color: #fff !important;
+        border-color: rgb(40,167,69) !important;
+        background-color: rgb(40,167,69) !important;
+    }
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.carousel-item {
+    height: initial !important;
+    max-width: 900px !important;
+        width:900px!important
+}
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+.dropdown-menu{padding: .5rem!important}

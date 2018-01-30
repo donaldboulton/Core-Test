@@ -1,0 +1,11 @@
+@model IEnumerable<string>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>All Categories</h2>
+<ul>
+    @foreach (string category in Model)
+    {
+        <li><a href="/post/list/@category">@category</a></li>
+    }
+</ul>

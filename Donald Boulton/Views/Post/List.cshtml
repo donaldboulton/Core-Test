@@ -1,0 +1,15 @@
+@model IList<Post>
+@{
+    ViewData["Title"] = "List";
+}
+<div><label></label></div>
+<h3>Article Lists - @ViewContext.RouteData.Values["id"]</h3>
+<ul>
+    @foreach (Post p in Model)
+    {
+        <li>
+            <a href="@p.URL">@p.Title</a>
+            <p>@p.Description</p>
+        </li>
+    }
+</ul>

@@ -1,0 +1,74 @@
+﻿@model Donald_Boulton.FormController.FormModel
+
+<section id="contact">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+                <h3>@ViewData["Message"]</h3>
+                <h2>@ViewData["Title"]</h2>
+            </div>
+            <div class="row ">
+                <h4 class="text-muted">Contact Form</h4>
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-md-8">
+                <form class="form form-horizontal" asp-controller="FormController" asp-action="SendEmail" asp-route-returnurl="@ViewData["ReturnUrl"]" id="ContactForm" method="post">
+                    <div asp-validation-summary="All"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Name" class="col-md-3 right sr-only">User Name:</label>
+                                <div class="col-md-11">
+                                    <input asp-for="Name" type="text" class="form-control" placeholder="Name (required *)" />
+                                    <span asp-validation-for="Name"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Email" type="email" class="col-md-3 sr-only">Email:</label>
+                                <div class="col-md-11">
+                                    <input asp-for="Email" class="form-control" placeholder="Valid Email (required *)" />
+                                    <span asp-validation-for="Email"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Message" class="col-md-3 sr-only">Your Message:</label>
+                                <div class="col-md-11">
+                                    <textarea asp-for="Message" rows="6" class="form-control" placeholder="Message (required *)"></textarea>
+                                    <span asp-validation-for="Message"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <button class="btn btn-primary btn-lg" type="submit"><i class="fas fa-paper-plane"></i>&nbsp;Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <address>
+                    Donald Boulton<br />
+                    OKC Oklahoma, 73106<br />
+                    <abbr title="Phone">Phone:</abbr>
+                    405.977-8474
+                </address>
+
+                <address>
+                    <strong>Support:</strong> <a href="mailto:donaldboulton@gmail.com">donaldboulton@gmail.com</a><br />
+                    <strong>Subscriptions:</strong> <a href="mailto:donboulton@donboulton.com">donboulton@donboulton.com</a>
+                </address>
+            </div>
+        </div>
+    </div>
+</section>
+
