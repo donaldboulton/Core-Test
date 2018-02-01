@@ -73,3 +73,18 @@ ul.social-buttons li a {
     width: 100%;
 }
 .dropdown-menu{padding: .5rem!important}
+div.masthead-blogs {
+    text-align: center;
+    color: #fff;
+    background-image: url(https://d3n8k0cqgcsxxu.cloudfront.net/img/missions_bg_image_1900.jpg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+section#body{
+padding-top: 30px; padding-right: 0px; padding-bottom: 30px!important; padding-left: 0px;
+}

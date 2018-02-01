@@ -108,15 +108,29 @@
     </nav>
     <div class="container body-content" data-pjax-container>
         <section>
-        <div><label></label></div>
-        <div class=" clearfix"></div>
-        <div class="col-md-8">
-            <div class="row text-center offset-2">
-                @await Component.InvokeAsync("ArticleCarousel")
+            <div><label></label></div>
+            <div class=" clearfix"></div>
+            <div class="col-md-8">
+                <div class="row text-center offset-2">
+                    @await Component.InvokeAsync("ArticleCarousel")
+                </div>
             </div>
-        </div>
         </section>
-        @RenderBody()
+        <section id="body">
+            @RenderBody()
+        </section>       
+        <section id="google-plus">
+            <div class="g-plus" data-action="share" data-href="https://donboulton.com"></div>
+            <div id="comments"></div>
+            <script>
+                gapi.comments.render('comments', {
+                    href: window.location,
+                    width: '624',
+                    first_party_property: 'Blogger',
+                    view_type: 'FILTERED_POSTMOD'
+                });
+            </script>
+        </section>
         <footer>
             <div class="container">
                 <div class="row">
@@ -132,8 +146,8 @@
                     </div>
                     <div class="col-md-4">
                         <ul class="list-inline quicklinks text-center">
-                            <li class="list-inline-item"><a href="https://donboulton.com/privacy">Privacy Policy</a></li>
-                            <li class="list-inline-item"><a href="https://donboulton.com/terms">Terms of Use</a></li>
+                            <li class="list-inline-item"><a itemprop="url" data-toggle="tooltip" data-placement="top" data-origional-title="Privacy and Cookie Usage for Donald Boulton's Web Sites'" href="/Privacy">Privacy Policy</a></li>
+                            <li class="list-inline-item"><a itemprop="url" data-toggle="tooltip" data-placement="top" data-origional-title="Terms of Use" href="/Terms">Terms of Use</a></li>
                         </ul>
                     </div>
                 </div>
@@ -149,6 +163,10 @@
         <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/commonnew.min.js">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            { parsetags: 'explicit' }
+        </script>
+        <script type="text/javascript">gapi.plus.go();</script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"

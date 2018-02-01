@@ -22,5 +22,9 @@ namespace Donald_Boulton.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<Donald_Boulton.Models.Post> Post { get; set; }
+
+        public DbSet<Donald_Boulton.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

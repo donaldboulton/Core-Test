@@ -1,17 +1,20 @@
 ﻿@model Donald_Boulton.FormController.FormModel
 
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
 <section id="contact">
     <div class="container">
         <div class="col-md-12">
             <div class="row">
                 <h3>@ViewData["Message"]</h3>
-                <h2>@ViewData["Title"]</h2>
             </div>
             <div class="row ">
                 <h4 class="text-muted">Contact Form</h4>
             </div>
         </div>
-        <div class="row">            
+        <div class="row">
             <div class="col-md-8">
                 <form class="form form-horizontal" asp-controller="FormController" asp-action="SendEmail" asp-route-returnurl="@ViewData["ReturnUrl"]" id="ContactForm" method="post">
                     <div asp-validation-summary="All"></div>
