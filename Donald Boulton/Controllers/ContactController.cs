@@ -17,14 +17,28 @@ namespace Donald_Boulton.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "About page.";
+            ViewData["Message"] = "About";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Contact page.";
+            ViewData["Message"] = "Contact";
+
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            ViewData["Message"] = "Privacy";
+
+            return View();
+        }
+
+        public IActionResult Terms()
+        {
+            ViewData["Message"] = "Terms";
 
             return View();
         }

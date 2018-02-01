@@ -34,4 +34,13 @@
     <Folder Include="Views\Post\Components\ArticleCarousel\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Contact\Terms.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Home\Index.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

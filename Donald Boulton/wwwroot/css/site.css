@@ -1,90 +1,19 @@
-﻿
-a {
-    color: #71ba70 !important;
-    text-decoration: none !important
-}
-    a:hover {
-        color: rgb(40,167,69) !important;
-        text-decoration: none !important
-    }
-
-.btn-primary {
+﻿.btn-primary {
     background-color: #71ba70 !important;
     border-color: #71ba70 !important;
-    color:#fff!important;
-    text-decoration: none !important
-}
-    .btn-primary:hover {
-        background-color: rgb(40,167,69) !important;
-        border-color: rgb(40,167,69) !important;
-        color: #fff !important;
-        text-decoration: none !important
-    }
-#section{padding:3rem!important}
-ul.social-buttons li a {
     color: #fff !important;
-    background-color: #212529!important;
 }
-    ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
-        background-color: #28a745 !important
-    }
-.btn-link {
-    color: #71ba70 !important;
-}
-    .btn-link:hover {
-        color: rgb(40,167,69) !important;
-        text-decoration: none !important
-    }
-.btn-xl {
-    color: #fff !important;
-    border-color: #71ba70 !important;
+.btn-primary:hover {
     background-color: #71ba70 !important;
+    border-color: #71ba70 !important;
+    color: #fff !important;
 }
-    .btn-xl:hover {
-        color: #fff !important;
-        border-color: rgb(40,167,69) !important;
-        background-color: rgb(40,167,69) !important;
-    }
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+ul.social-buttons:hover {
+    margin-bottom: 0;
+    color:#fff!important
 }
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 18px;
-    line-height: 1.4;
+.social-buttons:hover {
+    margin-bottom: 0;
+    color: #fff !important
 }
-
-.carousel-item {
-    height: initial !important;
-    max-width: 900px !important;
-        width:900px!important
-}
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
-}
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-.dropdown-menu{padding: .5rem!important}
-div.masthead-blogs {
-    text-align: center;
-    color: #fff;
-    background-image: url(https://d3n8k0cqgcsxxu.cloudfront.net/img/missions_bg_image_1900.jpg);
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-section#body{
-padding-top: 30px; padding-right: 0px; padding-bottom: 30px!important; padding-left: 0px;
-}
+ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover{color:#fff!important}

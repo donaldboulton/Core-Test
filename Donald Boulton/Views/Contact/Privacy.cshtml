@@ -1,9 +1,10 @@
-﻿@{
+﻿@model Donald_Boulton.Models.Post
+
+@{
     ViewData["Title"] = "Privacy";
     Layout = "~/Views/Shared/_ContactLayout.cshtml";
 }
 
-<h2>Privacy</h2>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -11,7 +12,13 @@
                 <img class="d-flex mr-3" alt="" src="https://d3n8k0cqgcsxxu.cloudfront.net/pages/privacy.png" itemprop="PrimayImageOfPage" />
                 <div class="media-body">
                     <h5 class="mt-0" itemprop="name">Privacy Statement</h5>
-                    <div itemprop="description">The Bibwoe.com Web Site is comprised of various Web pages operated by Bibwoe.com.</div>
+                    <div itemprop="description">Donald Boulton's Web Sites are comprised of various Web Pages and Web Sites controlled by and through donboulton.com.
+                        <div>Comprised of web site's by Donald Boulton as a peronal Web Site as donboulton.com.</div>
+                        <div>Basic Instructions Books While On Earth as bibwoe.com.</div>
+                        <div>Mans Books of Life as mansbooks.com.</div>
+                        <div> A Discussion on our Founding Father intents in to Publish Logic as publiuslogic.com.</div>
+                    </div>
+
                 </div>
             </div>
             <div itemprop="mainContentOfPage">
@@ -84,9 +91,8 @@
         </div>
     </div>
 </div>
-
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Contact">Back to Contact</a>
 </div>
 
 @section Scripts {
