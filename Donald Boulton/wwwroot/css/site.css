@@ -17,3 +17,34 @@ ul.social-buttons:hover {
     color: #fff !important
 }
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover{color:#fff!important}
+.masthead-contact {
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-position: center center;
+    padding-top: 100px
+}
+.carousel-caption p {
+    font-size: 18px;
+    line-height: 1.4
+}
+
+.carousel-item {
+    height: initial !important;
+    max-width: 900px !important;
+    width: 900px !important
+}
+
+@media screen and (max-width:767px) {
+    .carousel-caption {
+        display: none
+    }
+}
+
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%
+}
+#qrCode {
+    margin: 15px
+}
+.form-control1{padding:1rem}

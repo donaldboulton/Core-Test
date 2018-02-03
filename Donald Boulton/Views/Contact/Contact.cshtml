@@ -4,7 +4,7 @@
     ViewData["Title"] = "Contact";
     Layout = "~/Views/Shared/_ContactLayout.cshtml";
 }
-<section id="contact">
+<section>
     <div class="container">
         <div class="col-md-12">
             <div class="row ">
@@ -20,7 +20,7 @@
                             <div class="form-group">
                                 <label asp-for="Name" class="col-md-3 right sr-only">User Name:</label>
                                 <div class="col-md-11">
-                                    <input asp-for="Name" type="text" class="form-control" placeholder="Name (required *)" />
+                                    <input asp-for="Name" type="text" class="form-control form-control1" placeholder="Name (required *)" />
                                     <span asp-validation-for="Name"></span>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label asp-for="Email" type="email" class="col-md-3 sr-only">Email:</label>
                                 <div class="col-md-11">
-                                    <input asp-for="Email" class="form-control" placeholder="Valid Email (required *)" />
+                                    <input asp-for="Email" class="form-control form-control1" placeholder="Valid Email (required *)" />
                                     <span asp-validation-for="Email"></span>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <label asp-for="Message" class="col-md-3 sr-only">Your Message:</label>
                                 <div class="col-md-11">
-                                    <textarea asp-for="Message" rows="6" class="form-control" placeholder="Message (required *)"></textarea>
+                                    <textarea asp-for="Message" rows="6" class="form-control form-control1" placeholder="Message (required *)"></textarea>
                                     <span asp-validation-for="Message"></span>
                                 </div>
                             </div>

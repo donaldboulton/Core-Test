@@ -2,20 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <UserSecretsId>aspnet-Donald_Boulton-D4DF97D7-8E25-44A1-BD27-4E96097671D4</UserSecretsId>
+    <UserSecretsId>aspnet-Donald_Boulton-D4DF97D7-8E25-44A1-BD27-4E96097671D4</UserSecretsId>  
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css" />
-    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
-    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
-    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Compile Remove="Controllers\BlogController.cs" />
+    <Compile Remove="Controllers\DemoGridController.cs" />
+    <Compile Remove="Models\BlogContext.cs" />
   </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.4" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
@@ -32,15 +32,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Post\Components\ArticleCarousel\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Views\Contact\Terms.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Views\Home\Index.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>
