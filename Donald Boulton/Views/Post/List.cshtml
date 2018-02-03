@@ -3,7 +3,7 @@
     ViewData["Title"] = "List";
 }
 <div><label></label></div>
-<h3>Article Lists - @ViewContext.RouteData.Values["id"]</h3>
+<h3 class="text-muted">Posts Lists - @ViewContext.RouteData.Values["id"]</h3>
 <ul>
     @foreach (Post p in Model)
     {
@@ -14,5 +14,5 @@
     }
 </ul>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Post List</a>
 </div>

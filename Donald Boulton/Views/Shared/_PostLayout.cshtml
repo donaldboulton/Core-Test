@@ -103,36 +103,54 @@
     </nav>
     <section id="about">
         <div class="container">
-            <div class="container body-content">
+            <div class="body-content">
                 <section>
                     <div class=" clearfix"></div>
                     <div><label></label></div>
                     <div class=" clearfix"></div>
                     <div class="col-md-8">
-                        <div class="row text-center offset-2">
+                        <div class="row">
                             @await Component.InvokeAsync("ArticleCarousel")
                         </div>
                     </div>
                 </section>
-                <section id="body" data-pjax-container>
+                <div id="body" data-pjax-container>
                     @RenderBody()
-                </section>
-                <section id="google-plus">
-                    <div class="g-plus" data-action="share" data-href="https://donboulton.com"></div>
-                    <div id="comments"></div>
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            gapi.comments.render('comments', {
-                                href: window.location,
-                                width: '624',
-                                first_party_property: 'Blogger',
-                                view_type: 'FILTERED_POSTMOD'
-                            });
-                        });
-                    </script>
-                </section>
-                <footer>
+                </div>
+                <div id="google-plus">
                     <div class="container">
+                        <div class="g-plus" data-action="share" data-href="https://donboulton.com"></div>
+                        <div id="sharePost"></div>
+                        <script>
+                            var options = {
+                                contenturl: 'https://plus.google.com/pages/',
+                                contentdeeplinkid: '/pages',
+                                clientid: 'xAIzaSyC4KP1dVsMy4zV7Ahi9zRn1c03sTR0zc0g.apps.googleusercontent.com',
+                                cookiepolicy: 'single_host_origin',
+                                prefilltext: 'Create your Google+ Page too!',
+                                calltoactionlabel: 'CREATE',
+                                calltoactionurl: 'http://plus.google.com/pages/create',
+                                calltoactiondeeplinkid: '/pages/create'
+                            };
+                            // Call the render method when appropriate within your app to display
+                            // the button.
+                            gapi.interactivepost.render('sharePost', options);
+                        </script>
+                        <div id="comments"></div>
+                        <script>
+                            window.onLoadCallback = function () {
+                                gapi.comments.render('comments', {
+                                    href: window.location,
+                                    width: '624',
+                                    first_party_property: 'Blogger',
+                                    view_type: 'FILTERED_POSTMOD'
+                                });
+                            }
+                        </script>
+                    </div>
+                </div>
+                <footer>
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-4 text-center">
                                 <span id="Copyright" class="Copyright">&copy; 2018 @@ <a data-rel="author" itemprop="url" data-toggle="tooltip" data-placement="top" href="https://plus.google.com/117122847504916016102?rel=author" rel="me" data-user-id="117122847504916016102" data-origional-title="Donald Boulton on Google + Posts and Discussions."><span itemprop="name">Donald Boulton</span></a></span>
@@ -164,9 +182,14 @@
         <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/commonnew.min.js">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-        <script src="https://apis.google.com/js/platform.js" async defer>
-            { parsetags: 'explicit' }
+        <script src="https://apis.google.com/js/plusone.js"></script>
+        <script>
+            window.___gcfg = {
+                lang: 'en-US',
+                parsetags: 'explicit', 'onload',
+            }
         </script>
+        <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"

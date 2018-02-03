@@ -18,10 +18,9 @@ ul.social-buttons:hover {
 }
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover{color:#fff!important}
 .masthead-contact {
-    text-align: center;
+    text-align: left!important;
     color: #fff;
     background-attachment: scroll;
-    background-position: center center;
     padding-top: 100px
 }
 .carousel-caption p {

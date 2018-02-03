@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="2.0.0" />
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.4" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
@@ -32,6 +33,21 @@
 
   <ItemGroup>
     <Folder Include="Views\Post\Components\ArticleCarousel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Views\Contact\signin_email_demo.Debug.jshtml">
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Update="Views\Contact\signin_email_demo.FolderProfile.jshtml">
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Update="Views\Contact\signin_email_demo.jshtml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Update="Views\Contact\signin_email_demo.Release.jshtml">
+      <IsTransformFile>True</IsTransformFile>
+    </None>
   </ItemGroup>
 
 </Project>

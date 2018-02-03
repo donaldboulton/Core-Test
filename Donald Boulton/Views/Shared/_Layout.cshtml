@@ -117,23 +117,9 @@
         </div>
     </header>
     <div class="container body-content">
-        <section id="body" data-pjax-container>
+        <div id="body" data-pjax-container>
             @RenderBody()
-        </section>
-        <section id="google-plus">
-            <div class="g-plus" data-action="share" data-href="https://donboulton.com"></div>
-            <div id="comments"></div>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    gapi.comments.render('comments', {
-                        href: window.location,
-                        width: '624',
-                        first_party_property: 'Blogger',
-                        view_type: 'FILTERED_POSTMOD'
-                    });
-                });
-            </script>
-        </section>
+        </div>
             <footer>
                 <div class="container">
                     <div class="row">
