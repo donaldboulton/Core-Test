@@ -1,0 +1,304 @@
+﻿@model Donald_Boulton.Models.Post
+
+@{
+    ViewData["Title"] = "SQL Session State";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+
+<div class="row">
+    <div class="media"><img width="201" height="97" class="mr-3 img-fluid" src="~/images/pages/svg/sql_session_state.svg" itemprop="primaryImageOfPage" /></div>
+    <div class="media-body">
+        <h5 class="mt-0 text-center" itemprop="name">SQL Session State</h5>
+        <div itemprop="description">
+            This page is about ASP.NET Session State and or in some cases to use SQL Session state over the normal in-proc session state.
+            <p>Working with Orchard on a WinHost shared server and having access to only 500mb of memory on a ultimate account.</p>
+        </div>
+    </div>
+</div>
+<div itemprop="mainContentOfPage">
+    <p>My Orchard application was exceeding the amount of memory usage in initial page load, and the server was flushing or refreshing the memory, and I was getting half of the page on the bottom a session state web.config error. the .css would not load properly. It occurred right when the browsers looked up https:// for my Amazon S3 account, had to go tom 56k dial-up to see that.</p>
+    <h4>SQL Sessions for SQL 2014</h4>
+    <p>Update On: The current date and time is: <em>Sun Nov 16 2014 06:31:30 GMT-0600 (Central Standard Time)</em></p>
+    <h4 class="center">Setting up In-Memory OLTP Database and objects.</h4>
+    <p>This content contains the source code developed for ASP.NET to take advantage of SQL Server 2014 In-Memory OLTP as a session state store. The zip file contains source code for an optimized ASP.NET Provider for In-Memory OLTP. It also contains .sql scripts to create memory-optimized tables and natively compiled stored procedures in SQL Server for further performance gains.</p>
+    <p>The source code is provided for reference here. A downloadable package for deployment is also available via NuGet: <a href="https://msftdbprodsamples.codeplex.com/wikipage?title=https%3a%2f%2fwww.nuget.org%2fpackages%2fMicrosoft.Web.SessionState.SqlInMemory">https://www.nuget.org/packages/Microsoft.Web.SessionState.SqlInMemory</a>.</p>
+    <p>Adding to the Web.config</p>
+<pre><span style="color: blue;">&lt;?</span><span style="color: #a31515;">xml</span> <span style="color: red;">version</span><span style="color: blue;">=</span><span style="color: black;">"</span><span style="color: blue;">1.0</span><span style="color: black;">"</span> <span style="color: red;">encoding</span><span style="color: blue;">=</span><span style="color: black;">"</span><span style="color: blue;">utf-8</span><span style="color: black;">"</span><span style="color: blue;">?&gt;</span>
+<span style="color: blue;">&lt;</span><span style="color: #a31515;">configuration</span><span style="color: blue;">&gt;</span>
+    <span style="color: blue;">&lt;</span><span style="color: #a31515;">system.web</span><span style="color: blue;">&gt;</span>
+    <span style="color: blue;">&lt;</span><span style="color: #a31515;">sessionState</span> <span style="color: red;">mode</span><span style="color: blue;">=</span><span style="color: black;">"</span><span style="color: blue;">Custom</span><span style="color: black;">"</span> <span style="color: red;">customProvider</span><span style="color: blue;">=</span><span style="color: black;">"</span><span style="color: blue;">SqlInMemoryProvider</span><span style="color: black;">"</span><span style="color: blue;">&gt;</span>
+    <span style="color: blue;">&lt;</span><span style="color: #a31515;">providers</span><span style="color: blue;">&gt;</span>
+    <span style="color: blue;">&lt;</span><span style="color: #a31515;">add</span> <span style="color: red;">name</span><span style="color: blue;">=</span><span style="color: black;">"</span><span style="color: blue;">SqlInMemoryProvider</span><span style="color: black;">"</span>
+    <span style="color: red;">type</span><span style="color: blue;">=</span><span style="color: black;">"</span><span style="color: blue;">Microsoft.Web.SessionState.SqlInMemoryProvider</span><span style="color: black;">"</span>
+    <span style="color: red;">connectionString</span><span style="color: blue;">=</span><span style="color: black;">"</span><span style="color: blue;">data source=sqlserver;initial catalog=ASPStateInMemory;User 
+             ID=user;Password=password;</span><span style="color: black;">"</span> <span style="color: blue;">/&gt;</span>
+    <span style="color: blue;">&lt;/</span><span style="color: #a31515;">providers</span><span style="color: blue;">&gt;</span>
+    <span style="color: blue;">&lt;/</span><span style="color: #a31515;">sessionState</span><span style="color: blue;">&gt;</span>
+    <span style="color: blue;">&lt;/</span><span style="color: #a31515;">system.web</span><span style="color: blue;">&gt;</span>
+<span style="color: blue;">&lt;/</span><span style="color: #a31515;">configuration</span><span style="color: blue;">&gt;</span></pre>
+    <p>&bull; Adds an ASPStateInMemory.sql file that includes the script for creating the SQL Server database configured to support In-Memory OLTP.</p>
+    <h2>Setting up In-Memory OLTP Database and objects</h2>
+    Open the T-SQL script file "ASPStateInMemory.sql" and update the 'CREATE DATABASE' statement to replace the 'FILENAME' attributes to specify a path that will exist in your SQL Server machine where the memory-optimized filegroup should exist. For further considerations on placement of this filegroup, see Books Online section <a href="http://msdn.microsoft.com/en-us/library/dn133174.aspx">Creating and Managing Storage for Memory-Optimized Objects</a>.<br />
+<pre> CREATE DATABASE [ASPStateInMemory]
+
+ ON PRIMARY (
+
+ NAME = ASPStateInMemory, FILENAME = 'D:\SQL\data\ASPStateInMemory_data.mdf'
+
+ ),
+
+ FILEGROUP ASPStateInMemory_xtp_fg CONTAINS MEMORY_OPTIMIZED_DATA (
+
+ NAME = ASPStateInMemory_xtp:, FILENAME = 'D:\SQL\data\ASPStateInMemory_xtp'
+
+ )
+
+ GO
+</pre>
+    &bull; Adds an ASPStateInMemory.sql file that includes the script for creating the SQL Server database configured to support In-Memory OLTP.<br />
+    <h2>Setting up In-Memory OLTP Database and objects</h2>
+    Open the T-SQL script file "ASPStateInMemory.sql" and update the 'CREATE DATABASE' statement to replace the 'FILENAME' attributes to specify a path that will exist in your SQL Server machine where the memory-optimized filegroup should exist. For further considerations on placement of this filegroup, see Books Online section <a href="http://msdn.microsoft.com/en-us/library/dn133174.aspx">Creating and Managing Storage for Memory-Optimized Objects</a>.<br /> <br /> After updating the 'FILENAME' attributes, run the entire script for creating the In-Memory tables and the natively compiled stored procedures.<br /> <br /> Additionally, create a periodic task in SQL Server to run the stored procedure 'dbo.DeleteExpiredSessions'. This procedure removes the expired sessions and frees up the memory consumed.<br /> <br /> <b>NOTE:</b> The memory-optimized tables are created with a durability of SCHEMA_ONLY to optimize for performance. If session data durability is required, then change the 'DURABILITY' attribute from 'SCHEMA_ONLY' to 'SCHEMA_AND_DATA'. More information can be found in Books Online sections <a href="http://msdn.microsoft.com/en-us/library/dn553122.aspx">Defining Durability for Memory-Optimized Objects</a> and <a href="http://msdn.microsoft.com/en-us/library/dn553125.aspx">Durability for Memory-Optimized Tables</a>.After updating the 'FILENAME' attributes, run the entire script for creating the In-Memory tables and the natively compiled stored procedures.<br /> <br />
+    <p><a class="FileNameLink" id="fileDownload1" href="https://msftdbprodsamples.codeplex.com/downloads/get/878110" tabindex="9">The zip file for Microsoft.Web.SessionState.SqlInMemory.1.0.1.zip</a></p>
+    <p>Microsoft SQL Server Help: <a title="Link to Origional SQL 2014  page." href="https://msftdbprodsamples.codeplex.com/releases/view/125282">https://msftdbprodsamples.codeplex.com/releases/view/125282</a></p>
+    <h4>Cookie Less ASP.NET</h4>
+    <p>At MSDN: <a title="Cookie less session state" href="http://msdn.microsoft.com/en-us/library/aa479314.aspx#cookieless_topic1">http://msdn.microsoft.com/en-us/library/aa479314.aspx#cookieless_topic1</a></p>
+    <p>setting in web config for InProc cookieless domain</p>
+<pre class="code">&lt;sessionState cookieless="true" /&gt;</pre>
+    <h4>For Older 2012 or below SQL databases.</h4>
+    <p>After the clearing of memory resources it was losing In Proc session state and logging me out all the time, So WinHost must be aware of this and they will run the session schema on the database that you choose for your dedicated SQL database SessionState Database<span>&nbsp; </span> for nothing, nice support at WinHost.com.</p>
+    <p>I have a WinHost Ultimate account Mansbooks.com and Bibwoe.com an 2 other Orchard sites. Lots of memory used. So I created a new database of the minimum of 25mb and called it DB_?????_sessionstate, sent a support ticket to the WinHost staff requesting the session schema be ran against Db_?????_sessionstate, within 20 minutes I received a email from WinHost saying the schema had been installed</p>
+    <p>After the dedicated session state SQL database has its schema and is online then all you need to do is add one line in your web.config right below system.web with your connection information after the &hellip;..data source=YOUR STRING cookie-less=&rdquo;false&rdquo;&hellip;..</p>
+    <p>&lt;system.web&gt;<br /> &lt;sessionState allowCustomSqlDatabase="true" sqlCommandTimeout="1800" mode="SQLServer" sqlConnectionString="data source=tcp:s05.winhost.com;database= session<br /> state;user id= sessionstate_user;password=*********" cookieless="false" timeout="60" /&gt;</p>
+    <p>My application took a couple of refreshes before it would load the .css.<br /> I killed the warm up pages cleared the logs, refreshed again and no more session state problems with my Orchard 1.7.2 installation's. A session state schema produces the folling tables</p>
+    <p><a title="MSDN Session Variables" class="iframe" href="http://msdn.microsoft.com/en-us/library/tex2sh13%28v=vs.80%29.aspx"><b>SessionVariables</b></a></p>
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <p>1</p>
+                </td>
+                <td>
+                    <p>SessionID</p>
+                </td>
+                <td>
+                    <p>char[<a href="http://msdn.microsoft.com/en-us/library/9h2ck0w9%28v=vs.80%29.aspx">MAX_SESSION_KEY_LEN</a>]</p>
+                </td>
+                <td>
+                    <p>Session name</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>2</p>
+                </td>
+                <td>
+                    <p>VariableName</p>
+                </td>
+                <td>
+                    <p>char[<a href="http://msdn.microsoft.com/en-us/library/70sw69c5%28v=vs.80%29.aspx">MAX_VARIABLE_NAME_LENGTH</a>]</p>
+                </td>
+                <td>
+                    <p>Variable name</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>3</p>
+                </td>
+                <td>
+                    <p>VariableValue</p>
+                </td>
+                <td>
+                    <p>varbinary[<a href="http://msdn.microsoft.com/en-us/library/19cw7bxe%28v=vs.80%29.aspx">MAX_VARIABLE_VALUE_LENGTH</a>]</p>
+                </td>
+                <td>
+                    <p>Variable value</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="labelheading"><b>SessionReferences</b></div>
+    <table width="100%">
+        <tbody>
+            <tr><th>Column</th><th>Name</th><th>Type</th><th>Description</th></tr>
+            <tr>
+                <td>
+                    <p>1</p>
+                </td>
+                <td>
+                    <p>SessionID</p>
+                </td>
+                <td>
+                    <p>char[MAX_SESSION_KEY_LEN]</p>
+                </td>
+                <td>
+                    <p>Session name</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>2</p>
+                </td>
+                <td>
+                    <p>LastAccess</p>
+                </td>
+                <td>
+                    <p>Datetime</p>
+                </td>
+                <td>
+                    <p>Date and time of last access</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>3</p>
+                </td>
+                <td>
+                    <p>RefCount</p>
+                </td>
+                <td>
+                    <p>INT</p>
+                </td>
+                <td>
+                    <p>Count of current references on this session</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>4</p>
+                </td>
+                <td>
+                    <p>TimeoutMS</p>
+                </td>
+                <td>
+                    <p>Int</p>
+                </td>
+                <td>
+                    <p>Timeout value for the session</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <p>The below was taken from <a title="Bean Software" class="iframe" href=".beansoftware.com">beansoftware.com</a></p>
+    <p>ASP.NET Session State enables you to choose where you want to store website session data. There are four possible modes: InProc (default mode), StateServer, SQLServer and Custom mode. By default, InProc mode stores sessions in application process. On high traffic websites with thousands of visitors, session data will quickly overburden web server, slow down application and decrease performances. In the other hand, using of SQLServer mode is more scalable option. SQLServer mode uses SQL Server database to store sessions. Because sessions are stored in database and outside of ASP.NET process, web server memory remains free and application executes fast even on high traffic websites.</p>
+    <p>Another problem when default InProc mode is used, is that sessions are deleted every time when application restarts or stops. This could happen very often, see <a href="http://www.beansoftware.com/ASP.NET-Tutorials/Restart-Stop-Application.aspx">Restart and Stop of ASP.NET Application</a> tutorial. Sessions stored in SQL Server database remains intact during web application restarts. Also, depending of configuration, sessions could survive SQL Server restarts too, or even Windows restarts. This fact makes SQL Server most reliable option for storing ASP.NET sessions.</p>
+    <h2>How to install Session State schema on SQL Server using InstallSqlState.sql or InstallPersistSqlState.sql scripts</h2>
+    <p>To use SQL Server as storage for sessions, first step is to create appropriate database schema on SQL Server. One of the ways to do this is to execute<strong> InstallSqlState.sql</strong> or <strong>InstallPersistSqlState.sql</strong> T-SQL scripts against desired SQL Server. Both script files are located in .Net framework version folder. For example, for .Net 4.0, the address could be:</p>
+    <p><strong>C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallSqlState.sql </strong></p>
+    <p>Please notice that you can't use script of ASP.NET 1.0 for use on ASP.NET 2.0 application.</p>
+    <p>Main difference between InstalSqlState.sql and InstallPersistSqlState.sql is in which database tables are created. For example when InstallSqlState.sql is executed, SQL Server will create new database named AspState and all needed stored procedures in it. But, two required tables: <strong>ASPStateTempApplications</strong> and <strong>ASPStateTempSessions</strong> tables will be located in <strong>tempdb database</strong>.</p>
+    <p>In the other hand, if we use InstallPersistSqlState.sql, after script is executed, AspState database will contain all procedures and tables in it.</p>
+    <p>So, only difference during installation is location where ASPStateTempApplications and ASPStateTempSessions tables will be created. That is the cause of main difference in run time: if two required tables are stored in AspState database, i.e. InstallPersistSqlState.sql is used, sessions will not be lost even if SQL Server machine is restarted. But, if tables are in TempDB database (InstallSqlState.sql is used), sessions will be lost when SQL Server restarts.</p>
+    <h2>Installing Session State schema using aspnet_regsql.exe tool</h2>
+    <div align="center">
+        <div id="tfac_300250225688045" style="z-index: 1005000; position: relative; width: 300px;">
+            <div style="text-align: left; height: 15px; left: 0px; overflow: hidden; position: absolute; top: 0px; width: 19px; z-index: 1005000;">&nbsp;</div>
+        </div>
+        <div class="prWrap" id="prwF3EE04007F6D4C14030C9C8004E40102" style="width: 300px; margin: 0px auto;">
+            <div align="left" id="primageF3EE04007F6D4C14030C9C8004E40102" style="position: absolute; visibility: hidden; width: 0px; height: 0px; z-index: 1;" name="primageF3EE04007F6D4C14030C9C8004E40102"><img name="prti" width="1" height="1" style="width: 1px; height: 1px; float: none;" /></div>
+            <div id="prtrans" style="position: absolute; z-index: 2; background-color: transparent;"><img name="pradiF3EE04007F6D4C14030C9C8004E40102" width="1" height="1" id="pradiF3EE04007F6D4C14030C9C8004E40102" style="width: 1px; height: 1px; float: none;" src="http://speed.pointroll.com/PointRoll/Media/banners/trans.gif?PRAd=1825244&amp;PRCID=1825244&amp;PRplcmt=2069605&amp;PRPID=2069605" border="0" /></div>
+            <map name="prmapF3EE04007F6D4C14030C9C8004E40102"></map>
+        </div>
+    </div>
+    <p>ASPNET_REGSQL.EXE is a command line program located in .Net Framework version number folder. For example, for .Net Framework 4.0, path could be:</p>
+    <p>C:\Windows\Microsoft.NET\Framework\v4.0.30319\aspnet_regsql.exe</p>
+    <p>You don't need to navigate to this folder. Faster way is to open Visual Studio Command Prompt which allows direct access to VS tools.</p>
+    <p>ASPNET_REGSQL.EXE supports several parameters:</p>
+    <table>
+        <tbody>
+            <tr>
+                <td width="120"><strong>Parameter</strong></td>
+                <td width="322"><strong>Description</strong></td>
+            </tr>
+            <tr>
+                <td><strong>-S [Server Name]</strong></td>
+                <td>Sql Server name or IP address, where sessions will be stored</td>
+            </tr>
+            <tr>
+                <td><strong>-E </strong></td>
+                <td>Windows authentication is used to access SQL Server</td>
+            </tr>
+            <tr>
+                <td><strong>-U [User Name]</strong></td>
+                <td>User name, if SQL authentication is used</td>
+            </tr>
+            <tr>
+                <td><strong>-P [Password]</strong></td>
+                <td>Password, if SQL authentication is used</td>
+            </tr>
+            <tr>
+                <td><strong>-D [Database Name]</strong></td>
+                <td>Database name. This parameter is used if parameter -sstype is equal to "c", which means that custom database is used as session storage.</td>
+            </tr>
+            <tr>
+                <td><strong>-ssadd</strong></td>
+                <td>Abbreviation of "Session State Add". This option adds session state database.</td>
+            </tr>
+            <tr>
+                <td><strong>-ssremove </strong></td>
+                <td>This parameter removes existing session state database.</td>
+            </tr>
+            <tr>
+                <td><strong>-sqlexportonly [Script File Name or Full Path]</strong></td>
+                <td>If this parameter is used, program will not execute any SQL, but just create T-SQL script which can be executed later on server(s). This is useful in shared hosting scenario.</td>
+            </tr>
+            <tr>
+                <td><strong>-sstype [t|p|c]</strong></td>
+                <td>
+                    <p>Type of session state storage. There are three possible values:</p>
+                    <p><strong>t</strong>, means temporary storage. Tables are created in temdb database. In this case session is lost if SQL Server restarts,<br /> <strong>p</strong>, represents persistent storage. Session state tables are created in AspState database,<br /> <strong>c</strong>, custom storage. In this case, you specify database name where sessions will be stored. Database name is set using -D parameter.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Some example configuration, which uses custom database named "YourCustomDatabaseName" for session storage and uses windows authentication to connect to SQL Server, would be:</p>
+    <p><strong>aspnet_regsql -ssadd -sstype c -d YourCustomDatabaseName -E</strong></p>
+    <p>If you run aspnet_regsql without parameters, it will show wizard as Windows application. If you prefer graphical user interface, you can use this wizard to specify each parameter and avoid using of command line arguments.</p>
+    <h2>Installing Session State with SQLServer mode on shared web hosting</h2>
+    <p>By default, Session state that uses SQLServer mode requires SQL Server Agent. SQL Server Agent runs job to delete data on session expiration. In most cases, Agent is not allowed by hosting providers in shared web hosting scenario. Also, on shared web hosting you are probably not allowed to create new database in code. So, only option to use SQLServer mode on shared web hosting, is to remove parts in SQL code that create job and create new database.</p>
+    <p>Like in previous example, we'll use command line tool aspnet_regsql.exe. When <strong>-sqlexportonly parameter</strong> is used, aspnet_regsql.exe will not execute SQL. It will just create .sql script of given name.</p>
+    <p>For example, to create T-SQL script named "SessionScript", which creates custom database "SessionDb", we'll use:</p>
+    <p><strong>aspnet_regsql -ssadd -sstype c -d SessionDb -sqlexportonly c:\SessionScript.sql</strong></p>
+    <p>Generated scripts include part for creating database. But, on shared hosting we'll create database using web hosting control panel or use some existing predefined databases. Because of that, we need to remove this part from script. T-SQL code which should be removed is located on top of the script and in our case will look like this:</p>
+    <p><span style="color: blue;">USE</span><span> <span style="color: blue;">master</span></span><br /> <span style="color: blue;">GO</span><br /> <br /> <span style="color: green;">/* Create and populate the session state database */</span><br /> <br /> <span style="color: blue;">IF</span><span> <span style="color: fuchsia;">DB_ID</span><span style="color: gray;">(</span><span style="color: red;">N'SessionDb'</span><span style="color: gray;">)</span> <span style="color: gray;">IS</span> <span style="color: gray;">NULL</span> <span style="color: blue;">BEGIN</span></span><br /> <span>&nbsp;<span style="color: blue;">DECLARE</span> @cmd <span style="color: blue;">nvarchar</span><span style="color: gray;">(</span>500<span style="color: gray;">)</span></span><br /> <span>&nbsp;<span style="color: blue;">SET</span> @cmd <span style="color: gray;">=</span> <span style="color: red;">N'CREATE DATABASE [SessionDb]'</span></span><br /> <span>&nbsp;<span style="color: blue;">EXEC</span><span style="color: gray;">(</span>@cmd<span style="color: gray;">)</span></span><br /> <span style="color: blue;">END</span></p>
+    <p>Since shared hosting providers mostly don't allow SQL Server Agent too, you need to remove parts that create job for deleting of sessions. After that, script can be executed against database in shared hosting scenario.</p>
+    <p>But, we have another problem. Since we'll not use SQL Server Agent for deleting sessions, they will remain in database. We need other mechanism to delete expired session.</p>
+    <p>Expired sessions are deleted when <strong>DeletedExpiredSessions stored procedure</strong> is executed. By default, this procedure is called by Agent. As an alternative, you can call this procedure using line:</p>
+    <p><span style="color: blue;">Exec</span><span> [dbo]<span style="color: gray;">.</span>[DeleteExpiredSessions] </span></p>
+    <p>Possible solution is to add this line to the beginning of procedure TempGetAppID. In this case expired sessions will be deleted any time session data are requested. On high traffic web sites, this could be too often and possibly overburden SQL Server. Also, you probably don't need to check expired session so often.</p>
+    <p>Another option is to create scheduled task which will execute in regular time intervals and call DeleteExpiredSessions procedure. Scheduled task can be in form of ASP.NET page, web service, console application etc. For example, you can execute .aspx page every minute. Since this page is executed every 60 seconds, it will not delete sessions exactly on session timeout. It could be anywhere between 20 and 21 minutes. But, this option is much more scalable and 1 minute tolerance is usually good enough. You can execute task more or less frequently if needed. More about scheduled jobs in ASP.NET see in <a href="http://www.beansoftware.com/ASP.NET-Tutorials/Scheduled-Tasks.aspx">Scheduled tasks in ASP.NET</a> tutorial.</p>
+    <h2>Session State in web farm or web garden scenario</h2>
+    <p>If SQLServer mode is used, Session state will work if website is hosted on multiple servers (web farm) or multiple processors (web garden). In case of multiple servers, you need to do two additional steps:</p>
+    <p>- Have same application path on all web servers.</p>
+    <p>- Use same machine key on all web servers. Machine key is used for encryption/decryption of session cookies. If machine keys are different, one server can't decrypt session cookie saved by other servers, so sessions could not be read.</p>
+    <h2>Web.config changes to store sessions on SQL Server</h2>
+    <p>After running selected T-SQL script or using aspnet_regsql.exe tool, required database schema is installed. Next step is to edit <strong>&lt;sessionState&gt; element</strong> in web.config file. &lt;sessionState&gt; element will tell ASP.NET that we'll use SQLServer mode and will specify database connection string. Default mode is InProc (inside of ASP.NET process). To store session state on SQL Server, ASP.NET requires to change<strong> mode attribute</strong> to "SQLServer" and to specify <strong>sqlConnectionString attribute </strong>to your SQL Server. For example:</p>
+    <p><span style="color: #0000ff;">&lt;</span><span style="color: #a31515;">sessionState</span><span style="color: #0000ff;"> </span><br /> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;"> &nbsp;</span><span style="color: #ff0000;">mode</span><span style="color: #0000ff;">=</span>"<span style="color: #0000ff;">SQLServer</span>"<br /> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;"> &nbsp;</span><span style="color: #ff0000;">sqlConnectionString</span><span style="color: #0000ff;">=</span>"<span style="color: #0000ff;">data source=127.0.0.1;user id=username;password=password</span>"<br /> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;">/&gt;</span></p>
+    <p>That is all you need to do. If you start web application, session data should be visible in ASPStateTempSessions table. You can read or change data using SQL Server Management Studio or directly using ASP.NET code.</p>
+    <p>On shared hosting, you need to set allowCustomSqlDatabase parameter to true and add database name in sqlConnectionString parameter. Possible configuration for sessions stored in "SessionDb" database could look like this:</p>
+    <p><span style="color: #0000ff;">&lt;</span><span style="color: #a31515;">sessionState</span><span style="color: #0000ff;"> </span><br /> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;"> &nbsp;</span><span style="color: #ff0000;">mode</span><span style="color: #0000ff;">=</span>"<span style="color: #0000ff;">SQLServer</span>"<br /> <span style="color: #ff0000;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;"> &nbsp;</span><strong>allowCustomSqlDatabase</strong></span><strong><span style="color: #0000ff;">=</span>"<span style="color: #0000ff;">true</span>"</strong><br /> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;"> &nbsp;</span><span style="color: #ff0000;">sqlConnectionString</span><span style="color: #0000ff;">=</span>"<span style="color: #0000ff;"><strong>Database=SessionDb;</strong>data source=127.0.0.1;user id=username;password=password</span>"<br /> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;">/&gt;</span></p>
+    <h2>ASP.NET Session State on SQL Server Express</h2>
+    <p>On SQL Server Express, you need to enable SQL Server Agent extended stored procedures (Agent XPs). You can do it using following SQL code:</p>
+    <p><span style="color: blue;">EXECUTE</span><span> <span style="color: maroon;">sp_configure</span><span style="color: blue;"> </span><span style="color: red;">'show advanced options'</span><span style="color: gray;">,</span> 1</span><br /> <span style="color: blue;">RECONFIGURE</span><span> <span style="color: blue;">WITH</span> <span style="color: blue;">OVERRIDE</span></span><br /> <span style="color: blue;">GO</span><br /> <br /> <span style="color: blue;">EXECUTE</span><span> <span style="color: maroon;">sp_configure</span><span style="color: blue;"> </span><span style="color: red;">'Agent XPs'</span><span style="color: gray;">,</span> 1</span><br /> <span style="color: blue;">RECONFIGURE</span><span> <span style="color: blue;">WITH</span> <span style="color: blue;">OVERRIDE</span></span><br /> <span style="color: blue;">GO</span><br /> <br /> <span style="color: blue;">EXECUTE</span><span> <span style="color: maroon;">sp_configure</span><span style="color: blue;"> </span><span style="color: red;">'show advanced options'</span><span style="color: gray;">,</span> 0</span><br /> <span style="color: blue;">RECONFIGURE</span><span> <span style="color: blue;">WITH</span> <span style="color: blue;">OVERRIDE</span></span><br /> <span style="color: blue;">GO</span></p>
+    <h2>Advantages of using SQL Server as Session State storage</h2>
+    <p>- SQL Server is most reliable option. Sessions stored in SQL Server's database will survive ASP.NET restarting and recycling, or SQL Server restarts. There is an option to use SQL cluster to avoid "single point of failure" which makes this option even more reliable.<br /> &nbsp;- SQL Server is more scalable option, when compared to State Server and especially to InProc</p>
+    <h2>Sql Server mode disadvantages</h2>
+    <p>- Sessions using SQL Server database are usually little slower than State Server. This disadvantage is small (about 15-20%) and often ignored.<br /> - SQLServer mode requires most work during implementation. InProc works by default, and State Server needs less configuration than SQLServer.<br /> - If you don't use SQL Server for your website already, there is an additional cost for obtaining a new license. SQL Server is not free. In this case, you may consider Custom mode, and store Session variables to database you already have (e.g. MySQL, Oracle etc.).<br /> - All objects stored in session variables must be serializable. With InProc mode, it is possible to store any .Net type in Session. But, SQLServer mode requires serialization/deserialization of object. Process of serialization and deserialization takes some time which could decrease performances. Often is faster to create several primitive types (strings, integers etc.) which don't need serialization, than to serialize/deserialize one complex class. If possible, store only primitive types in Session to avoid serialization and get fastest execution.<br /> - Since T-SQL script creates database with strict name "AspState", this mode usually is not available on shared hosting. Also, if you have multiple web applications on same dedicated server, they will all use same database for sessions. However, these problems could be solved. To see how to specify database name in sqlConnectionString, read Microsoft's support fix: <a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;836680">Using one SQL database for all applications for SQL Server session state may cause a bottleneck</a></p>
+    <h2>How to uninstall Session State from SQL Server</h2>
+    <p>Notice that in the same folder where InstallSqlState.sql is located, is also UninstallSqlState.sql file. As its name implies, it can be used to uninstall session state schema. If you try to run it on live website, script will return an error "Cannot drop the database 'ASPState' because it is currently in use". So, you must change session state mode, or sqlConnectionString of &lt;sessionState&gt; element, or completely stop ASP.NET process before uninstalling AspState database.</p>
+    <h2>Conclusion</h2>
+    <p>ASP.NET supports four modes to specify where Session state is stored. That are InProc, SessionState, SQLServer and Custom. SqlServer is often recognized as most reliable and scalable option. Reliability comes with cost, because SQL Server is also slowest mode (about 20% slower).</p>
+    <p>You can experience different errors and problems when try to enable sessions on SQL Server. In many cases, error is related to insufficient rights. Database user should be enabled to select, insert and update data in tables and right to execute stored procedures.</p>
+    <p>Although ASP.NET Session State is improved a lot, especially when compared to sessions in classic ASP, in many cases it is not best option for state management. Session variables are deleted when session expires, which could be a problem. There are other methods, like Profile properties or cookies that could be used to keep data between sessions. More about different options about how you can save visitor's data, you can find in <a href="http://www.beansoftware.com/ASP.NET-Tutorials/Session-State-Alternatives.aspx">ASP.NET Session State Alternatives</a> tutorial.</p>
+    <p>Happy coding!</p>
+</div>
+<div class="section">
+    <ul>
+        <li class="li"><a name="donboulton" title="Favorite" href="https://twitter.com/intent/favorite?tweet_id=530343497195601920" data-user-id="105217183" data-screen="data-screen"><img width="16" height="16" class="favorite" alt="Favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.png" /></a>&nbsp; <a name="donboulton" title="Favorite" class="link" href="https://twitter.com/intent/favorite?tweet_id=530343497195601920" data-user-id="105217183" data-screen="data-screen">Favorite</a> <a name="donboulton" title="Reply" href="https://twitter.com/intent/tweet?in_reply_to=530343497195601920" data-user-id="105217183" data-screen="data-screen"> <img width="16" height="16" class="reply" alt="Reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.png" /></a>&nbsp;<a name="donboulton" title="Reply" class="link" href="https://twitter.com/intent/tweet?in_reply_to=530343497195601920" data-user-id="105217183" data-screen="data-screen">Reply</a>&nbsp; <a name="donboulton" title="Retweet" href="http://twitter.com/intent/retweet?tweet_id=530343497195601920" data-user-id="105217183" data-screen="data-screen"> <img width="16" height="16" class="retweet" alt="Retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.png" /></a>&nbsp;<a name="donboulton" title="Retweet" class="link" href="https://twitter.com/intent/retweet?tweet_id=530343497195601920" data-user-id="105217183" data-screen="data-screen">Retweet</a></li>
+    </ul>
+</div>
+
+<div>
+    <a asp-action="Blog">Back to Blog List</a>
+</div>

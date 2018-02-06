@@ -71,17 +71,16 @@
                             Pages &nbsp;&nbsp;<i class="fas fa-link"></i>
                             <div class="dropdown-divider"></div>
                             <div><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></div>
-                            <ul>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="About">About</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a></li>
-                            </ul>                             
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="About">About</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a>
                             <div class="dropdown-divider"></div>
                             Blogs  &nbsp;&nbsp;
                             <i class="fas fa-archive"></i>
-                            <a class="dropdown-item" href="/Post">Posts</a>
-                            <a class="dropdown-item" href="/old-posts">Old Blog Post's</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Blog" asp-action="/Blog/Blog">Blog</a>
+                            <a class="dropdown-item" href="Post">Core 2 Posts</a>
                             <div class="dropdown-divider"></div>
-                            External Blogs &nbsp;&nbsp;
+                            Other Blogs &nbsp;&nbsp;
                             <i class="fas fa-external-link-alt"></i>
                             <a class="dropdown-item" href="http://bibwoe.com">Bibwoe</a>
                             <a class="dropdown-item" href="http://mansbooks.com">Mansbooks</a>
@@ -148,8 +147,6 @@
         <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/jquery.min.js">
         </script>
         <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/appnew.min.js">
-        </script>
-        <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/commonnew.min.js">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>

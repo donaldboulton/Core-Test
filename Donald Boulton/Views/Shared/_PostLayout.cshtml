@@ -54,7 +54,7 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Post" asp-action="Index">Posts</a>
+                        <a class="nav-link" href="/Blog/Blog">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Contact" asp-action="Contact">Contact</a>
@@ -62,13 +62,18 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-briefcase"></i> </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            Pages &nbsp;&nbsp;<i class="fas fa-link"></i>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/">Home</a>
                             <div class="dropdown-divider"></div>
-                            Posts &nbsp;&nbsp;<i class="fas fa-archive"></i>
-                            <a class="dropdown-item" href="/Post">Posts</a>
-                            <a class="dropdown-item" href="/old-posts">Old Blog Post's</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="About">About</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a>
                             <div class="dropdown-divider"></div>
-                            External Blogs &nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>
+                            Blogs &nbsp;&nbsp;<i class="fas fa-archive"></i>
+                            <a class="dropdown-item" href="/Blog/Blog">Blog</a>
+                            <a class="dropdown-item" href="/Post">Core 2 Posts</a>
+                            <div class="dropdown-divider"></div>
+                            Other Blogs &nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>
                             <a class="dropdown-item" href="http://bibwoe.com">Bibwoe</a>
                             <a class="dropdown-item" href="http://mansbooks.com">Mansbooks</a>
                             <a class="dropdown-item" href="http://publiuslogic.com">Publiuslogic</a>
@@ -178,8 +183,6 @@
         <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/jquery.min.js">
         </script>
         <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/appnew.min.js">
-        </script>
-        <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/commonnew.min.js">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
         <script src="https://apis.google.com/js/plusone.js"></script>

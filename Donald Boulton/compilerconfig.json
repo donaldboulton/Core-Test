@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "wwwroot/js/demos.es5.js",
+    "inputFile": "wwwroot/js/demos.js"
+  },
+  {
+    "outputFile": "wwwroot/js/tooltips.es5.js",
+    "inputFile": "wwwroot/js/tooltips.js"
+  },
+  {
+    "outputFile": "wwwroot/js/snippets.es5.js",
+    "inputFile": "wwwroot/js/snippets.js"
+  }
+]

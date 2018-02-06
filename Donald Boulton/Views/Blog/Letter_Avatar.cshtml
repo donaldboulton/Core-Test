@@ -1,0 +1,113 @@
+﻿@model Donald_Boulton.Models.Post
+@{
+    ViewData["Title"] = "Letter Avatar";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+<div>
+    <div class="row">
+        <div class="media">
+            <img title="Letter Avatar." class="img-fluid mr-3" alt="img" src="~/images/pages/svg/myLetterAvatar.svg" itemtype="https://schema.org/ImageObject" itemscope="" itemprop="image" />
+            <div class="media-body">
+                <div itemprop="description">
+                    <p><span class="headline">How to easily create Letter Avatars for your comments.</span></p>
+                    <p>Got really tired of the Gravatar Service being down or slow and having multiple server calls to download the Gravatar. Alot of people do not even know about gravatar and your get a generic image for the User Avatar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div itemprop="headline">How to easily create letter avatars for your comments or users.</div>
+        <div itemprop="description">
+            <p>Got really tired of the Gravatar Service being down or slow and having multiple server calls to download the Gravatar. Alot of people do not even know about gravatar and you get a generic image for the User Avatar, Including the multiple calls to the server and the server lag time for a gravatar icon.</p>
+        </div>
+    </div>
+    <div>
+        <p>
+            After searching around the net for a while I found several ruby gems to do this and a lot of WordPress add-ons. A simple implementation eluded me. Then I found this <a class="iframe" href="http://codepen.io/arturheinze/pen/ZGvOMw">CodePen</a> with a GetHub link to
+            <a class="link" target="_blank" href="https://gist.github.com/leecrossley/6027780">Lee Crossley's GitHub page</a> which I added to my <a class="link" target="_blank" href="https://github.com/psenechal/PJS.Bootstrap">PJS.Bootstrap</a> theme. PJS.Bootstarp already had a Alternitive shape called CommentGravatar.cshtml, so I just rebuilt the alternative shape to be able to use the CodePen Letter Avatar adding a simple script for the letter avatars.
+        </p>
+        <p>A image from a comment where the user did not have a avatar.</p>
+        <p><img style="width: 800px; height: 156px;" alt="" src="https://d3n8k0cqgcsxxu.cloudfront.net/commentGravatar.jpg" /></p>
+        <p>The same Comment with Letter Avatar</p>
+        <p><img style="width: 800px; height: 159px;" alt="" src="https://d3n8k0cqgcsxxu.cloudfront.net/commentLetterAvatar.jpg" /></p>
+        <p>A much cleaner implimentation with no download overhead. The background colours are from from <a href="http://flatuicolors.com/">http://flatuicolors.com/</a> Now with retina support.</p>
+    </div>
+    <div class="row">
+        <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+            <div class="card-header">
+                <h5 class="text-muted">Html in Canvas</h5>
+                <button class="btn btn-sm btn-light float-right" data-clipboard-action="copy" data-clipboard-target="#poo">
+                    <img class="clippy" width="13" src="~/images/pages/svg/clippy.svg" alt="">
+                </button>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <pre class="snippet">                         
+                    <code id="poo" class="language-javascript">id="user-icon" width="256" height="256"</code>
+                    </pre>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+            <div class="card-header">
+                <h5 class="text-muted">The light weight Javascript</h5>
+                <button class="btn btn-light btn-sm float-right" data-clipboard-action="copy" data-clipboard-target="#foo">
+                    <img class="clippy" width="13" src="~/images/pages/svg/clippy.svg" alt="">
+                </button>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <pre class="snippet">                         
+                    <code id="foo" class="language-javascript">
+                                var colours = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9",
+                                 "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#ecf0f1", "#95a5a6", "#f39c12", "#d35400",
+                                 "#c0392b", "#bdc3c7", "#7f8c8d"];
+
+                                var name = "Lee Crossley",
+                                nameSplit = name.split(" "),
+                                initials = nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase();
+
+                                var charIndex = initials.charCodeAt(0) - 64,
+                                colourIndex = charIndex % 20;
+
+                                var canvas = document.getElementById("user-icon");
+                                var context = canvas.getContext("2d");
+
+                                var canvasWidth = $(canvas).attr("width"),
+                                canvasHeight = $(canvas).attr("height"),
+                                canvasCssWidth = canvasWidth,
+                                canvasCssHeight = canvasHeight;
+
+                                if (window.devicePixelRatio) {
+                                $(canvas).attr("width", canvasWidth * window.devicePixelRatio);
+                                $(canvas).attr("height", canvasHeight * window.devicePixelRatio);
+                                $(canvas).css("width", canvasCssWidth);
+                                $(canvas).css("height", canvasCssHeight);
+                                context.scale(window.devicePixelRatio, window.devicePixelRatio);
+                                }
+
+                                context.fillStyle = colours[colourIndex - 1];
+                                context.fillRect (0, 0, canvas.width, canvas.height);
+                                context.font = "128px Arial";
+                                context.textAlign = "center";
+                                context.fillStyle = "#FFF";
+                                context.fillText(initials, canvasCssWidth / 2, canvasCssHeight / 1.5);
+                            </code>
+                        </pre>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+
+    <div class="row">
+        <ul>
+            <li class="li"><a name="donboulton" title="Favorite" href="https://twitter.com/intent/favorite?tweet_id=715595238320918529" data-user-id="105217183" data-screen="data-screen"><img class="favorite" alt="Favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.min.png" /></a>&nbsp; <a name="donboulton" title="Favorite" class="link" href="https://twitter.com/intent/favorite?tweet_id=715595238320918529" data-user-id="105217183" data-screen="data-screen">Favorite</a> <a name="donboulton" title="Reply" href="https://twitter.com/intent/tweet?in_reply_to=715595238320918529" data-user-id="105217183" data-screen="data-screen"> <img class="reply" alt="Reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.min.png" /></a>&nbsp;<a name="donboulton" title="Reply" class="link" href="https://twitter.com/intent/tweet?in_reply_to=715595238320918529" data-user-id="105217183" data-screen="data-screen">Reply</a>&nbsp; <a name="donboulton" title="Retweet" href="http://twitter.com/intent/retweet?tweet_id=715595238320918529" data-user-id="105217183" data-screen="data-screen"> <img class="retweet" alt="Retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.min.png" /></a>&nbsp;<a name="donboulton" title="Retweet" class="link" href="https://twitter.com/intent/retweet?tweet_id=715595238320918529" data-user-id="105217183" data-screen="data-screen">Retweet</a></li>
+        </ul>
+    </div>
+    <div>
+        <a asp-action="Blog">Back to Blogs List</a>
+    </div>
+</div>  

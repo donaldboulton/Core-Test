@@ -13,7 +13,6 @@ using Microsoft.Extensions.Options;
 using Donald_Boulton.Models;
 using Donald_Boulton.Models.AccountViewModels;
 using Donald_Boulton.Services;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace Donald_Boulton.Controllers
 {

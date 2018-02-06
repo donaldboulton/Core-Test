@@ -8,7 +8,7 @@ using Donald_Boulton.Models;
 
 namespace Donald_Boulton.Controllers
 {
-    public class ContactController : Microsoft.AspNetCore.Mvc.Controller
+    public class ContactController : Controller
     {
         public IActionResult Index()
         {

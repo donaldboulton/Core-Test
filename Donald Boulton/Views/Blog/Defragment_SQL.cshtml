@@ -1,0 +1,277 @@
+﻿@model Donald_Boulton.Models.Post
+@{
+    ViewData["Title"] = "Defragment SQL";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+
+<div class="row">
+    <div class="media">
+        <img alt="" class="img-fluid mr-3" itemprop="primaryImageOfPage" src="~/images/pages/svg/defrag-sql-2014.svg" />
+    </div>
+    <div class="media-body">
+        <h5 class="mt-0 text-center" itemprop="name">Index Defrag Script, v4.1</h5>
+        <div itemprop="description">
+            Origionally Posting by <span><a class="iframe" href="http://sqlfool.com/author/michelle/" title="View all posts by Michelle Ufford">Michelle Ufford</a></span>
+        </div>
+    </div>
+</div>
+
+<div itemprop="mainContentOfPage">
+    <p>
+        In any SQl database and one that updates through migrations like Orchard CMS get defragmented and I have notice over the years dealing with SQL server that it needs defraging occasionaly, keeping the performance optimized.
+    </p>
+    <p>
+        <span>I have included this in my blog as a notice to pay attention and defrag your SQL database.</span>
+    </p>
+    <h4>
+        Origional Post
+    </h4>
+    <p>
+        New For SQL 2012<a class="iframe" href="http://sqlfool.com/2011/06/index-defrag-script-v4-1/"><span class="published"><strong> Posted on Jun16 2011</strong></span></a> <span class="author vcard">Written by <strong> <a class="iframe" href="http://sqlfool.com/author/michelle/" title="View all posts by Michelle Ufford"> Michelle Ufford</a></strong></span> at:&nbsp; <a class="iframe" href="http://sqlfool.com/2011/06/index-defrag-script-v4-1/" title="Origional Post By Michelle Ufford"> http://sqlfool.com/2011/06/index-defrag-script-v4-1/</a>
+    </p>
+    <div class="entry-content article">
+        <p>
+            It&rsquo;s been quite some time since my last index defrag script update. A big part of the reason for that is because I wanted to implement many of the suggestions I&rsquo;ve received, but I just haven&rsquo;t had the time. I still have those changes planned, but I&rsquo;m not sure quite when I&rsquo;ll get to it. Rather than continue to wait for a major release, I&rsquo;m releasing a small update to my defrag that will take care of the most common complaints I receive.
+        </p>
+        <p>
+            <strong>Change Log:</strong>
+        </p>
+        <ul>
+            <li>
+                Bug fix for databases containing spaces or special characters
+            </li>
+            <li>
+                Support for case-sensitive databases
+            </li>
+            <li>
+                Re-executable CREATE script (for those who want to re-run the whole script)
+            </li>
+            <li>
+                Comma-delimited list of databases is now supported for the @database parameter
+            </li>
+        </ul>
+        <p>
+            <strong>Feature List:</strong>
+        </p>
+        <ul>
+            <li>
+                Defrag a single database, a list of databases, or all databases (@database)
+            </li>
+            <li>
+                Time Limitations: stop defragging after the specified amount of time has elapsed (@timeLimit). Please note, it will not kill a defrag that is currently in process, even if it exceeds the threshold.
+            </li>
+            <li>
+                Optional stop-and-resume functionality: pick up where your defrag last left off without having to rescan sys.dm_db_index_physical_stats. (@forceRescan)
+            </li>
+            <li>
+                Defrag scheduling: choose which days to defrag certain indexes, or exclude certain indexes altogether, by using the dbo.dba_indexDefragExclusion table.
+            </li>
+            <li>
+                Defrag priority: choose whether to defrag indexes in ascending or descending order by range_scan_count (default), fragmentation, or page_count.
+            </li>
+            <li>
+                Current partition exclusion: choose whether or not to exclude the right-most populated partition from the defrag process, common for sliding-window tables (@excludeMaxPartition)
+            </li>
+            <li>
+                Commands-only mode: Choose to just log the current defrag status and print the defrag commands, rather than executing them, by using @executeSQL.
+            </li>
+            <li>
+                &hellip; and tons more! Please read the parameter list and notes section for details of all the options available.
+            </li>
+        </ul>
+        <p>
+            <strong>FAQ:</strong>
+        </p>
+        <p>
+            I often receive the same questions about this script, so allow me to answer them here:
+        </p>
+        <p>
+            <em>&ldquo;I keep running the script, but my index is still fragmented. Why?&rdquo;</em><br />
+            This is most likely a very small index. Here&rsquo;s what Microsoft has to say:
+        </p>
+        <p>
+            &ldquo;In general, fragmentation on small indexes is often not controllable. The pages of small indexes are stored on mixed extents. Mixed extents are shared by up to eight objects, so the fragmentation in a small index might not be reduced after reorganizing or rebuilding the index. For more information about mixed extents, see Understanding Pages and Extents.&rdquo;
+        </p>
+        <p>
+            <em>&ldquo;What database should I create it in?&rdquo; or &ldquo;Can I create this in the MASTER database?&rdquo;</em><br />
+            It&rsquo;s up to you where you create it. You could technically create it in the MASTER database, but I recommend creating a utility database for your DBA administrative tasks.
+        </p>
+        <p>
+            <em>&ldquo;Can I run this against a SharePoint database?&rdquo;</em><br />
+            Yes, you can.
+        </p>
+        <p>
+            <em>&ldquo;What are the minimum requirements to run this script?&rdquo; or &ldquo;Will this run on SQL Server 2000 instances?&rdquo;</em><br />
+            You need to be on SQL Server 2005 SP2 or higher.
+        </p>
+    </div>
+    <div>
+        <a class="inline group3" href="#profile1" title="SQL Server 2008 R2 or higher">First Code block for SQL Server 2008 R2 or higher.</a>
+    </div>
+    <div class="none" id="inline_profiles">
+        <div class="profilex" id="profile1">
+            <pre class="pre">
+SQL Server 2008 R2 or higher</pre>
+            <pre class="pre">
+</pre>
+        </div>
+    </div>
+    <div>
+        <a class="inline group3" href="#profile2" title="SQL 2005 - 2008 R2">SQL 2005 - 2008 code.</a>
+    </div>
+    <div class="none" id="inline_profiles">
+        <div class="profilex" id="profile2">
+            <pre class="pre">
+SQL 2005 - 2008 R2</pre>
+
+            <pre class="pre">
+DBCC INDEXDEFRAG
+(
+&nbsp;&nbsp;&nbsp;&nbsp;{ database_name | database_id | 0 } 
+&nbsp;&nbsp;&nbsp;&nbsp;, { table_name | table_id | view_name | view_id } 
+&nbsp;&nbsp;&nbsp;&nbsp;[ , { index_name | index_id } [ , { partition_number | 0 } ] ]
+)
+&nbsp;&nbsp;&nbsp;&nbsp;[ WITH NO_INFOMSGS ] </pre>
+        </div>
+    </div>
+    <hr />
+    <p>
+        <a class="inline group3" href="#profile3" title="SQL Server DBCC INDEXDEFRAG code">SQL Server DBCC INDEXDEFRAG code.</a>
+    </p>
+    <div class="none" id="inline_profiles">
+        <div class="profilex" id="profile3">
+            <pre class="pre">
+SQL Server DBCC INDEXDEFRAG code</pre>
+            <pre class="pre">
+</pre>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <div class="sectionblock">
+            <dl class="authored">
+                <dt>
+                    Info
+                </dt>
+                <dt>
+                    <span><span class="parameter">database_name</span>| <span class="parameter">database_id</span> | 0 </span>
+                </dt>
+                <dd>
+                    Is the database containing the index to defragment. If 0 is specified, the current database is used. Database names must comply with the rules for <a href="http://msdn.microsoft.com/en-us/library/ms175874.aspx"> identifiers</a>.
+                </dd>
+                <dt>
+                    <span><span class="parameter">table_name</span> | <span class="parameter">table_id</span> | <span class="parameter"> view_name</span> | <span class="parameter">view_id</span></span>
+                </dt>
+                <dd>
+                    Is the table or view containing the index to defragment. Table and view names must comply with the rules for identifiers.
+                </dd>
+                <dt>
+                    <span><span class="parameter">index_name</span> | <span class="parameter">index_id</span></span>
+                </dt>
+                <dd>
+                    Is the name or ID of the index to defragment. If not specified, the statement defragments all indexes of the specified table or view. Index names must comply with the rules for identifiers.
+                </dd>
+                <dt>
+                    <span><span class="parameter">partition_number</span> | 0 </span>
+                </dt>
+                <dd>
+                    Is the partition number of the index to defragment. If not specified or if 0 is specified, the statement defragments all partitions in the specified index.
+                </dd>
+                <dt>
+                    <span>WITH NO_INFOMSGS </span>
+                </dt>
+                <dd>
+                    Suppresses all informational messages that have severity levels from 0 through 10.
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div>
+        <div class="LW_CollapsibleArea_TitleDiv">
+            <div>
+                <a class="LW_CollapsibleArea_TitleAhref" title="Collapse"> <span class="LW_CollapsibleArea_Title">Remarks</span></a>
+                <div class="LW_CollapsibleArea_HrDiv">
+                    <hr class="LW_CollapsibleArea_Hr" />
+                </div>
+            </div>
+        </div>
+        <div class="sectionblock">
+            <a id="languageReferenceRemarksToggle"> </a>
+            <p>
+                DBCC INDEXDEFRAG defragments the leaf level of an index so that the physical order of the pages matches the left-to-right logical order of the leaf nodes, therefore improving index-scanning performance.
+            </p>
+            <div class="alert">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th class="float-left">
+                                <strong>Note</strong>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    When DBCC INDEXDEFRAG is run, index defragmentation occurs serially. This means that the operation on a single index is performed using a single thread. No parallelism occurs. Also, operations on multiple indexes from the same DBCC INDEXDEFRAG statement are performed on one index at a time.
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                DBCC INDEXDEFRAG also compacts the pages of an index, taking into consideration the fill factor specified when the index was created. Any empty pages created because of this compaction are removed. For more information, see <span> <a href="http://msdn.microsoft.com/en-us/library/ms177459.aspx">Specify Fill Factor for an Index</a></span>.
+            </p>
+            <p>
+                If an index spans more than one file, DBCC INDEXDEFRAG defragments one file at a time. Pages do not migrate between files.
+            </p>
+            <p>
+                DBCC INDEXDEFRAG reports the estimated percentage completed every five minutes. DBCC INDEXDEFRAG can be stopped at any point in the process, and any completed work is retained.
+            </p>
+            <p>
+                Unlike DBCC DBREINDEX, or the index building operation generally, DBCC INDEXDEFRAG is an online operation. It does not hold locks long term. Therefore, DBCC INDEXDEFRAG does not block running queries or updates. Because the time to defragment is related to the level of fragmentation, a relatively unfragmented index can be defragmented faster than a new index can be built. A very fragmented index might take considerably longer to defragment than to rebuild.
+            </p>
+            <p>
+                The defragmentation is always fully logged, regardless of the database recovery model setting. For more information, see <span> <a href="http://msdn.microsoft.com/en-us/library/ms174269.aspx">ALTER DATABASE (Transact-SQL)</a></span>. The defragmentation of a very fragmented index can generate more log than a fully logged index creation. However, the defragmentation is performed as a series of short transactions, so a large log is unnecessary if log backups are taken frequently or if the recovery model setting is SIMPLE.
+            </p>
+            <h3 class="subHeading">
+                Restrictions
+            </h3>
+            <div class="subsection">
+                <p>
+                    DBCC INDEXDEFRAG shuffles index leaf pages in place. Therefore, if an index is interleaved with other indexes on disk, running DBCC INDEXDEFRAG against that index does not make all leaf pages in the index contiguous. To improve the clustering of pages, rebuild the index.
+                </p>
+                <p>
+                    DBCC INDEXDEFRAG cannot be used to defragment the following indexes:
+                </p>
+                <ul>
+                    <li>
+                        <p>
+                            A disabled index.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            An index with page locking set to OFF.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            A spatial index.
+                        </p>
+                    </li>
+                </ul>
+                <p>
+                    DBCC INDEXDEFRAG is not supported for use on system tables.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <ul>
+        <li class="li">
+            <a data-screen-data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=530348272431661056" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="//si0.twimg.com/images/dev/cms/intents/icons/favorite.png" /></a>&nbsp; <a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=530348272431661056" name="donboulton" title="Favorite">Favorite</a> <a data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=530348272431661056" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="//si0.twimg.com/images/dev/cms/intents/icons/reply.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=530348272431661056" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen-="" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=530348272431661056" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="//si0.twimg.com/images/dev/cms/intents/icons/retweet.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=530348272431661056" name="donboulton" title="Retweet">Retweet</a>
+        </li>
+    </ul>
+</div>

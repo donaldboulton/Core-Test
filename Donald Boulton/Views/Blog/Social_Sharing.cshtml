@@ -1,0 +1,236 @@
+﻿@model Donald_Boulton.Models.Post
+
+@{
+    ViewData["Title"] = "Social Sharing";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+
+<div class="media">
+    <img class="img-fluid mr-3" alt="Social Sharing" src="~/images/pages/svg/social_sharing.svg" itemprop="primaryImageOfPage" />
+    <div class="media-body">
+        <h5 class="mt-0 text-center" itemprop="name">Social Sharing NO .js</h5>
+        <div itemprop="description">
+            <h5 class="text-center mt-0">Social Sharing Bootstrapped with no external JavaScript</h5>
+            <p>Using just links and one simple Orchard module Mofit.Social to model the url of the page your sharing.</p>
+        </div>
+    </div>
+</div>
+<div itemprop="mainContentOfPage">
+    <p>
+        First download Mofit.Social and install it. Open your site folders Modules/Mofit.Social/Views/Parts/Social.cshtml and deleat everything in the file. and Add <a href="#below">the below</a> changing it to your own website content. We will be using&nbsp;
+    </p>
+    Font Awesome Icons for social icons on our bootstrap buttons but you could easily use glyph-icons or your own images instead anhd all the links open in a browser friendly window, thus no user gets lost &nbsp;from your website on a new browser window, tab or page
+    <p>
+        &nbsp;
+    </p>
+    <div>
+        Not a download of JavaScript or Cookies is required.
+    </div>
+    <div>
+        As this is an issue? Probably not on your nice high-speed broadband, but is it an issue on your phone.
+    </div>
+    <div>
+        Of course this technique does have some downsides, the first is that you don&rsquo;t have access to things like share counts and features like Facebook showing you if your friends have liked an article.<span style="line-height: 1.42857143;">.</span>
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        And some other issues like not being able to track clicks onto them are easily mitigated with some JavaScript feeding into your analytics package.
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        There is also an added bonus in that you don&rsquo;t need to have Facebook/Twitter/Etc cookies coming from your website.
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        How to do this
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <p>
+        Add the links below. Changing to Your Titles, Summary and where needed a Discription.
+    </p>
+    <p>
+        <a name="below"></a>Url&#39;s Model is buy<span style="color:#ff0000;"> url=@@Model.Url</span> on each link&nbsp; and by adding <span style="color:#ff0000;">data-url=&quot;@@Model.Url&quot;</span> so the page your user is on gets shared, instead of your website home url.
+    </p>
+    <pre><code>
+<span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">div</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;postnewtweet pull-left&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">div</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn-group&quot;</span> <span style="color:#cf4820;">role</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;group&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-info btn-sm&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> <span style="color:#cf4820;">data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> 
+    <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;https://twitter.com/intent/tweet?url=</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&amp;text=At Don Boulton.com&amp;via=donboulton&quot;</span> 
+<span style="color:#cf4820;">            data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Post A New Tweet&quot;</span> <span style="color:#cf4820;">data-user-id</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;105217183&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">button</span> <span style="color:#cf4820;">type</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;button&quot;</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-info btn-sm newtweet&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">button</span><span style="color:#4f76ac;">&gt;</span>Tweet<span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">div</span><span style="color:#4f76ac;">&gt;</span>
+<span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">div</span><span style="color:#4f76ac;">&gt;</span>
+<span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">div</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;divgplusshare pull-right&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">div</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn-group&quot;</span> <span style="color:#cf4820;">role</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;group&quot;</span><span style="color:#4f76ac;">&gt;</span>         
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-danger btn-sm&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> <span style="color:#cf4820;">data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> 
+    <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;https://plus.google.com/share?url=</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> 
+    <span style="color:#cf4820;">onclick</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span>javascript<span style="color:#1e7c70;">:</span>window.open<span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">this</span>.href<span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;&#39;</span><span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;</span><span style="color:#1e7c70;">);</span><span style="color:#4f76ac;">return</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span><span style="color:#4f76ac;">&quot;</span> <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Share on Google+&quot;</span><span style="color:#4f76ac;">&gt;</span>         
+         Share <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">button</span> <span style="color:#cf4820;">type</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;button&quot;</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-danger btn-sm gplusshare&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">button</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">div</span><span style="color:#4f76ac;">&gt;</span>
+<span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">div</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">div</span> <span style="color:#cf4820;">id</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;socialcontainer&quot;</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;center&quot;</span><span style="color:#4f76ac;">&gt;</span>    
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">div</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;row&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">span</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn-group&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;iframe btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> <span style="color:#cf4820;">data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> 
+    <span style="color:#cf4820;">data-count</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;horizontal&quot;</span> <span style="color:#cf4820;">title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;&quot;</span> <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;http://feeds.feedburner.com/donboulton/Sohc&quot;</span> <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Don Boulton Blog RSS&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-rss&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> 
+    <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Email Donald Boulton at Google + Page&quot;</span> <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;mailto:don-boulton-4557@pages.plusgoogle.com&quot;</span> <span style="color:#cf4820;">onclick</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span>javascript<span style="color:#1e7c70;">:</span>window.open<span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">this</span>.href<span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;&#39;</span><span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;</span><span style="color:#1e7c70;">);</span><span style="color:#4f76ac;">return</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span><span style="color:#4f76ac;">&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-envelope&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span> 
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> <span style="color:#cf4820;">data-count</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;horizontal&quot;</span> 
+<span style="color:#cf4820;">                   href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;https://twitter.com/intent/tweet?url=</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&amp;text=YOUR TEXT&amp;via=TWITTER USERNAME&quot;</span> 
+<span style="color:#cf4820;">                   class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;twitter-share-button&quot;</span> <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Twitter Share&quot;</span> <span style="color:#cf4820;">data-user-id</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;TWITTER USER ID&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-twitter&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> 
+<span style="color:#cf4820;">                   data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span>  <span style="color:#cf4820;">rel</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;publisher&quot;</span> <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;https://plus.google.com/share?url=</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> 
+    <span style="color:#cf4820;">onclick</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span>javascript<span style="color:#1e7c70;">:</span>window.open<span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">this</span>.href<span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;&#39;</span><span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;</span><span style="color:#1e7c70;">);</span><span style="color:#4f76ac;">return</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span><span style="color:#4f76ac;">&quot;</span> <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Share on Google+&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-google-plus&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> 
+<span style="color:#cf4820;">                   data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;https://facebook.com/?n=donboulton&quot;</span> 
+    <span style="color:#cf4820;">onclick</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span>javascript<span style="color:#1e7c70;">:</span>window.open<span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">this</span>.href<span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;&#39;</span><span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;</span><span style="color:#1e7c70;">);</span><span style="color:#4f76ac;">return</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span><span style="color:#4f76ac;">&quot;</span> <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Facebook&quot;</span> <span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-facebook&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> <span style="color:#cf4820;">data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> 
+<span style="color:#cf4820;">                   href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;http://www.linkedin.com/shareArticle?mini=true&amp;url=</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&amp;title=YOUR TITLE%20Website&amp;summary=My%20favorite%20web%20site&amp;source=YOR WEBSITE URL&quot;</span> <span style="color:#cf4820;">onclick</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span>javascript<span style="color:#1e7c70;">:</span>window.open<span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">this</span>.href<span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;&#39;</span><span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;</span><span style="color:#1e7c70;">);</span><span style="color:#4f76ac;">return</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span><span style="color:#4f76ac;">&quot;</span> <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;LinkedIn&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-linkedin&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>                             
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> 
+    <span style="color:#cf4820;">data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;https://onedrive.live.com/redir?resid=BFE52B3504AE372E%21135&quot;</span> 
+<span style="color:#cf4820;">                   onclick</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span>javascript<span style="color:#1e7c70;">:</span>window.open<span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">this</span>.href<span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;&#39;</span><span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;</span><span style="color:#1e7c70;">);</span><span style="color:#4f76ac;">return</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span><span style="color:#4f76ac;">&quot;</span> <span style="color:#cf4820;">data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;My One Drive&quot;</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-windows&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">a</span> <span style="color:#cf4820;">data-toggle</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;tooltip&quot;</span> <span style="color:#cf4820;">data-url</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;</span><span style="color:#222222;background:#d7bf49;">@@</span><span style="color:#222222;">Model</span><span style="color:#222222;">.</span><span style="color:#222222;">Url</span><span style="color:#4f76ac;">&quot;</span> 
+<span style="color:#cf4820;">                   data-original-title</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;Proof of God scientifically&quot;</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;youtube btn btn-sm btn-default&quot;</span> <span style="color:#cf4820;">href</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;http://www.youtube.com/embed/p00AYijRJy4?feature=player_detailpage&quot;</span><span style="color:#4f76ac;">&gt;</span>                    
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">i</span> <span style="color:#cf4820;">class</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;fa fa-youtube&quot;</span><span style="color:#4f76ac;">&gt;&lt;/</span><span style="color:#823125;">i</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">a</span><span style="color:#4f76ac;">&gt;</span>                           
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">input</span> <span style="color:#cf4820;">value</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;donboulton/Sohc&quot;</span> <span style="color:#cf4820;">name</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;uri&quot;</span> <span style="color:#cf4820;">type</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;hidden&quot;</span><span style="color:#4f76ac;">&gt;</span> <span style="color:#008000;">//For Feedburner</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">input</span> <span style="color:#cf4820;">value</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;en_US&quot;</span> <span style="color:#cf4820;">name</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;loc&quot;</span> <span style="color:#cf4820;">type</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;hidden&quot;</span><span style="color:#4f76ac;">&gt;</span> <span style="color:#008000;">//For Feedburner</span>
+    <span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">meta</span> <span style="color:#cf4820;">content</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;EN&quot;</span> <span style="color:#cf4820;">itemprop</span><span style="color:#4f76ac;">=</span><span style="color:#4f76ac;">&quot;InLanguage&quot;</span><span style="color:#4f76ac;">&gt;</span> <span style="color:#008000;">//For LinkedIn</span>
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">span</span><span style="color:#4f76ac;">&gt;</span>            
+    <span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">div</span><span style="color:#4f76ac;">&gt;</span>
+<span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">div</span><span style="color:#4f76ac;">&gt;</span>
+ 
+<span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">script</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">function</span><span style="color:#1e7c70;">()</span> <span style="color:#1e7c70;">{</span>
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>window.__twitterIntentHandler<span style="color:#1e7c70;">)</span> <span style="color:#4f76ac;">return</span><span style="color:#1e7c70;">;</span>
+    <span style="color:#4f76ac;">var</span> intentRegex <span style="color:#1e7c70;">=</span> <span style="color:#1e7c70;">/</span>twitter\.com<span style="color:#1e7c70;">(</span>\<span style="color:#1e7c70;">:</span>\d<span style="color:#1e7c70;">{</span><span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">,</span><span style="color:#9b5f9b;">4</span><span style="color:#1e7c70;">})?</span>\<span style="color:#1e7c70;">/</span>intent\<span style="color:#1e7c70;">/(</span>\w<span style="color:#1e7c70;">+)/,</span>
+      windowOptions <span style="color:#1e7c70;">=</span> <span style="color:#823125;">&#39;scrollbars=yes,resizable=yes,toolbar=no,location=yes&#39;</span><span style="color:#1e7c70;">,</span>
+      width <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">550</span><span style="color:#1e7c70;">,</span>
+      height <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">420</span><span style="color:#1e7c70;">,</span>
+      winHeight <span style="color:#1e7c70;">=</span> screen.height<span style="color:#1e7c70;">,</span>
+      winWidth <span style="color:#1e7c70;">=</span> screen.width<span style="color:#1e7c70;">;</span>
+ 
+    <span style="color:#4f76ac;">function</span> handleIntent<span style="color:#1e7c70;">(</span>e<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+    e <span style="color:#1e7c70;">=</span> e <span style="color:#1e7c70;">||</span> window.event<span style="color:#1e7c70;">;</span>
+    <span style="color:#4f76ac;">var</span> target <span style="color:#1e7c70;">=</span> e.target <span style="color:#1e7c70;">||</span> e.srcElement<span style="color:#1e7c70;">,</span>
+        m<span style="color:#1e7c70;">,</span> left<span style="color:#1e7c70;">,</span> top<span style="color:#1e7c70;">;</span>
+ 
+    <span style="color:#4f76ac;">while</span> <span style="color:#1e7c70;">(</span>target <span style="color:#1e7c70;">&amp;&amp;</span> target.nodeName.toLowerCase<span style="color:#1e7c70;">()</span> <span style="color:#1e7c70;">!==</span> <span style="color:#823125;">&#39;a&#39;</span><span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+      target <span style="color:#1e7c70;">=</span> target.parentNode<span style="color:#1e7c70;">;</span>
+    <span style="color:#1e7c70;">}</span>
+ 
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>target <span style="color:#1e7c70;">&amp;&amp;</span> target.nodeName.toLowerCase<span style="color:#1e7c70;">()</span> <span style="color:#1e7c70;">===</span> <span style="color:#823125;">&#39;a&#39;</span> <span style="color:#1e7c70;">&amp;&amp;</span> target.href<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+      m <span style="color:#1e7c70;">=</span> target.href.match<span style="color:#1e7c70;">(</span>intentRegex<span style="color:#1e7c70;">);</span>
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>m<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+        left <span style="color:#1e7c70;">=</span> <span style="color:#4f76ac;">Math</span>.round<span style="color:#1e7c70;">((</span>winWidth <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">-</span> <span style="color:#1e7c70;">(</span>width <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">));</span>
+        top <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">0</span><span style="color:#1e7c70;">;</span>
+ 
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>winHeight <span style="color:#1e7c70;">&gt;</span> height<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+          top <span style="color:#1e7c70;">=</span> <span style="color:#4f76ac;">Math</span>.round<span style="color:#1e7c70;">((</span>winHeight <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">-</span> <span style="color:#1e7c70;">(</span>height <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">));</span>
+    <span style="color:#1e7c70;">}</span>
+ 
+    <span>window.open</span><span style="color:#1e7c70;">(target.href</span><span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;intent&#39;</span><span style="color:#1e7c70;">,</span> windowOptions <span style="color:#1e7c70;">+</span> <span style="color:#823125;">&#39;,width=&#39;</span> <span style="color:#1e7c70;">+</span> width <span style="color:#1e7c70;">+</span>
+    <span style="color:#823125;">&#39;,height=&#39;</span> <span style="color:#1e7c70;">+</span> height <span style="color:#1e7c70;">+</span> <span style="color:#823125;">&#39;,left=&#39;</span> <span style="color:#1e7c70;">+</span> left <span style="color:#1e7c70;">+</span> <span style="color:#823125;">&#39;,top=&#39;</span> <span style="color:#1e7c70;">+</span> top<span style="color:#1e7c70;">);</span>
+        e.returnValue <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span>
+        e.preventDefault <span style="color:#1e7c70;">&amp;&amp;</span> e.preventDefault<span style="color:#1e7c70;">();</span>
+    <span style="color:#1e7c70;">}</span>
+    <span style="color:#1e7c70;">}</span>
+    <span style="color:#1e7c70;">}</span>
+ 
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>document.addEventListener<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+    document.addEventListener<span style="color:#1e7c70;">(</span><span style="color:#823125;">&#39;click&#39;</span><span style="color:#1e7c70;">,</span> handleIntent<span style="color:#1e7c70;">,</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">);</span>
+    <span style="color:#1e7c70;">}</span> <span style="color:#4f76ac;">else</span> <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>document.attachEvent<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+    document.attachEvent<span style="color:#1e7c70;">(</span><span style="color:#823125;">&#39;onclick&#39;</span><span style="color:#1e7c70;">,</span> handleIntent<span style="color:#1e7c70;">);</span>
+    <span style="color:#1e7c70;">}</span>
+  window.__twitterIntentHandler <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">true</span><span style="color:#1e7c70;">;</span>
+<span style="color:#1e7c70;">}());</span>
+<span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">script</span><span style="color:#4f76ac;">&gt;</span>
+                                          </code></pre>
+    <p>
+        Attach Mofit.Social Part to Blog Posts and Pages, set positioning with placement.info if you need it to be place anywhere but at the bottom of your post or page.
+    </p>
+    <p>
+        Add the page link to your post or page in the Mofit.Social Url input, add the full URL.
+    </p>
+    <img alt="" class="img-responsive" longdesc="Mofit.Social" src="http://donboulton.com/donboulton1/Media/Default/Images/socialurl.jpg" />
+    <p>
+        We will add bootstrap styling in this example
+    </p>
+    <h3>
+        Limited Dependencies With Twitter Web Intents
+    </h3>
+    <p>
+        Some sites may prefer to embed the unobtrusive Web Intents pop-up Javascript inline or without a dependency to platform.twitter.com. The snippet below will offer the equivalent functionality without the external dependency. <a href="https://dev.twitter.com/web/intents" title="Twitter Web Intents">Twitter Web Intents page</a>.
+    </p>
+    <pre>
+<code><span style="color:#4f76ac;">&lt;</span><span style="color:#823125;">script</span><span style="color:#4f76ac;">&gt;</span>
+    <span style="color:#1e7c70;">(</span><span style="color:#4f76ac;">function</span><span style="color:#1e7c70;">()</span> <span style="color:#1e7c70;">{</span>
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>window.__twitterIntentHandler<span style="color:#1e7c70;">)</span> <span style="color:#4f76ac;">return</span><span style="color:#1e7c70;">;</span>
+    <span style="color:#4f76ac;">var</span> intentRegex <span style="color:#1e7c70;">=</span> <span style="color:#1e7c70;">/</span>twitter\.com<span style="color:#1e7c70;">(</span>\<span style="color:#1e7c70;">:</span>\d<span style="color:#1e7c70;">{</span><span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">,</span><span style="color:#9b5f9b;">4</span><span style="color:#1e7c70;">})?</span>\<span style="color:#1e7c70;">/</span>intent\<span style="color:#1e7c70;">/(</span>\w<span style="color:#1e7c70;">+)/,</span>
+      windowOptions <span style="color:#1e7c70;">=</span> <span style="color:#823125;">&#39;scrollbars=yes,resizable=yes,toolbar=no,location=yes&#39;</span><span style="color:#1e7c70;">,</span>
+      width <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">550</span><span style="color:#1e7c70;">,</span>
+      height <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">420</span><span style="color:#1e7c70;">,</span>
+      winHeight <span style="color:#1e7c70;">=</span> screen.height<span style="color:#1e7c70;">,</span>
+      winWidth <span style="color:#1e7c70;">=</span> screen.width<span style="color:#1e7c70;">;</span>
+ 
+    <span style="color:#4f76ac;">function</span> handleIntent<span style="color:#1e7c70;">(</span>e<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+    e <span style="color:#1e7c70;">=</span> e <span style="color:#1e7c70;">||</span> window.event<span style="color:#1e7c70;">;</span>
+    <span style="color:#4f76ac;">var</span> target <span style="color:#1e7c70;">=</span> e.target <span style="color:#1e7c70;">||</span> e.srcElement<span style="color:#1e7c70;">,</span>
+        m<span style="color:#1e7c70;">,</span> left<span style="color:#1e7c70;">,</span> top<span style="color:#1e7c70;">;</span>
+ 
+    <span style="color:#4f76ac;">while</span> <span style="color:#1e7c70;">(</span>target <span style="color:#1e7c70;">&amp;&amp;</span> target.nodeName.toLowerCase<span style="color:#1e7c70;">()</span> <span style="color:#1e7c70;">!==</span> <span style="color:#823125;">&#39;a&#39;</span><span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+      target <span style="color:#1e7c70;">=</span> target.parentNode<span style="color:#1e7c70;">;</span>
+    <span style="color:#1e7c70;">}</span>
+ 
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>target <span style="color:#1e7c70;">&amp;&amp;</span> target.nodeName.toLowerCase<span style="color:#1e7c70;">()</span> <span style="color:#1e7c70;">===</span> <span style="color:#823125;">&#39;a&#39;</span> <span style="color:#1e7c70;">&amp;&amp;</span> target.href<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+      m <span style="color:#1e7c70;">=</span> target.href.match<span style="color:#1e7c70;">(</span>intentRegex<span style="color:#1e7c70;">);</span>
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>m<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+        left <span style="color:#1e7c70;">=</span> <span style="color:#4f76ac;">Math</span>.round<span style="color:#1e7c70;">((</span>winWidth <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">-</span> <span style="color:#1e7c70;">(</span>width <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">));</span>
+        top <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">0</span><span style="color:#1e7c70;">;</span>
+ 
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>winHeight <span style="color:#1e7c70;">&gt;</span> height<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+          top <span style="color:#1e7c70;">=</span> <span style="color:#4f76ac;">Math</span>.round<span style="color:#1e7c70;">((</span>winHeight <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">-</span> <span style="color:#1e7c70;">(</span>height <span style="color:#1e7c70;">/</span> <span style="color:#9b5f9b;">2</span><span style="color:#1e7c70;">));</span>
+    <span style="color:#1e7c70;">}</span>
+ 
+        window.open<span style="color:#1e7c70;">(</span>target.href<span style="color:#1e7c70;">,</span> <span style="color:#823125;">&#39;intent&#39;</span><span style="color:#1e7c70;">,</span> windowOptions <span style="color:#1e7c70;">+</span> <span style="color:#823125;">&#39;,width=&#39;</span> <span style="color:#1e7c70;">+</span> width <span style="color:#1e7c70;">+</span>
+    <span style="color:#823125;">&#39;,height=&#39;</span> <span style="color:#1e7c70;">+</span> height <span style="color:#1e7c70;">+</span> <span style="color:#823125;">&#39;,left=&#39;</span> <span style="color:#1e7c70;">+</span> left <span style="color:#1e7c70;">+</span> <span style="color:#823125;">&#39;,top=&#39;</span> <span style="color:#1e7c70;">+</span> top<span style="color:#1e7c70;">);</span>
+        e.returnValue <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">;</span>
+        e.preventDefault <span style="color:#1e7c70;">&amp;&amp;</span> e.preventDefault<span style="color:#1e7c70;">();</span>
+    <span style="color:#1e7c70;">}</span>
+    <span style="color:#1e7c70;">}</span>
+    <span style="color:#1e7c70;">}</span>
+ 
+    <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>document.addEventListener<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+    document.addEventListener<span style="color:#1e7c70;">(</span><span style="color:#823125;">&#39;click&#39;</span><span style="color:#1e7c70;">,</span> handleIntent<span style="color:#1e7c70;">,</span> <span style="color:#9b5f9b;">false</span><span style="color:#1e7c70;">);</span>
+    <span style="color:#1e7c70;">}</span> <span style="color:#4f76ac;">else</span> <span style="color:#4f76ac;">if</span> <span style="color:#1e7c70;">(</span>document.attachEvent<span style="color:#1e7c70;">)</span> <span style="color:#1e7c70;">{</span>
+    document.attachEvent<span style="color:#1e7c70;">(</span><span style="color:#823125;">&#39;onclick&#39;</span><span style="color:#1e7c70;">,</span> handleIntent<span style="color:#1e7c70;">);</span>
+    <span style="color:#1e7c70;">}</span>
+  window.__twitterIntentHandler <span style="color:#1e7c70;">=</span> <span style="color:#9b5f9b;">true</span><span style="color:#1e7c70;">;</span>
+<span style="color:#1e7c70;">}());</span>
+<span style="color:#4f76ac;">&lt;/</span><span style="color:#823125;">script</span><span style="color:#4f76ac;">&gt;</span>
+        </code>
+        </pre>
+</div>
+

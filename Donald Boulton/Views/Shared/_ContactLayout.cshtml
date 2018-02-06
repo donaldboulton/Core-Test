@@ -9,7 +9,7 @@
                    <meta name="expires" Content="Mon, 06 Jan 2020 21:31:12 GMT">
                    <meta name="author" Content="Donald Boulton">
                    <meta name="fb:app_id" Content="322180367845124">
-                   <meta name="twitter:url" Content="https://donboulton.com">
+                   <meta name="twitter:url" Content="https://mansbooks.com">
                    <meta name="twitter:thumbnailUrl" Content="https://d3n8k0cqgcsxxu.cloudfront.net/donald-boulton_100.jpg">
                    <meta name="twitter:id" Content="105217183">
                    <meta name="twitter:creator:id" Content="105217183">
@@ -30,165 +30,191 @@
                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" />
                    <link rel="stylesheet" href="https://d3n8k0cqgcsxxu.cloudfront.net/css/bootstrap1.min.css" />
                    <link rel="stylesheet" href="https://d3n8k0cqgcsxxu.cloudfront.net/css/agencygood12.min.css" />
-                   <link rel="stylesheet" href="~/css/site.min.css" />                               
+                   <link rel="stylesheet" href="~/css/site.css" />                               
                    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
                    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script" />
                    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" />
-                    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" />
+                   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" />
                </head>
-<body class="style-3" data-twttr-rendered="true" id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <div class="navbar-header"><a class="navbar-brand-image" href="/"><img src="https://d3n8k0cqgcsxxu.cloudfront.net/spinningworld48.gif" /></a><a class="navbar-brand" href="#page-top">&nbsp;&nbsp;Donald Boulton</a></div>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" aria-controls=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" data-target=".navbar-collapse"> <span class="navbar-toggler-icon"></span> </button>
-            <div class="navbar-collapse mr-auto collapse" id="navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Post" asp-action="Index">Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Contact" asp-action="Contact">Contact</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-briefcase"></i> </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            Pages &nbsp;&nbsp;<i class="fas fa-link"></i>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/">Home</a>
-                            <ul>
-                                <li><a class="dropdown-item" href="/Contact/About">About</a></li>
-                                <li><a class="dropdown-item" href="/Contact/Contact">Contact</a></li>
-                            </ul>
-                            <div class="dropdown-divider"></div>
-                            Posts &nbsp;&nbsp;<i class="fas fa-archive"></i>
-                            <a class="dropdown-item" href="/Post">Posts</a>
-                            <a class="dropdown-item" href="/old-posts">Old Blog Post's</a>
-                            <div class="dropdown-divider"></div>
-                            External Blogs &nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>
-                            <a class="dropdown-item" href="http://bibwoe.com">Bibwoe</a>
-                            <a class="dropdown-item" href="http://mansbooks.com">Mansbooks</a>
-                            <a class="dropdown-item" href="http://publiuslogic.com">Publiuslogic</a>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-sign-in-alt"></i> </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <div id="login-dropdown" class="group">
-                                <div id="Login">
-                                    <div class="user-actions">
-                                        <div>
-                                            @await Html.PartialAsync("_LoginPartial")
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div>
-                    <div>
-                        <form class="form-inline my-2 my-lg-0 search-form" role="form" method="GET" action="/Search">
-                            <div class="form-group input-group"><input id="q" name="q" type="text" value="" class="form-control mr-sm-2" placeholder="Search" /> <button type="submit" class="btn btn-primary"> <i class="fas fa-search"></i> </button></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <header id="layout-header" class="masthead-contact">
-            <div id="header">
-                <div class="intro-text">
-                    <div class="intro-heeading text-muted"><h2>@ViewData["Title"]</h2></div>
-                </div>
-            </div>
-        </header>
-    </div>
-    <div class="container body-content">
-        <div id="body" data-pjax-container>
-            @RenderBody()
-        </div>
-        <div id="google-plus">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="g-plus" data-action="share" data-href="https://donboulton.com"></div>
-                    <div id="comments"></div>
-                    <script type="text/javascript">
-                        window.onLoadCallback = function () {
-                            gapi.comments.render('comments', {
-                                href: window.location,
-                                width: '624',
-                                first_party_property: 'Blogger',
-                                view_type: 'FILTERED_POSTMOD'
-                            });
-                        }
-                    </script>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 text-center">
-                        <span id="Copyright" class="Copyright">&copy; 2018 @@ <a data-rel="author" itemprop="url" data-toggle="tooltip" data-placement="top" href="https://plus.google.com/117122847504916016102?rel=author" rel="me" data-user-id="117122847504916016102" data-origional-title="Donald Boulton on Google + Posts and Discussions."><span itemprop="name">Donald Boulton</span></a></span>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="list-inline social-buttons text-center">
-                            <li class="list-inline-item"><a class="list-inline-item" data-toggle="tooltip" data-count="horizontal" href="https://twitter.com/intent/tweet?url=https://donboulton.com/&amp;text=DonaldBoulton&amp;via=donboulton" data-original-title="Twitter Share" data-user-id="105217183" target="_blank"> <i class="fab fa-twitter"></i> </a></li>
-                            <li class="list-inline-item"><a data-toggle="tooltip" data-count="horizontal" data-original-title="My Github Projects, get involved in building the Books Of Life!" target="_blank" href="https://github.com/donaldboulton"> <i class="fab fa-github"></i> </a></li>
-                            <li class="list-inline-item"><a data-toggle="tooltip" data-original-title="Mansbooks Slack, Join the team." data-count="horizontal" target="_blank" href="https://mansbooks.slack.com"> <i class="fab fa-slack"></i> </a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="list-inline quicklinks text-center">
-                            <li class="list-inline-item"><a itemprop="url" data-toggle="tooltip" data-placement="top" data-origional-title="Privacy and Cookie Usage for Donald Boulton's Web Sites'" href="/Contact/Privacy">Privacy Policy</a></li>
-                            <li class="list-inline-item"><a itemprop="url" data-toggle="tooltip" data-placement="top" data-origional-title="Terms of Use" href="/Contact/Terms">Terms of Use</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <environment include="Development">
-        <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/jquery.min.js">
-        </script>
-        <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/appnew.min.js">
-        </script>
-        <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/commonnew.min.js">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-        <script src="https://apis.google.com/js/plusone.js"></script>
-        <script>
-            window.___gcfg = {
-                lang: 'en-US',
-                parsetags: 'explicit', 'onload',
-            }
-        </script>
-        <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-    <script type="application/ld+json">
-        [{"@@context":"http://schema.org","@@type":"WebSite","url":"https://www.donboulton.com/","potentialAction":{"@@type":"SearchAction","target":"https://query.donboulton.com/search?q={q}","query-input":"required name=q"}},{"@@context":"http://schema.org","@@type":"SoftwareApplication","name":"Doanld Boulton","operatingSystem":"Windows 10","applicationCategory":"http://schema.org/WebApplication","aggregateRating":{"@@type":"AggregateRating","ratingValue":"4.6","ratingCount":"8864"},"offers":{"@@type":"Offer","price":"1.00","priceCurrency":"USD"}}]
-    </script>
-    @RenderSection("Scripts", required: false)
-</body>
+               <body class="style-3" data-twttr-rendered="true" id="page-top">
+                   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+                       <div class="container">
+                           <div class="navbar-header"><a class="navbar-brand-image" href="/"><img src="https://d3n8k0cqgcsxxu.cloudfront.net/spinningworld48.gif" /></a><a class="navbar-brand" href="#page-top">&nbsp;&nbsp;Donald Boulton</a></div>
+                           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" aria-controls=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" data-target=".navbar-collapse"> <span class="navbar-toggler-icon"></span> </button>
+                           <div class="navbar-collapse mr-auto collapse" id="navbar">
+                               <ul class="navbar-nav mr-auto">
+                                   <li class="nav-item">
+                                       <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                                   </li>
+                                   <li class="nav-item">
+                                       <a class="nav-link" asp-controller="Post" asp-action="Index">Posts</a>
+                                   </li>
+                                   <li class="nav-item">
+                                       <a class="nav-link" asp-controller="Contact" asp-action="Contact">Contact</a>
+                                   </li>
+                                   <li class="nav-item dropdown">
+                                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-briefcase"></i> </a>
+                                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                           Pages &nbsp;&nbsp;<i class="fas fa-link"></i>
+                                           <div class="dropdown-divider"></div>
+                                           <a class="dropdown-item" href="/">Home</a>
+                                           <div class="dropdown-divider"></div>
+                                           <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="About">About</a>
+                                           <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a>
+                                           <div class="dropdown-divider"></div>
+                                           Blogs &nbsp;&nbsp;<i class="fas fa-archive"></i>
+                                           <a class="dropdown-item" href="/Blog/Blog">Blog</a>
+                                           <a class="dropdown-item" href="/Post">Core 2 Posts</a>
+                                           <div class="dropdown-divider"></div>
+                                           Other Blogs &nbsp;&nbsp;<i class="fas fa-external-link-alt"></i>
+                                           <a class="dropdown-item" href="http://bibwoe.com">Bibwoe</a>
+                                           <a class="dropdown-item" href="http://mansbooks.com">Mansbooks</a>
+                                           <a class="dropdown-item" href="http://publiuslogic.com">Publiuslogic</a>
+                                       </div>
+                                   </li>
+                               </ul>
+                               <ul class="navbar-nav ml-auto">
+                                   <li class="nav-item dropdown">
+                                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-sign-in-alt"></i> </a>
+                                       <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                           <div id="login-dropdown" class="group">
+                                               <div id="Login">
+                                                   <div class="user-actions">
+                                                       <div>
+                                                           @await Html.PartialAsync("_LoginPartial")
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </li>
+                               </ul>
+                               <div>
+                                   <div>
+                                       <form class="form-inline my-2 my-lg-0 search-form" role="form" method="GET" action="/Search">
+                                           <div class="form-group input-group">
+                                               <input id="q" name="q" type="text" value="" class="form-control mr-sm-2" placeholder="Search" />
+                                               <button type="submit" class="btn btn-primary">
+                                                   <i class="fas fa-search"></i>
+                                               </button>
+                                           </div>
+                                       </form>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </nav>
+                   <div class="container">
+                       <header id="layout-header" class="masthead-contact">
+                           <div id="header">
+                               <div class="intro-text">
+                                   <div class="intro-heeading text-muted"><h2>@ViewData["Title"]</h2></div>
+                               </div>
+                           </div>
+                       </header>
+                   </div>
+                   <div class="container body-content">
+                       <div id="body" data-pjax-container>
+                           @RenderBody()
+                       </div>
+                       <div id="google-plus">
+                           <div class="container-fluid">
+                               <div class="row">
+                                   <div class="g-plus" data-action="share" data-href="https://donboulton.com"></div>
+                                   <div id="comments"></div>
+                                   <script type="text/javascript">
+                                       window.onLoadCallback = function () {
+                                           gapi.comments.render('comments', {
+                                               href: window.location,
+                                               width: '624',
+                                               first_party_property: 'Blogger',
+                                               view_type: 'FILTERED_POSTMOD'
+                                           });
+                                       }
+                                   </script>
+                               </div>
+                           </div>
+                       </div>
+                       <footer>
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col-md-4 text-center">
+                                       <span id="Copyright" class="Copyright">&copy; 2018 @@ <a data-rel="author" itemprop="url" data-toggle="tooltip" data-placement="top" href="https://plus.google.com/117122847504916016102?rel=author" rel="me" data-user-id="117122847504916016102" data-origional-title="Donald Boulton on Google + Posts and Discussions."><span itemprop="name">Donald Boulton</span></a></span>
+                                   </div>
+                                   <div class="col-md-4">
+                                       <ul class="list-inline social-buttons text-center">
+                                           <li class="list-inline-item"><a class="list-inline-item" data-toggle="tooltip" data-count="horizontal" href="https://twitter.com/intent/tweet?url=https://donboulton.com/&amp;text=DonaldBoulton&amp;via=donboulton" data-original-title="Twitter Share" data-user-id="105217183" target="_blank"> <i class="fab fa-twitter"></i> </a></li>
+                                           <li class="list-inline-item"><a data-toggle="tooltip" data-count="horizontal" data-original-title="My Github Projects, get involved in building the Books Of Life!" target="_blank" href="https://github.com/donaldboulton"> <i class="fab fa-github"></i> </a></li>
+                                           <li class="list-inline-item"><a data-toggle="tooltip" data-original-title="Mansbooks Slack, Join the team." data-count="horizontal" target="_blank" href="https://mansbooks.slack.com"> <i class="fab fa-slack"></i> </a></li>
+                                       </ul>
+                                   </div>
+                                   <div class="col-md-4">
+                                       <ul class="list-inline quicklinks text-center">
+                                           <li class="list-inline-item"><a itemprop="url" data-toggle="tooltip" data-placement="top" data-origional-title="Privacy and Cookie Usage for Donald Boulton's Web Sites'" href="/Contact/Privacy">Privacy Policy</a></li>
+                                           <li class="list-inline-item"><a itemprop="url" data-toggle="tooltip" data-placement="top" data-origional-title="Terms of Use" href="/Contact/Terms">Terms of Use</a></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </div>
+                       </footer>
+                   </div>
+                   <environment include="Development">
+                       <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/jquery.min.js">
+                       </script>
+                       <script src="https://d3n8k0cqgcsxxu.cloudfront.net/js/appnew.min.js">
+                       </script>
+                       <script src="https://apis.google.com/js/plusone.js"></script>
+                       <script>
+                           window.___gcfg = {
+                               lang: 'en-US',
+                               parsetags: 'explicit', 'onload',
+                           };
+                       </script>
+                       <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+                       <script src="~/js/prism.js" async defer></script>
+                       <script src="~/js/clipboard.js"></script>
+                       <script src="~/js/site.js" asp-append-version="true"></script>
+                   </environment>
+                   <environment exclude="Development">
+                       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                               asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                               asp-fallback-test="window.jQuery"
+                               crossorigin="anonymous"
+                               integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+                       </script>
+                       <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+                               asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                               asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                               crossorigin="anonymous"
+                               integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+                       </script>
+                       <script src="~/js/site.min.js" asp-append-version="true"></script>
+                   </environment>
+                   <script type="text/javascript">
+                       $(".inline").colorbox({ inline: true, width: '100%', rel: 'proflex' });
+
+                       $('.inline_content').on('click', function () {
+                           $.fn.colorbox.prev();
+                       });
+                       $('.inline_content').on('click', function () {
+                           $.fn.colorbox.next();
+                       });
+                   </script>
+                   <script>
+                       var clipboard = new Clipboard('.btn');
+
+                       clipboard.on('success', function (e) {
+                           console.log(e);
+                       });
+
+                       clipboard.on('error', function (e) {
+                           console.log(e);
+                       });
+                   </script>
+                   <script type="application/ld+json">
+                       [{"@@context":"http://schema.org","@@type":"WebSite","url":"https://www.donboulton.com/","potentialAction":{"@@type":"SearchAction","target":"https://query.donboulton.com/search?q={q}","query-input":"required name=q"}},{"@@context":"http://schema.org","@@type":"SoftwareApplication","name":"Doanld Boulton","operatingSystem":"Windows 10","applicationCategory":"http://schema.org/WebApplication","aggregateRating":{"@@type":"AggregateRating","ratingValue":"4.6","ratingCount":"8864"},"offers":{"@@type":"Offer","price":"1.00","priceCurrency":"USD"}}]
+                   </script>
+                   @RenderSection("Scripts", required: false)
+                   <div class="am-scroll-top"></div>
+               </body>
 </html>

@@ -1,0 +1,54 @@
+﻿@model Donald_Boulton.Models.Post
+
+@{
+    ViewData["Title"] = "Check Fragmentation";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+
+<div class="row">
+    <div class="media">
+        <a title="Check SQL fragmentation" href="~/images/pages/svg/check_sql_fragmentation.svg"><img class="img-fluid mr-3" alt="SQL Fragmentation" src="~/images/pages/svg/check_sql_fragmentation.svg" itemprop="primaryImageOfPage" /></a>
+        <div class="media-body">
+            <h5 class="mt-0 text-center" itemprop="name">SQL Fragmentation</h5>
+            <div itemprop="description">
+                <h5 class="text-center mt-0">Check SQL Server a specified database index fragmentation percentage (SQL)</h5>
+                <p>This T-SQL sample script illustrates how to check index fragmentation of a specified database in SQL Server.</p>
+            </div>
+        </div>
+    </div>
+    <div itemprop="mainContentOfPage">
+        <h4>Introduction</h4>
+        <p>From: <a href="http://gallery.technet.microsoft.com/scriptcenter/Check-SQL-Server-a-a5758043#content" target="_blank">http://gallery.technet.microsoft.com/scriptcenter/Check-SQL-Server-a-a5758043#content</a></p>
+        <p>Orchard CMS is no different that any other Web Site using SQL Server where fragmentation does exist. When files or data are in the wrong place then SQL Server has to spend time looking for the missing data, slowing the whole process down and increasing load times for your site</p>
+        <h2>Scenarios</h2>
+        <p>This script can be used for checking index fragmentation percentage of tables in SQL Server user databases. You can specify the database name and fragmentation percent, after you run the script, you will get the result.</p>
+        <h2>Script</h2>
+        <p>The following steps use SQL Server 2008 R2 and AdventureWorks2008 sample database as example.</p>
+        <p>Step1. Open Microsoft SQL Server 2008 R2</p>
+        <p>Step2. Open Microsoft SQL Server Management Studio<br /> Start- All programs- Microsoft SQL Server 2008 R2- Microsoft SQL Server Management Studio<br /> <img alt="SQL Management" src="//d3n8k0cqgcsxxu.cloudfront.net/pages/sql_management.png" /></p>
+        <h4>Step3. Drag the script file to SQL Server Management Studio</h4>
+        <p>Step4. Replace the following information with yours in the script</p>
+        <p>indexstats.avg_fragmentation_in_percent: In the script the&nbsp; indexstats.avg_fragmentation_in_percent is greater than 30. Please specify the percent.</p>
+        <p>Step5. Run the script</p>
+        <p>The below script selects AdventureWorks 2008.&nbsp;</p>
+        <p>After the script executing, we will get a result as the following figure shows:</p>
+        <p><img alt="Script Results" src="https://d3n8k0cqgcsxxu.cloudfront.net/pages/script-results.jpg" /></p>
+        <h3>Web Matrix is what I use to check Fragmentation.</h3>
+        <p>Open Web Matrix select databases and logon to your database, Select new query and paste IndexDefrag query in workspace the execute.</p>
+        <p><img alt="Index Fragmentation" src="https://d3n8k0cqgcsxxu.cloudfront.net/pages/IndexFragmentation_WebMatrix.png" /></p>
+        <p>Here is my result on a database that is less than a month old. Media Library is 87% FRAGMENTED.</p>
+        <p><img alt="SQL Management" src="https://d3n8k0cqgcsxxu.cloudfront.net/pages/IndexFragmentation_WebMatrix_Script_Results.png" /></p>
+        <h2>Additional Resources</h2>
+        <p>See my post on how to fix this at: <a class="iframe" href="https://donboulton.com/sqldefrag">https://donboulton.com/sqldefrag</a></p>
+        <p><a href="http://support.microsoft.com/kb/2755960">SQL query performance might decrease when the SQL Server Database instance has high index fragmentation</a></p>
+        <p>Download this script at <a href="https://d3n8k0cqgcsxxu.cloudfront.net/zip/IndexFragmentation.zip">Check Index Defragmentation</a>.</p>
+    </div>
+</div>
+<div class="row">
+    <ul>
+        <li class="li"><a name="donboulton" title="Favorite" href="https://twitter.com/intent/favorite?tweet_id=446055523948199936" data-user-id="105217183" data-screen="data-screen"><img class="favorite" alt="Favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.min.png" /></a>&nbsp; <a name="donboulton" title="Favorite" class="link" href="https://twitter.com/intent/favorite?tweet_id=446055523948199936" data-user-id="105217183" data-screen="data-screen">Favorite</a> <a name="donboulton" title="Reply" href="https://twitter.com/intent/tweet?in_reply_to=446055523948199936" data-user-id="105217183" data-screen="data-screen"> <img class="reply" alt="Reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.min.png" /></a>&nbsp;<a name="donboulton" title="Reply" class="link" href="https://twitter.com/intent/tweet?in_reply_to=446055523948199936" data-user-id="105217183" data-screen="data-screen">Reply</a>&nbsp; <a name="donboulton" title="Retweet" href="http://twitter.com/intent/retweet?tweet_id=446055523948199936" data-user-id="105217183" data-screen="data-screen"> <img class="retweet" alt="Retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.min.png" /></a>&nbsp;<a name="donboulton" title="Retweet" class="link" href="https://twitter.com/intent/retweet?tweet_id=446055523948199936" data-user-id="105217183" data-screen="data-screen">Retweet</a></li>
+    </ul>
+</div>
+<div>
+    <a asp-action="Blog">Back to Blog List</a>
+</div>
