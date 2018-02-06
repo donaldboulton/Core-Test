@@ -8,7 +8,6 @@
 <div class="row">
     <div class="media"><img width="201" height="97" class="mr-3 img-fluid" src="~/images/pages/svg/sql_session_state.svg" itemprop="primaryImageOfPage" /></div>
     <div class="media-body">
-        <h5 class="mt-0 text-center" itemprop="name">SQL Session State</h5>
         <div itemprop="description">
             This page is about ASP.NET Session State and or in some cases to use SQL Session state over the normal in-proc session state.
             <p>Working with Orchard on a WinHost shared server and having access to only 500mb of memory on a ultimate account.</p>
@@ -71,7 +70,7 @@
     <p>&lt;system.web&gt;<br /> &lt;sessionState allowCustomSqlDatabase="true" sqlCommandTimeout="1800" mode="SQLServer" sqlConnectionString="data source=tcp:s05.winhost.com;database= session<br /> state;user id= sessionstate_user;password=*********" cookieless="false" timeout="60" /&gt;</p>
     <p>My application took a couple of refreshes before it would load the .css.<br /> I killed the warm up pages cleared the logs, refreshed again and no more session state problems with my Orchard 1.7.2 installation's. A session state schema produces the folling tables</p>
     <p><a title="MSDN Session Variables" class="iframe" href="http://msdn.microsoft.com/en-us/library/tex2sh13%28v=vs.80%29.aspx"><b>SessionVariables</b></a></p>
-    <table width="100%">
+    <table>
         <tbody>
             <tr>
                 <td>
@@ -118,7 +117,7 @@
         </tbody>
     </table>
     <div class="labelheading"><b>SessionReferences</b></div>
-    <table width="100%">
+    <table>
         <tbody>
             <tr><th>Column</th><th>Name</th><th>Type</th><th>Description</th></tr>
             <tr>
@@ -261,7 +260,7 @@
     <p>For example, to create T-SQL script named "SessionScript", which creates custom database "SessionDb", we'll use:</p>
     <p><strong>aspnet_regsql -ssadd -sstype c -d SessionDb -sqlexportonly c:\SessionScript.sql</strong></p>
     <p>Generated scripts include part for creating database. But, on shared hosting we'll create database using web hosting control panel or use some existing predefined databases. Because of that, we need to remove this part from script. T-SQL code which should be removed is located on top of the script and in our case will look like this:</p>
-    <p><span style="color: blue;">USE</span><span> <span style="color: blue;">master</span></span><br /> <span style="color: blue;">GO</span><br /> <br /> <span style="color: green;">/* Create and populate the session state database */</span><br /> <br /> <span style="color: blue;">IF</span><span> <span style="color: fuchsia;">DB_ID</span><span style="color: gray;">(</span><span style="color: red;">N'SessionDb'</span><span style="color: gray;">)</span> <span style="color: gray;">IS</span> <span style="color: gray;">NULL</span> <span style="color: blue;">BEGIN</span></span><br /> <span>&nbsp;<span style="color: blue;">DECLARE</span> @cmd <span style="color: blue;">nvarchar</span><span style="color: gray;">(</span>500<span style="color: gray;">)</span></span><br /> <span>&nbsp;<span style="color: blue;">SET</span> @cmd <span style="color: gray;">=</span> <span style="color: red;">N'CREATE DATABASE [SessionDb]'</span></span><br /> <span>&nbsp;<span style="color: blue;">EXEC</span><span style="color: gray;">(</span>@cmd<span style="color: gray;">)</span></span><br /> <span style="color: blue;">END</span></p>
+    <p><span style="color: blue;">USE</span><span> <span style="color: blue;">master</span></span><br /> <span style="color: blue;">GO</span><br /> <br /> <span style="color: green;">/* Create and populate the session state database */</span><br /> <br /> <span style="color: blue;">IF</span><span> <span style="color: fuchsia;">DB_ID</span><span style="color: gray;">(</span><span style="color: red;">N'SessionDb'</span><span style="color: gray;">)</span> <span style="color: gray;">IS</span> <span style="color: gray;">NULL</span> <span style="color: blue;">BEGIN</span></span><br /> <span>&nbsp;<span style="color: blue;">DECLARE</span> @@cmd <span style="color: blue;">nvarchar</span><span style="color: gray;">(</span>500<span style="color: gray;">)</span></span><br /> <span>&nbsp;<span style="color: blue;">SET</span> @@cmd <span style="color: gray;">=</span> <span style="color: red;">N'CREATE DATABASE [SessionDb]'</span></span><br /> <span>&nbsp;<span style="color: blue;">EXEC</span><span style="color: gray;">(</span>@@cmd<span style="color: gray;">)</span></span><br /> <span style="color: blue;">END</span></p>
     <p>Since shared hosting providers mostly don't allow SQL Server Agent too, you need to remove parts that create job for deleting of sessions. After that, script can be executed against database in shared hosting scenario.</p>
     <p>But, we have another problem. Since we'll not use SQL Server Agent for deleting sessions, they will remain in database. We need other mechanism to delete expired session.</p>
     <p>Expired sessions are deleted when <strong>DeletedExpiredSessions stored procedure</strong> is executed. By default, this procedure is called by Agent. As an alternative, you can call this procedure using line:</p>

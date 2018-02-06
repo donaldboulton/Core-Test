@@ -9,134 +9,250 @@
         <img width="201" class="mr-3 img-fluid" src="~/images/pages/svg/mobile_colorbox.svg" itemprop="primaryImageOfPage" />
     </div>
     <div class="media-body">
-        <h5 class="mt-0 text-center" itemprop="name">Mobile Colorbox</h5>
         <div itemprop="description">
-            <p>Mobile First Responsive Colorbox Window to Open and Link, div, code, about anything including a iframe using external data, within Bootstrap 4 beta 3</p>
+            <p>Mobile First Responsive Colorbox Window to open a link, div, code, about anything. Including a iframe using external data. Using the provided code works with Bootstrap 4 beta 3</p>
+            <p>I created a colorbox window for ASP.Net Core 2 app. On most Phone and Tablets, no matter the orientation Colorbox was way to small about 40% of the view.</p>
+            <p>On orientation change it flickered and tried to change sizes several times.</p>
         </div>
     </div>
 </div>
-<div class="row" temprop="mainContentOfPage">
-    <p>I created a colorbox logon window for ASP.Net Core 2 app, Most any Android OSX or Windows Phone's or Tablet's, no matter the orientation was way to small about 40% of the view. And on orientation change it flickered and tried to change sizes several times.</p>
+<div class="row" itemprop="mainContentOfPage">
     <p>
         I searched around and found similar posts and came up with a small addition to the Initialization of colorbox.
     </p>
     <p>
-        Colorbox now is working perfect on my Android and some other phone I tried it on but it made some of the colorbox windows 90% of the view on a normal website.
+        Colorbox now is working perfect on my Android and some other phone's I have tried. It now makes the colorbox windows 90% of the view on a normal website, and 90% on mobile.
     </p>
     <p>
-        I am building Mobile First sites now and it way to easy with Core 2 framework, with a Mobile First Agency Theme based on Bootstrap 4 beta 3.
+        I am building Mobile First sites now and it way to easy with Core 2 framework, with a Mobile First Agency Theme based on Bootstrap 4 beta 3 using colorbox for some internal views.
     </p>
+    <div><a class="inline" href="#profiles" title="Colorbox">Click to open the Page Code block in a Colorbox Window.</a></div>
+    <div class="clearfix">&nbsp;</div>
+    <div>To use the Colorbox window by clicking a link that uses a class as class="inline" and link it to the div with href="#profiles"</div>
+    <div class="clearfix">&nbsp;</div>
+    <p>Hide Content in a hidden div class="hidden"</p>
+    <div class="clearfix">&nbsp;</div>
+    <p>id="profiles" The link is to a div with id="profiles"</p>
+    <div class="clearfix">&nbsp;</div>
+    <p>Add Colorbox Content in the div with profiles</p>
     <p>
-        Below is the new Initialization code with additions highlighted.
+        Below is the new Colorbox Initialization code with additions highlighted.
     </p>
-</div>
-    <div class="row">
-        <div class="card text-white bg-dark mr-3" style="min-width:100%;">
-            <div class="card-header">
-                <h5 class="text-muted">The light weight Javascript</h5>
-                <button class="btn btn-light btn-sm float-right" data-clipboard-action="copy" data-clipboard-target="#colorbox">
-                    <img class="clippy" width="13" src="~/images/pages/svg/clippy.svg" alt="">
-                </button>
-            </div>
-            <div class="card-body">
-                <div class="card-text">
-                    <pre>                         
-                    <code id="colorbox" class="language-javascript">
-                        $(".group1").colorbox({
-                        rel: "group1"
-                        });
-                        $(".group2").colorbox({
-                        rel: "group2",
-                        transition: "fade"
-                        });
-                        $(".group3").colorbox({
-                        rel: "group3",
-                        transition: "none",
-                        width: "80%",
-                        height: "80%"
-                        });
-                        $(".group4").colorbox({
-                        rel: "group4",
-                        slideshow: true
-                        });
-                        $(".ajax").colorbox();
-                        $(".youtube").colorbox({
-                        iframe: true,
-                        innerWidth: 640,
-                        innerHeight: 390
-                        });
-                        $(".vimeo").colorbox({
-                        iframe: true,
-                        innerWidth: 500,
-                        innerHeight: 409
-                        });
-                        $(".iframe").colorbox({
-                        iframe: true,
-                        width: "80%",
-                        height: "80%"
-                        });
-                        $(".inline").colorbox({
-                        inline: true,
-                        width: "80%"
-                        });
-                        $(".callbacks").colorbox({
-                        onOpen: function () {
-                        alert("onOpen: colorbox is about to open");
-                        },
-                        onLoad: function () {
-                        alert("onLoad: colorbox has started to load the targeted content");
-                        },
-                        onComplete: function () {
-                        alert("onComplete: colorbox has displayed the loaded content");
-                        },
-                        onCleanup: function () {
-                        alert("onCleanup: colorbox has begun the close process");
-                        },
-                        onClosed: function () {
-                        alert("onClosed: colorbox has completely closed");
-                        }
-                        });
-                        $(".non-retina").colorbox({
-                        rel: "group5",
-                        transition: "none"
-                        });
-                        $(".retina").colorbox({
-                        rel: "group5",
-                        transition: "none",
-                        retinaImage: true,
-                        retinaUrl: true
-                        });
-                        $("#click").click(function () {
-                        $("#click").css({
-                        "background-color": "#f00",
-                        color: "#fff",
-                        cursor: "inherit"
-                        }).text("Open this window again and this message will still be here.");
-                        return false;
-                        });
-                        var resizeTimer;
-                        //Mobile Resize Function
-                        function resizeColorBox() {
-                        if (resizeTimer) clearTimeout(resizeTimer);
-                        resizeTimer = setTimeout(function () {
-                        if (jQuery("#cboxOverlay").is(":visible")) jQuery.colorbox.resize({
-                        width: "90%",
-                        height: "90%"
-                        });
-                        }, 300);
-                        }
-                        jQuery(window).resize(resizeColorBox);
-                        window.addEventListener("orientationchange", resizeColorBox, false);
-                    </code>
+    <div class="hidden">
+        <div id="profiles" class="style-3">
+            <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+                <div class="card-header">
+                    <h5 class="text-muted">The Javascript</h5>
+                    <button class="btn btn-light btn-sm float-right" data-clipboard-action="copy" data-clipboard-target="#color">
+                        <img class="clippy" width="13" src="~/images/pages/svg/clippy.svg" alt="clippy">
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <pre class="snippet">                       
+                        <code id="color" class="language-javascript">
+                        <script type="text/javascript">
+                            $(".group1").colorbox({
+                                rel: "group1"
+                            });
+                            $(".group2").colorbox({
+                                rel: "group2",
+                                transition: "fade"
+                            });
+                            $(".group3").colorbox({
+                                rel: "group3",
+                                transition: "none",
+                                width: "80%",
+                                height: "80%"
+                            });
+                            $(".group4").colorbox({
+                                rel: "group4",
+                                slideshow: true
+                            });
+                            $(".ajax").colorbox();
+                            $(".youtube").colorbox({
+                                iframe: true,
+                                innerWidth: 640,
+                                innerHeight: 390
+                            });
+                            $(".vimeo").colorbox({
+                                iframe: true,
+                                innerWidth: 500,
+                                innerHeight: 409
+                            });
+                            $(".iframe").colorbox({
+                                iframe: true,
+                                width: "80%",
+                                height: "80%"
+                            });
+                            $(".inline").colorbox({
+                                inline: true,
+                                width: "80%"
+                            });
+                            $(".callbacks").colorbox({
+                                onOpen: function () {
+                                    alert("onOpen: colorbox is about to open");
+                                },
+                                onLoad: function () {
+                                    alert("onLoad: colorbox has started to load the targeted content");
+                                },
+                                onComplete: function () {
+                                    alert("onComplete: colorbox has displayed the loaded content");
+                                },
+                                onCleanup: function () {
+                                    alert("onCleanup: colorbox has begun the close process");
+                                },
+                                onClosed: function () {
+                                    alert("onClosed: colorbox has completely closed");
+                                }
+                            });
+                            $(".non-retina").colorbox({
+                                rel: "group5",
+                                transition: "none"
+                            });
+                            $(".retina").colorbox({
+                                rel: "group5",
+                                transition: "none",
+                                retinaImage: true,
+                                retinaUrl: true
+                            });
+                            $("#click").click(function () {
+                                $("#click").css({
+                                    "background-color": "#f00",
+                                    color: "#fff",
+                                    cursor: "inherit"
+                                }).text("Open this window again and this message will still be here.");
+                                return false;
+                            });
+                            var resizeTimer;
+                            //Mobile Resize Function
+                            function resizeColorBox() {
+                                if (resizeTimer) clearTimeout(resizeTimer);
+                                resizeTimer = setTimeout(function () {
+                                    if (jQuery("#cboxOverlay").is(":visible")) jQuery.colorbox.resize({
+                                        width: "90%",
+                                        height: "90%"
+                                    });
+                                }, 300);
+                            }
+                            jQuery(window).resize(resizeColorBox);
+                            window.addEventListener("orientationchange", resizeColorBox, false);
+</script>                          
+                       </code>
                   </pre>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+        <div class="card-header">
+            <h5 class="text-muted">The Javascript</h5>
+            <button class="btn btn-light btn-sm float-right" data-clipboard-action="copy" data-clipboard-target="#color">
+                <img class="clippy" width="13" src="~/images/pages/svg/clippy.svg" alt="clippy">
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <pre class="snippet">                       
+                <code id="color" class="language-javascript">
+                <script type="text/javascript">
+                    $(".group1").colorbox({
+                        rel: "group1"
+                    });
+                    $(".group2").colorbox({
+                        rel: "group2",
+                        transition: "fade"
+                    });
+                    $(".group3").colorbox({
+                        rel: "group3",
+                        transition: "none",
+                        width: "80%",
+                        height: "80%"
+                    });
+                    $(".group4").colorbox({
+                        rel: "group4",
+                        slideshow: true
+                    });
+                    $(".ajax").colorbox();
+                    $(".youtube").colorbox({
+                        iframe: true,
+                        innerWidth: 640,
+                        innerHeight: 390
+                    });
+                    $(".vimeo").colorbox({
+                        iframe: true,
+                        innerWidth: 500,
+                        innerHeight: 409
+                    });
+                    $(".iframe").colorbox({
+                        iframe: true,
+                        width: "80%",
+                        height: "80%"
+                    });
+                    $(".inline").colorbox({
+                        inline: true,
+                        width: "80%"
+                    });
+                    $(".callbacks").colorbox({
+                        onOpen: function () {
+                            alert("onOpen: colorbox is about to open");
+                        },
+                        onLoad: function () {
+                            alert("onLoad: colorbox has started to load the targeted content");
+                        },
+                        onComplete: function () {
+                            alert("onComplete: colorbox has displayed the loaded content");
+                        },
+                        onCleanup: function () {
+                            alert("onCleanup: colorbox has begun the close process");
+                        },
+                        onClosed: function () {
+                            alert("onClosed: colorbox has completely closed");
+                        }
+                    });
+                    $(".non-retina").colorbox({
+                        rel: "group5",
+                        transition: "none"
+                    });
+                    $(".retina").colorbox({
+                        rel: "group5",
+                        transition: "none",
+                        retinaImage: true,
+                        retinaUrl: true
+                    });
+                    $("#click").click(function () {
+                        $("#click").css({
+                            "background-color": "#f00",
+                            color: "#fff",
+                            cursor: "inherit"
+                        }).text("Open this window again and this message will still be here.");
+                        return false;
+                    });
+                    var resizeTimer;
+                    //Mobile Resize Function
+                    function resizeColorBox() {
+                        if (resizeTimer) clearTimeout(resizeTimer);
+                        resizeTimer = setTimeout(function () {
+                            if (jQuery("#cboxOverlay").is(":visible")) jQuery.colorbox.resize({
+                                width: "90%",
+                                height: "90%"
+                            });
+                        }, 300);
+                    }
+                    jQuery(window).resize(resizeColorBox);
+                    window.addEventListener("orientationchange", resizeColorBox, false);
+</script>                          
+                       </code>
+                  </pre>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="row">
         <ul>
             <li class="li">
-                <a data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=424650380031434752" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.png" /></a>&nbsp; <a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=424650380031434752" name="donboulton" title="Favorite">Favorite</a> <a data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=424650380031434752" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=424650380031434752" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen-="" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=424650380031434752" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=424650380031434752" name="donboulton" title="Retweet">Retweet</a>
+                <a data-screen-name="@@donboulton" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=424650380031434752" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.png" /></a>&nbsp; <a class="link" data-screen-name="@@donboulton" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=424650380031434752" name="donboulton" title="Favorite">Favorite</a> <a data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=424650380031434752" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=424650380031434752" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen-="" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=424650380031434752" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.png" /></a>&nbsp;<a class="link" data-screen-name="@@donboulton" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=424650380031434752" name="donboulton" title="Retweet">Retweet</a>
             </li>
         </ul>
     </div>

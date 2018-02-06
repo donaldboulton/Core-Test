@@ -22,21 +22,9 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/tooltips.min.js",
+    "outputFileName": "wwwroot/js/clipboard.min.js",
     "inputFiles": [
-      "wwwroot/js/tooltips.js"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/js/snippets.min.js",
-    "inputFiles": [
-      "wwwroot/js/snippets.js"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/js/demos.min.js",
-    "inputFiles": [
-      "wwwroot/js/demos.js"
+      "wwwroot/js/clipboard.js"
     ]
   }
 ]

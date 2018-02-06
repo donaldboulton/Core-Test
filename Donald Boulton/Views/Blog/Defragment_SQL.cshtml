@@ -1,27 +1,25 @@
 ﻿@model Donald_Boulton.Models.Post
+
 @{
     ViewData["Title"] = "Defragment SQL";
     Layout = "~/Views/Shared/_ContactLayout.cshtml";
 }
-
 <div class="row">
     <div class="media">
         <img alt="" class="img-fluid mr-3" itemprop="primaryImageOfPage" src="~/images/pages/svg/defrag-sql-2014.svg" />
     </div>
-    <div class="media-body">
-        <h5 class="mt-0 text-center" itemprop="name">Index Defrag Script, v4.1</h5>
+    <div class="media-body">       
         <div itemprop="description">
-            Origionally Posting by <span><a class="iframe" href="http://sqlfool.com/author/michelle/" title="View all posts by Michelle Ufford">Michelle Ufford</a></span>
+            Index Defrag Script, v4.1 Origionally Posting by <span><a class="iframe" href="http://sqlfool.com/author/michelle/" title="View all posts by Michelle Ufford">Michelle Ufford</a></span>
+            <p>
+                <span>I have included this in my blog as a notice to pay attention and defrag your SQL database.</span>
+            </p>
         </div>
     </div>
 </div>
-
 <div itemprop="mainContentOfPage">
     <p>
-        In any SQl database and one that updates through migrations like Orchard CMS get defragmented and I have notice over the years dealing with SQL server that it needs defraging occasionaly, keeping the performance optimized.
-    </p>
-    <p>
-        <span>I have included this in my blog as a notice to pay attention and defrag your SQL database.</span>
+        In any SQl database and one that updates through migrations like Any Applications SQL Database get defragmented and I have notice over the years dealing with SQL server that it needs defraging occasionaly, keeping the performance optimized.
     </p>
     <h4>
         Origional Post
@@ -271,7 +269,12 @@ SQL Server DBCC INDEXDEFRAG code</pre>
 <div class="row">
     <ul>
         <li class="li">
-            <a data-screen-data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=530348272431661056" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="//si0.twimg.com/images/dev/cms/intents/icons/favorite.png" /></a>&nbsp; <a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=530348272431661056" name="donboulton" title="Favorite">Favorite</a> <a data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=530348272431661056" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="//si0.twimg.com/images/dev/cms/intents/icons/reply.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=530348272431661056" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen-="" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=530348272431661056" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="//si0.twimg.com/images/dev/cms/intents/icons/retweet.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=530348272431661056" name="donboulton" title="Retweet">Retweet</a>
+            <a data-screen-data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=530348272431661056" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://twitter.com/intent/favorite?tweet_id=715603437170216960" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.min.png" /></a>&nbsp; <a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=530348272431661056" name="donboulton" title="Favorite">Favorite</a> <a data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=530348272431661056" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="https://twitter.com/intent/favorite?tweet_id=715603437170216960" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=530348272431661056" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen-="" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=530348272431661056" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="https://twitter.com/intent/favorite?tweet_id=715603437170216960" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.png" /></a>&nbsp;<a class="link" data-screen-="" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=530348272431661056" name="donboulton" title="Retweet">Retweet</a>
         </li>
     </ul>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PostId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

@@ -9,7 +9,6 @@
     <div class="media">
         <img alt="img" class="image-fluid mr-3" itemprop="primaryImageOfPage" src="~/images/pages/svg/orchardburning.svg" title="Orchard Burning." />
         <div class="media-body">
-            <h5 class="mt-0" itemprop="name">Orchard CMS Tweaks</h5>
             <div itemprop="description">
                 <p><span>Discussions on changes to Orchard 1.10 web.config, zipping files for AWS to Cloud-front, Proper Response and Request headers.</span></p>
                 <p><span>Web.config additions and changes, with different performance alternatives.</span></p>
@@ -397,15 +396,16 @@
         <li class="li"><a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=715603437170216960" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.min.png" /></a>&nbsp; <a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=715603437170216960" name="donboulton" title="Favorite">Favorite</a> <a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=715603437170216960" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=715603437170216960" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen="data-screen" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=715603437170216960" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=715603437170216960" name="donboulton" title="Retweet">Retweet</a></li>
     </ul>
 </div>
+
+<div>
+    <a asp-action="Blog">Back to Blog List</a>
+</div>
 <script type="text/javascript">
-// <![CDATA[
-$(document).ready(function () {
+    // <![CDATA[
+    $(document).ready(function () {
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             e.target
             e.relatedTarget
         })
     });
 // ]]></script>
-<div>
-    <a asp-action="Blog">Back to Blog List</a>
-</div>
