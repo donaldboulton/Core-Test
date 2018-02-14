@@ -8,13 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Donald_Boulton.Data;
-using Donald_Boulton.Models;
-using Donald_Boulton.Services;
-using Donald_Boulton.Models.Repository;
-using Donald_Boulton.Models.Repository.Concrete;
+using Mansbooks.Data;
+using Mansbooks.Models;
+using Mansbooks.Services;
+using Mansbooks.Models.Repository;
+using Mansbooks.Models.Repository.Concrete;
+using Robotify.AspNetCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.AspNetCore.Http;
 
-namespace Donald_Boulton
+namespace Mansbooks
 {
     public class Startup
     {
@@ -33,6 +38,10 @@ namespace Donald_Boulton
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -45,14 +54,21 @@ namespace Donald_Boulton
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddOptions();
+
+            services.AddRobotify();
 
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
             });
 
             services.AddMvc();
@@ -68,8 +84,15 @@ namespace Donald_Boulton
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+            var options = new RewriteOptions()
+               .AddRedirectToHttps();
+
+            app.UseRewriter(options);
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -81,7 +104,13 @@ namespace Donald_Boulton
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=2592000");
+                }
+            });
 
             app.UseAuthentication();
 
@@ -91,7 +120,7 @@ namespace Donald_Boulton
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mamsbooks API V1");
             });
 
-            app.UseCors("CorsPolicy");
+            app.UseCors("AllowAll");
 
             app.UseMvc(routes =>
             {
@@ -99,6 +128,8 @@ namespace Donald_Boulton
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseRobotify();
         }
     }
 }

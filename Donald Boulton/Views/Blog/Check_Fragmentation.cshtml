@@ -1,4 +1,4 @@
-﻿@model Donald_Boulton.Models.Post
+﻿@model Mansbooks.Models.Post
 
 @{
     ViewData["Title"] = "Check Fragmentation";
@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="media">
-            <img alt="" class="img-fluid mr-3" itemprop="primaryImageOfPage" src="~/images/pages/svg/check_sql_fragmentation-min.svg" />
+            <img alt="" class="img-fluid mr-3" itemprop="primaryImageOfPage" src="https://d13ie4yeey2dtq.cloudfront.net/img/check_sql_fragmentation-min.svg" />
         </div>
         <div class="media-body">            
             <div itemprop="description">
@@ -24,28 +24,28 @@
         <h2>Script</h2>
         <p>The following steps use SQL Server 2008 R2 and AdventureWorks2008 sample database as example.</p>
         <p>Step1. Open Microsoft SQL Server 2008 R2</p>
-        <p>Step2. Open Microsoft SQL Server Management Studio<br /> Start- All programs- Microsoft SQL Server 2008 R2- Microsoft SQL Server Management Studio<br /> <img alt="SQL Management" src="//d3n8k0cqgcsxxu.cloudfront.net/pages/sql_management.png" /></p>
+        <p>Step2. Open Microsoft SQL Server Management Studio<br /> Start- All programs- Microsoft SQL Server 2008 R2- Microsoft SQL Server Management Studio<br /> <img alt="SQL Management" src="//d13ie4yeey2dtq.cloudfront.net/pages/sql_management.png" /></p>
         <h4>Step3. Drag the script file to SQL Server Management Studio</h4>
         <p>Step4. Replace the following information with yours in the script</p>
         <p>indexstats.avg_fragmentation_in_percent: In the script the&nbsp; indexstats.avg_fragmentation_in_percent is greater than 30. Please specify the percent.</p>
         <p>Step5. Run the script</p>
         <p>The below script selects AdventureWorks2008.&nbsp;</p>
         <p>After the script executing, we will get a result as the following figure shows:</p>
-        <p><img alt="Script Results" src="https://d3n8k0cqgcsxxu.cloudfront.net/pages/script-results.jpg" /></p>
+        <p><img alt="Script Results" src="https://d13ie4yeey2dtq.cloudfront.net/pages/script-results.jpg" /></p>
         <h3>Web Matrix is what I use to check Fragmentation.</h3>
         <p>Open Web Matrix select databases and logon to your database, Select new query and paste IndexDefrag query in workspace the execute.</p>
-        <p><img alt="Index Fragmentation" src="https://d3n8k0cqgcsxxu.cloudfront.net/pages/IndexFragmentation_WebMatrix.png" /></p>
+        <p><img alt="Index Fragmentation" src="https://d13ie4yeey2dtq.cloudfront.net/pages/IndexFragmentation_WebMatrix.png" /></p>
         <p>Here is my result on a database that is less than a month old. Media Library is 87% FRAGMENTED.</p>
-        <p><img alt="SQL Management" src="https://d3n8k0cqgcsxxu.cloudfront.net/pages/IndexFragmentation_WebMatrix_Script_Results.png" /></p>
+        <p><img alt="SQL Management" src="https://d13ie4yeey2dtq.cloudfront.net/pages/IndexFragmentation_WebMatrix_Script_Results.png" /></p>
         <h2>Additional Resources</h2>
         <p>See my post on how to fix this at: <a class="iframe" href="https://donboulton.com/sqldefrag">https://donboulton.com/sqldefrag</a></p>
         <p><a href="http://support.microsoft.com/kb/2755960">SQL query performance might decrease when the SQL Server Database instance has high index fragmentation</a></p>
-        <p>Download this script at <a href="https://d3n8k0cqgcsxxu.cloudfront.net/zip/IndexFragmentation.zip">Check Index Defragmentation</a>.</p>
+        <p>Download this script at <a href="https://d13ie4yeey2dtq.cloudfront.net/zip/IndexFragmentation.zip">Check Index Defragmentation</a>.</p>
     </div>
 
     <div class="row">
         <ul>
-            <li><a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=446055523948199936" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.min.png" /></a>&nbsp; <a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=446055523948199936" name="donboulton" title="Favorite">Favorite</a> <a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=446055523948199936" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=446055523948199936" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen="data-screen" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=446055523948199936" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=446055523948199936" name="donboulton" title="Retweet">Retweet</a></li>
+            <li><a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=446055523948199936" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d13ie4yeey2dtq.cloudfront.net/favorite.min.png" /></a>&nbsp; <a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=446055523948199936" name="donboulton" title="Favorite">Favorite</a> <a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=446055523948199936" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="https://d13ie4yeey2dtq.cloudfront.net/reply.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=446055523948199936" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen="data-screen" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=446055523948199936" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="https://d13ie4yeey2dtq.cloudfront.net/retweet.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=446055523948199936" name="donboulton" title="Retweet">Retweet</a></li>
         </ul>
     </div>
 <div>

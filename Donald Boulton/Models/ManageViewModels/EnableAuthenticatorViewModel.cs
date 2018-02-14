@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Donald_Boulton.Models.ManageViewModels
+namespace Mansbooks.Models.ManageViewModels
 {
     public class EnableAuthenticatorViewModel
     {

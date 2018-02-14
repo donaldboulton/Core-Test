@@ -1,4 +1,4 @@
-﻿@model Donald_Boulton.Models.Post
+﻿@model Mansbooks.Models.DisqusViewModel
 
 @{
     ViewData["Title"] = "Windows Tweaks";
@@ -7,159 +7,164 @@
 
 <div class="row">
     <div class="media">
-        <img title="Windows Tweaks" class="image-fluid mr-3" alt="img" src="~/images/pages/svg/windows7tweaks.svg" itemprop="primaryImageOfPage" />
+        <img title="Windows Tweaks" class="image-fluid mr-3" alt="img" src="https://d13ie4yeey2dtq.cloudfront.net/img/windows7tweaks.svg" itemprop="primaryImageOfPage" />
         <div class="media-body">
-            <div itemprop="description">This page is my additions to Normal Vista\Seven\Windows 8 and windows 10 Tweaks. Some of these work on XP.
+            <div itemprop="description">
+                This page is my additions to Normal Vista\Seven\Windows 8 and windows 10 Tweaks. Some of these work on XP.
                 <div>
                     <p>For most basic tweaks go to: <a title="" href="http://www.tweakvista.com/" target="_blank" data-original-title="TweakVista">TweakVista</a>, <a title="" href="http://www.tweakhound.com/vista/tweakguide/page_3.htm" target="_blank" data-original-title=""> TweakHounds.</a> <a title="" href="http://pctuneuptips.com/tips/vista_tweaks/" target="_blank" data-original-title="PcTuneUpTips">PcTuneUpTips</a>, <a title="" href="http://enthusiast.hardocp.com/article.html?art=MTMyNywxLCxoZW50aHVzaWFzdA==" target="_blank" data-original-title="H Enthusiasts"><span> [H] Enthusiasts</span></a>, <a title="" href="http://www.lockergnome.com/windows/" data-original-title="Windows Fanatics"> Windows Fanatics</a></p>
-                    <p>Windows Fanatics at TechNet <a title="" href="http://technet.microsoft.com/en-us/magazine/cc162494(TechNet.10).aspx" target="_blank" data-original-title="Windows Fanatics">Part 1</a>, <a title="" href="http://technet.microsoft.com/en-us/magazine/cc162480.aspx" target="_blank" data-original-title="">2</a>, <a title="" href="http://technet.microsoft.com/en-us/magazine/cc162480.aspx" target="_blank" data-original-title="Tech Net 3">Tech Net 3</a></p>                    
+                    <p>Windows Fanatics at TechNet <a title="" href="http://technet.microsoft.com/en-us/magazine/cc162494(TechNet.10).aspx" target="_blank" data-original-title="Windows Fanatics">Part 1</a>, <a title="" href="http://technet.microsoft.com/en-us/magazine/cc162480.aspx" target="_blank" data-original-title="">2</a>, <a title="" href="http://technet.microsoft.com/en-us/magazine/cc162480.aspx" target="_blank" data-original-title="Tech Net 3">Tech Net 3</a></p>
+                    <p>Below is My testing and Opinions, "try at you own risk". I tried all the below.</p>
+                    <p>Vista Tweaks built on a <a title="" href="http://mansbooks.com/" target="_blank" data-original-title="aspcore2 app">My aspcore2 app.</a></p>
+                    <p class="text-center">Internal Page Links to Vista Fixes &amp; Tweaks</p>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 <div class="row" itemprop="mainContentOfPage">
-    <p>Below is My testing and Opinions, "try at you own risk". I tried all the below.</p>
-    <p>Vista Tweaks built on a <a title="" href="http://www.orchardproject.net/" target="_blank" data-original-title="Orchard CMS 1.8.1">Orchard CMS 1.8.1</a></p>
-    <p class="center">Internal Page Links to Vista Fixes &amp; Tweaks</p>
-    <p><a title="" href="Service Pack 1" data-original-title="Service Pack 1, &quot;Clean Install">Service Pack 1, "Clean Install", done correctly</a>, NO SP1 or SP2 Redistributable Package<br /> <a title="" href="#Advanced System Settings" data-original-title="Advanced System Settings">Advanced System Settings</a><br /> <a title="" href="#Virtual Memory" data-original-title="Virtual Memory">Virtual Memory</a><br /> <a title="" href="#Physical Memory" data-original-title="Physical Memory">Physical Memory In Vista Editions</a><br /> <a title="" style="text-align: center;" href="#Advanced Visual Effects" data-original-title="Advanced Visual Effects">Advanced Visual Effects</a></p>
+    <p><a title="" href="Service Pack 1" data-original-title="Service Pack 1, &quot;Clean Install">Service Pack 1, "Clean Install", done correctly</a>, NO SP1 or SP2 Redistributable Package<div class="clearfix">&nbsp;</div> <a title="" href="#Advanced System Settings" data-original-title="Advanced System Settings">Advanced System Settings</a><div class="clearfix">&nbsp;</div> <a title="" href="#Virtual Memory" data-original-title="Virtual Memory">Virtual Memory</a><div class="clearfix">&nbsp;</div> <a title="" href="#Physical Memory" data-original-title="Physical Memory">Physical Memory In Vista Editions</a><div class="clearfix">&nbsp;</div> <a title="" style="text-align: center;" href="#Advanced Visual Effects" data-original-title="Advanced Visual Effects">Advanced Visual Effects</a></p>
     <p><a title="" href="#Registry, Visual Tweaks," data-original-title="Registry, Visual Tweaks">Registry, Visual Tweaks, &amp; Icon Shortcut to</a></p>
-    <p><a title="" href="#Multiple OSs" data-original-title="Multiple OSs">Multiple OS's without Boot Managers</a> = Separate Drives and OS's<br /> <a title="" href="#Icon Spacing" data-original-title="Icon Spacing">Change Icon Spacing in Vista</a><br /> <a title="" href="#Indexing problems" data-original-title="Indexing problems">Indexing Problems and Fixes</a> = Search and Indexing are the file renaming problems<br /> <a title="" href="#Start Explorer In A Different Folder" data-original-title="Start Explorer In A Different Folder">Start Explorer In A Different Folder or Drive In Windows Vista</a><br /> <a title="" href="#32 bit and 64 bit Explorer" data-original-title="32 bit and 64 bit Explorer">Vista Has 32 bit and 64 bit Explorer</a>, Flash, SilverLight FIX<br /> <a title="" href="#UAC" data-original-title="Turn Off User Account Control">Turn Off User Account Control</a> <a title="" href="#Defragment" data-original-title=""> Defragment </a>&nbsp;and&nbsp; <a title="" href="#Defragment Boot Sector" data-original-title="Defrag Boot Sector">Defrag Boot Sector</a></p>
-    <p class="center"><a title="" href="#regedit" data-original-title="Registry Tweaks">Registry Tweaks</a>, &nbsp;Advanced Users</p>
-    <p><a title="" href="#Turned off Windows Defender" data-original-title="Turned off Windows Defender">Turned off Windows Defender</a><br /> <a title="" href="#Processor Scheduling" data-original-title="Processor Scheduling">Processor Scheduling</a><br /> <a title="" href="#Processor Level 2 Cash" data-original-title="Processor Level 2 Cash">Processor Level 2 Cash</a><br /> <a title="" href="#Superfetcher" data-original-title="Superfetcher">Change the behavior of Superfetcher</a><br /> <a title="" href="#Change the behavior of Prefetcher" data-original-title="Change the behavior of Prefetcher">Change the behavior of Prefetcher</a></p>
-    <br />
-    <p class="center"><a>Reset Properties that SP1 changes, "read the below".</a></p>
+    <p><a title="" href="#Multiple OSs" data-original-title="Multiple OSs">Multiple OS's without Boot Managers</a> = Separate Drives and OS's<div class="clearfix">&nbsp;</div> <a title="" href="#Icon Spacing" data-original-title="Icon Spacing">Change Icon Spacing in Vista</a><div class="clearfix">&nbsp;</div> <a title="" href="#Indexing problems" data-original-title="Indexing problems">Indexing Problems and Fixes</a> = Search and Indexing are the file renaming problems<div class="clearfix">&nbsp;</div> <a title="" href="#Start Explorer In A Different Folder" data-original-title="Start Explorer In A Different Folder">Start Explorer In A Different Folder or Drive In Windows Vista</a><div class="clearfix">&nbsp;</div> <a title="" href="#32 bit and 64 bit Explorer" data-original-title="32 bit and 64 bit Explorer">Vista Has 32 bit and 64 bit Explorer</a>, Flash, SilverLight FIX<div class="clearfix">&nbsp;</div> <a title="" href="#UAC" data-original-title="Turn Off User Account Control">Turn Off User Account Control</a> <a title="" href="#Defragment" data-original-title=""> Defragment </a>&nbsp;and&nbsp; <a title="" href="#Defragment Boot Sector" data-original-title="Defrag Boot Sector">Defrag Boot Sector</a></p>
+    <div class="text-center">Registry Tweaks, &nbsp;Advanced Users</div>
+    <p><a title="" href="#Turned off Windows Defender" data-original-title="Turned off Windows Defender">Turned off Windows Defender</a><div class="clearfix">&nbsp;</div> <a title="" href="#Processor Scheduling" data-original-title="Processor Scheduling">Processor Scheduling</a><div class="clearfix">&nbsp;</div> <a title="" href="#Processor Level 2 Cash" data-original-title="Processor Level 2 Cash">Processor Level 2 Cash</a><div class="clearfix">&nbsp;</div> <a title="" href="#Superfetcher" data-original-title="Superfetcher">Change the behavior of Superfetcher</a><div class="clearfix">&nbsp;</div> <a title="" href="#Change the behavior of Prefetcher" data-original-title="Change the behavior of Prefetcher">Change the behavior of Prefetcher</a></p>
+    <div class="clearfix">&nbsp;</div>
+    <p class="text-center"><a>Reset Properties that SP1 changes, "read the below".</a></p>
     <p><a name="Advanced System Settings" title="" data-original-title="Advanced System Settings"></a>Go to Control Panel, Click System, Go to advanced System settings in left pane, click on system property's, it will come up in a new Window, click on the advanced tab and click on Performance,&nbsp; and new Window saying Performance options will appear, click on advanced tab, make sure it is not set to background services = set it to programs.</p>
     <p><a name="Virtual Memory" title="" data-original-title="Virtual Memory"></a>Also on the Advanced tab for Virtual Memory click the Change button and&nbsp; a new window will again pop up, click on Custom size button, type in the initial size as 4069 and in the Maximum size type 8069 and then click set, you can do this for more than one drive, and the maximum size can be at 3 times the amount of RAM installed on your computer. If you see warnings at these <a title="" href="http://windowshelp.microsoft.com/Windows/en-US/Help/89ca317f-649d-40a6-8934-e5707ee5c4b81033.mspx" target="_blank" data-original-title="Windows Vista">Windows Vista</a> recommended levels, then increase the minimum and maximum sizes.</p>
     <p>SP1 changes this to allot of different Values, some sites suggest not to set this to custom and let Windows decide Virtual Memory settings,&nbsp; OK, they said that about XP also, but I found setting this to the max and on multiple drives increases performance and in XP if you reboot several times and then set it back o System Managed size it will increase the normal System management and size of page filing by letting Windows decide Virtual Memory settings, kind of tricks Windows into increasing this value, through its own Management. I leave it on custom, and to the MAX.</p>
     <p>My second partition I set to 2069 and 4069 which was the best min &amp; max for XP Pro 32 bit. CAUTION, the above <a title="" href="http://windowshelp.microsoft.com/Windows/en-US/Help/89ca317f-649d-40a6-8934-e5707ee5c4b81033.mspx" target="_blank" data-original-title="Virtual Memory">Virtual Memory</a> setting is for 64 bit machines. Initial minimum: 1536 or 3072 or 4096 Maximum:, is max in X86 32 bit XP Machines. Some Vista Tweak's web sites recommend Disabling Virtual Memory, I don't know what they are smoking, but I don not recommend sharing whatever they are puffing on or Disabling Virtual Memory.</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
     <p><a name="Phyisical Memory" title="" data-original-title="Physical Memory In Vista and 7 Editions"></a>Physical Memory In Vista and 7 Editions</p>
     <h3 style="color: #db7100; font-family: 'Segoe UI Light', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; margin: 0px;">Physical Memory Limits: Windows&nbsp;Vista</h3>
-    <p style="color: #2a2a2a; margin-top: 0px; margin-bottom: 0px; padding-bottom: 15px; line-height: 18px; font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><span style="color: #f0ffff;">The following table specifies the limits on physical memory for Windows&nbsp;Vista.</span></p>
-    <table style="border-collapse: collapse; padding-bottom: 10px; padding-top: 10px;">
+    <p style="color: #fff; margin-top: 0px; margin-bottom: 0px; padding-bottom: 15px; line-height: 18px; font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><span style="color: #f0ffff;">The following table specifies the limits on physical memory for Windows&nbsp;Vista.</span></p>
+    <div class="clearfix">&nbsp;</div>
+    <table class="table">
         <tbody>
             <tr><th style="border-bottom-style: solid; border-bottom-color: #dbdbdb; background-color: #ededed; color: #707070; text-align: left; padding: 10px 8px 10px 8px; margin: 10px;">Version</th><th style="border-bottom-style: solid; border-bottom-color: #dbdbdb; background-color: #ededed; color: #707070; text-align: left; padding: 10px 8px 10px 8px; margin: 10px;">Limit on X86</th><th style="border-bottom-style: solid; border-bottom-color: #dbdbdb; background-color: #ededed; color: #707070; text-align: left; padding: 10px 8px 10px 8px; margin: 10px;">Limit on X64</th></tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;Vista Ultimate</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;Vista Ultimate</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
                 </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">128 GB</span></p>
-                </td>
-            </tr>
-            <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;Vista Enterprise</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
-                </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">128 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">128 GB</span></p>
                 </td>
             </tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;Vista Business</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;Vista Enterprise</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
                 </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">128 GB</span></p>
-                </td>
-            </tr>
-            <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;Vista Home Premium</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
-                </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">16 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">128 GB</span></p>
                 </td>
             </tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;Vista Home Basic</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;Vista Business</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
                 </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">8 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">128 GB</span></p>
                 </td>
             </tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;Vista Starter</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">1 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;Vista Home Premium</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
+                </td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">16 GB</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;Vista Home Basic</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
+                </td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">8 GB</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;Vista Starter</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">1 GB</span></p>
                 </td>
                 <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">&nbsp;</td>
             </tr>
         </tbody>
     </table>
+    <div class="clearfix">&nbsp;</div>
     <h3 style="color: #db7100; font-family: 'Segoe UI Light', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; margin: 0px;">Physical Memory Limits: Windows&nbsp;7</h3>
-    <p style="color: #2a2a2a; margin-top: 0px; margin-bottom: 0px; padding-bottom: 15px; line-height: 18px; font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><span style="color: #f0ffff;">The following table specifies the limits on physical memory for Windows&nbsp;7.</span></p>
-    <table style="border-collapse: collapse; padding-bottom: 10px; padding-top: 10px;">
+    <p style="color: #fff; margin-top: 0px; margin-bottom: 0px; padding-bottom: 15px; line-height: 18px; font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 12px;"><span style="color: #f0ffff;">The following table specifies the limits on physical memory for Windows&nbsp;7.</span></p>
+    <div class="clearfix">&nbsp;</div>
+    <table class="table">
         <tbody>
             <tr><th style="border-bottom-style: solid; border-bottom-color: #dbdbdb; background-color: #ededed; color: #707070; text-align: left; padding: 10px 8px 10px 8px; margin: 10px;">Version</th><th style="border-bottom-style: solid; border-bottom-color: #dbdbdb; background-color: #ededed; color: #707070; text-align: left; padding: 10px 8px 10px 8px; margin: 10px;">Limit on X86</th><th style="border-bottom-style: solid; border-bottom-color: #dbdbdb; background-color: #ededed; color: #707070; text-align: left; padding: 10px 8px 10px 8px; margin: 10px;">Limit on X64 &nbsp; &nbsp;&nbsp;</th></tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;7 Ultimate</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;7 Ultimate</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
                 </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">192 GB</span></p>
-                </td>
-            </tr>
-            <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;7 Enterprise</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
-                </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">192 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">192 GB</span></p>
                 </td>
             </tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;7 Professional</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;7 Enterprise</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
                 </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">192 GB</span></p>
-                </td>
-            </tr>
-            <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;7 Home Premium</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
-                </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">16 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">192 GB</span></p>
                 </td>
             </tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;7 Home Basic</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">4 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;7 Professional</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
                 </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">8 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">192 GB</span></p>
                 </td>
             </tr>
             <tr>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #000000;">Windows&nbsp;7 Starter</span></td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">2 GB</span></p>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;7 Home Premium</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
                 </td>
-                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #2a2a2a; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
-                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #000000;">N/A</span></p>
-                    <div>&nbsp;</div>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">16 GB</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;7 Home Basic</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">4 GB</span></p>
+                </td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">8 GB</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;"><span style="color: #fff;">Windows&nbsp;7 Starter</span></td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">2 GB</span></p>
+                </td>
+                <td style="border-bottom-style: solid; border-bottom-color: #dbdbdb; color: #fff; vertical-align: top; padding: 10px 8px 10px 8px; margin: 10px;">
+                    <p style="margin-top: 0px; margin-bottom: 0px; padding-bottom: 0px; line-height: 18px;"><span style="color: #fff;">N/A</span></p>
+                    <div class="clearfix">&nbsp;</div>
                 </td>
             </tr>
         </tbody>
     </table>
-    <p>&nbsp;<a name="Advanced Visual Effects" title="" data-original-title=""></a>Go to the Visual effects tab and click on CUSTOM = click on Desktop compression, smooth screen fonts, Folder background images, drop shadows, visual styles = which will still give you the Vista look without the Glass which eats up system resources along with allot of visual additions not really needed, You can play with this for the look you want.</p>
+    <div class="clearfix">&nbsp;</div>
+    <div>&nbsp;<a name="Advanced Visual Effects" title="" data-original-title=""></a>Go to the Visual effects tab and click on CUSTOM = click on Desktop compression, smooth screen fonts, Folder background images, drop shadows, visual styles = which will still give you the Vista look without the Glass which eats up system resources along with allot of visual additions not really needed, You can play with this for the look you want.</div>
     <p>Turn on DEP for programs except the ones you choose = add only X86 32 bit programs as it will not let you choose any&nbsp; X64&nbsp; programs, make sure to find the .exe files for your specific trusted programs in Program Files x86 in explorer.</p>
     <p>On remote tab uncheck allow remote assistance unless needed = this allows Microsoft or anyone access to your computer.</p>
-    <p>Close out all windows and Restart Computer = VS Express and SQL express problem&nbsp; fixed and/or and 64 bit slowness or problems.<br /> Page Filing was = 2063, now 6118 on two drives.</p>
+    <p>Close out all windows and Restart Computer = VS Express and SQL express problem&nbsp; fixed and/or and 64 bit slowness or problems.<div class="clearfix">&nbsp;</div> Page Filing was = 2063, now 6118 on two drives.</p>
     <p><a name="Defragment" title="" data-original-title=""></a>Defragment Your Hard Drives after a new Vista Installation, "before doing anything else", and after SP1. Defragment after installation or un-installations of several Programs or if they are very large = a good example is Visual Studio, Office suites and others. Defrag after updates and after moving or copying allot of files.</p>
     <div class="Post" id="post-3">
         <div class="PostHead">
@@ -171,49 +176,48 @@
         <div>Disk Defragmenter does not defragment files in the Recycle Bin. It is best to run Disk Cleaner first and then empty the Recycle Bin, before defragmenting</div>
         <div>&bull;Disk Defragmenter will also not defragment files which are in use. Best to try and shut down as many processes as possible and then defragment.</div>
         <div>&bull;Disk Defragmenter does not defragment the following files: Bootsect DOS, Safeboot fs, Safeboot csv, Safeboot rsv, Hiberfil sys, Memory dmp and the Windows page file. However using the -b parameter, as mentioned below, will optimize the boot files.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>Disk defragmenter Command line options</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>There are various command line options for you to exercise control over the defragmentation process.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>To defrag a specific drive, say Drive C, open a command prompt and type:</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>defrag c:</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>You can use the following parameters or switches with the Defrag command to further fine-tune your control:</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-r &nbsp;This is the default setting and defragments file fragments that less than 64 MB.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-a &nbsp;Analyze the selected drive / volume &amp; display a summary report, consisting of analysis and defragmentation reports.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-c &nbsp;Defragments all volumes on the computer. Don&rsquo;t specify a drive letter while using this.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-w &nbsp;Perform FULL defragmentation of files of ALL sizes.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-f &nbsp;Forced defragmentation even when there is less amount of free space on the drive being defragmented. A volume must have at least 15 % free space before Disk Defragmenter can completely defragment it.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-i &nbsp;This makes Defrag run in the background &amp; operate only if the computer is idle, like when run as a scheduled task.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-v &nbsp;Displays complete reports.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>-b &nbsp;It optimizes boot files and applications only.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>The only indication you will get is a blinking cursor. This means that the process is going. To interrupt the defragmentation process, press Ctrl + C in the command window.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>You can read more here on Defrag Options &amp; Command line switches.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>Disk defragmenter does not run</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>If you find that you are unable to defragment or cannot run the defragment utility in Windows or that a drive or volume has been marked &nbsp;as having errors, run chdsk by entering</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>chkdsk c: /f&nbsp;</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>at any command prompt; where c is the drive letter. You will be able to then run Defrag after Chkdsk has repaired the file system. If you still face problems, seee this post on Disk defragmenter could not start or Failed to initialize.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <div>In Windows 8, while the &nbsp;is good enough for most of us, there are some who prefer to use Free Defragmentation Software. You may want to have a look at these too.</div>
-        <div>&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
         <p>Or any drive letter. The below is some different ways to defrag from command prompt.</p>
         <p>defrag c:</p>
         <p>defrag c:\vol\mountpoint -w -f</p>
@@ -221,57 +225,60 @@
         <p>defrag -c -v</p>
         <p>3. Exit Dos Window when defrag has completed., you will see the original prompt when it is finished = as in mine it's C:\Users\donboulton</p>
     </div>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <h3 class="h3"><a name="temp" title="" data-original-title="Clear temp files"></a>Clear temp files</h3>
+    <div class="clearfix">&nbsp;</div>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
+    <h3>Clear temp files</h3>
     <p>Go to start then click run, and type in the test field %temp% and hit enter. When it open up highlight all temp files and delete.</p>
-    <h3 class="center"><a name="32 bit and 64 bit Explorer" title="" data-original-title="32 bit and 64 bit Explorer"></a>For all that are having Flash and SilverLight problems.</h3>
+    <h3><a name="32 bit and 64 bit Explorer" title="" data-original-title="32 bit and 64 bit Explorer"></a>For all that are having Flash and SilverLight problems.</h3>
     <p>In Vista X64 you should have two versions of Internet Explorer a 32 bit version and a 64 bit version the 32 bit allows you to view Flash and SilverLight if installed while using your X86 = 32bit IE. You can forget using Flash and SilverLight on X64 and I do not see it coming soon. P. S. you do not need any other browsers like Firefox unless you want it for some reason. Firefox and all Mozilla and AOL browsers eat up your memory, and you cannot get it back by closing out these programs, you have to restart your computer.</p>
     <p><a name="UAC" title="" data-original-title=""></a>You can Turn off UAC if you are the only one using your computer UAC is a pain, and if are the only one using your computer it should not be needed. Go To Start &gt; Control Panel &gt; User Accounts, Administrator Account &gt;&nbsp; At the Bottom of the left list click turn User Account Control on or off &gt; New Window, uncheck UAC and click OK &gt; Reboot, and/or restart computer for these setting to take effect.</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <h3 class="center"><a name="regedit" title="" data-original-title=""></a> Regedit</h3>
+    <div class="clearfix">&nbsp;</div>
+    <a title="" href="#Top" data-original-title="">Top Of the Page</a>
+    <div class="clearfix">&nbsp;</div>
+    <h3>Regedit</h3>
+    <div class="clearfix">&nbsp;</div>
     <p>Vista Registry Fixes,&nbsp; on classic start menu, go to start and then run and type in the text box field regedit.exe and click OK, or enter on keyboard.</p>
-    <p class="center">Caution the below is for Experts only! Pay attention to what you are doing and details.</p>
-    <p class="center">&nbsp;Some tweaks Curtsey of&nbsp;&nbsp;<br /> Regedit Tweaks below. and the links to the details on how to do each one of them below.</p>
-    <hr class="hr" />
-    <p>A ADDED VALUE!<br /> <a name="Turned off Windows Defender" title="" data-original-title=""></a>Turned off Windows Defender. Links for regedit below.</p>
+    <p class="text-center">Caution the below is for Experts only! Pay attention to what you are doing and details.</p>
+    <p class="text-center">&nbsp;Some tweaks Curtsey of&nbsp;&nbsp;<div class="clearfix">&nbsp;</div> Regedit Tweaks below. and the links to the details on how to do each one of them below.</p>
+    <div class="clearfix">&nbsp;</div>
+    <p>A ADDED VALUE!<div class="clearfix">&nbsp;</div> <a name="Turned off Windows Defender" title="" data-original-title=""></a>Turned off Windows Defender. Links for regedit below.</p>
     <p><a title="" href="http://www.liutilities.com/products/registrybooster/tweaklibrary/tweaks/11423/" data-original-title="" a="">Added registry entry for 32bit not 64 bit</a></p>
-    <p><a title="" href="http://www.liutilities.com/products/registrybooster/tweaklibrary/tweaks/11423/" data-original-title="" a=""> Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\]<br /> Location: Local Machine<br /> Value Name: Windows Defender<br /> Data Type: Key Enabled Value:<br /> Disabled Value:<br /> Action Type: Add an Entry Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\]<br /> Location: Local Machine<br /> Value Name: DisableAntiSpyware <span>Data Type: DWORD (DWORD Value)</span><br /> Enabled Value: 1 &gt;<br /> Disabled Value: 0<br /> Action Type: Add an Entry </a></p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <p>A Changed Value!<br /> <br /> <a name="Processor Scheduling" title="" data-original-title=""></a>Processor Scheduling I set to 12</p>
-    <p>Path: [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\PriorityControl\]<br /> &nbsp;Location: Local Machine<br /> Value Name: Win32PrioritySeparation<br /> Data Type: DWORD (DWORD Value)<br /> Enabled Value: 12<br /> Disabled Value: 26<br /> Action Type: Modified</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <p>A Changed Value!<br /> <a name="Processor Level 2 Cash" title="" data-original-title=""></a>Processor Level 2 Cash settings = set to 400 for L2 1024 was 0 = HAL was sick. L2 common settings 80 for 128, 100 for 256, 200 for 512, 400 for 1024 and so on. Hal not reading AMD 64 X2 Level 2 cash.</p>
+    <p><a title="" href="http://www.liutilities.com/products/registrybooster/tweaklibrary/tweaks/11423/" data-original-title="" a=""> Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\]<div class="clearfix">&nbsp;</div> Location: Local Machine<div class="clearfix">&nbsp;</div> Value Name: Windows Defender<div class="clearfix">&nbsp;</div> Data Type: Key Enabled Value:<div class="clearfix">&nbsp;</div> Disabled Value:<div class="clearfix">&nbsp;</div> Action Type: Add an Entry Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\]<div class="clearfix">&nbsp;</div> Location: Local Machine<div class="clearfix">&nbsp;</div> Value Name: DisableAntiSpyware <span>Data Type: DWORD (DWORD Value)</span><div class="clearfix">&nbsp;</div> Enabled Value: 1 &gt;<div class="clearfix">&nbsp;</div> Disabled Value: 0<div class="clearfix">&nbsp;</div> Action Type: Add an Entry </a></p>
+    <div class="clearfix">&nbsp;</div>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
+    <p>A Changed Value!<div class="clearfix">&nbsp;</div> <div class="clearfix">&nbsp;</div> <a name="Processor Scheduling" title="" data-original-title=""></a>Processor Scheduling I set to 12</p>
+    <p>Path: [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\PriorityControl\]<div class="clearfix">&nbsp;</div> &nbsp;Location: Local Machine<div class="clearfix">&nbsp;</div> Value Name: Win32PrioritySeparation<div class="clearfix">&nbsp;</div> Data Type: DWORD (DWORD Value)<div class="clearfix">&nbsp;</div> Enabled Value: 12<div class="clearfix">&nbsp;</div> Disabled Value: 26<div class="clearfix">&nbsp;</div> Action Type: Modified</p>
+    <div class="clearfix">&nbsp;</div>
+    <p>A Changed Value!<div class="clearfix">&nbsp;</div> <a name="Processor Level 2 Cash" title="" data-original-title=""></a>Processor Level 2 Cash settings = set to 400 for L2 1024 was 0 = HAL was sick. L2 common settings 80 for 128, 100 for 256, 200 for 512, 400 for 1024 and so on. Hal not reading AMD 64 X2 Level 2 cash.</p>
     <p>Most Xp and Vista Machines have this setting to 0 Check AMD or Intel for you processor L2 cash and set this value accordingly.</p>
-    <p>Path: [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\]<br /> Location: Local Machine<br /> Value Name: SecondLevelDataCache<br /> Data Type: DWORD (DWORD Value)<br /> Enabled Value: 80 / 100 / 200<br /> Disabled Value: 0<br /> Action Type: Modified<br /> <br /> <a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <h3 class="center"><a name="Superfetcher" title="" data-original-title=""></a>Change the&nbsp; Behavior of Superfetcher</h3>
+    <p>Path: [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\]<div class="clearfix">&nbsp;</div> Location: Local Machine<div class="clearfix">&nbsp;</div> Value Name: SecondLevelDataCache<div class="clearfix">&nbsp;</div> Data Type: DWORD (DWORD Value)<div class="clearfix">&nbsp;</div> Enabled Value: 80 / 100 / 200<div class="clearfix">&nbsp;</div> Disabled Value: 0<div class="clearfix">&nbsp;</div> Action Type: Modified<div class="clearfix">&nbsp;</div> <div class="clearfix">&nbsp;</div> <a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
+    <div class="clearfix">&nbsp;</div>
+    <h3>Change the&nbsp; Behavior of Superfetcher</h3>
     <p>A Changed Value!</p>
     <p>Superfetch is a new feature in vista that understands which applications you use most, and preloads these applications into memory, so your system is more responsive. Superfetch uses a complex prioritization scheme that can even differentiate which applications you use most often and when you use them. Now, you can change the way that superfetch behaves by making a change in the registry. This is helpful when you want to alter superfetch or disable superfetch completely.</p>
     <p>For this, go to start &gt; run menu, enter regedit and navigate to the registry path listed below. Now, right-click and modify the dword value enable prefetcher, in the right panel, to the suitable value given above. However, if you want to get the default value back, change the value data to 2. The changes take effect after a restart or logoff.</p>
     <p>My value was 3, I changed it to 1 as stated below!</p>
     <p>Set a user defined value like "1" to alter the behavior of Prefetcher and click 'OK'.</p>
-    <p>Path: [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\]<br /> Location: Local Machine<br /> Value Name: EnableSuperfetch<br /> Data Type: DWORD (DWORD Value)<br /> Enabled Value:<br /> Disabled Value:<br /> Action Type: Modified</p>
-    <p>&nbsp;</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <h3 class="center"><a name="Change the behavior of Prefetcher" title="" data-original-title=""></a> Change the&nbsp; Behavior of Prefetcher</h3>
-    <p>A Changed Value!<br /> <br /> Change the behavior of Prefetcher = I set it to 1 was set to 3. Still allot of files in prefetch = 45MB after a couple of restarts it is only 32 MB setting's after registry tweak below. Prefetch size depends on how many programs you have used in Vista and how often they are used. If you have installed programs you no longer use or rarely use some programs, Vista puts some parts of these programs in the Windows &gt; Prefetch folder and then loads them into memory for faster startup of these commonly used programs and sometimes all previously used programs. At startup the size of&nbsp; the contents of this folder is taken out of you memory size so if it is 48MB it come off of your 2GB or whatever, right at startup. You can delete all the contents of this folder except the Sub-Folder named ReadyBoot = do not mess with this folder or its contents. If you use allot of Different Programs and do not like waiting for them to startup, do not change these values, as some delay in starting these programs could occur. If you have allot of Memory then I would not change these values like 4GB or more of RAM.</p>
+    <p>Path: [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\]<div class="clearfix">&nbsp;</div> Location: Local Machine<div class="clearfix">&nbsp;</div> Value Name: EnableSuperfetch<div class="clearfix">&nbsp;</div> Data Type: DWORD (DWORD Value)<div class="clearfix">&nbsp;</div> Enabled Value:<div class="clearfix">&nbsp;</div> Disabled Value:<div class="clearfix">&nbsp;</div> Action Type: Modified</p>
+    <div class="clearfix">&nbsp;</div>
+    <div><a title="top" href="#Top" data-original-title="Top">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
+    <h3><a name="Change the behavior of Prefetcher" title="" data-original-title=""></a> Change the&nbsp; Behavior of Prefetcher</h3>
+    <p>A Changed Value!<div class="clearfix">&nbsp;</div> <div class="clearfix">&nbsp;</div> Change the behavior of Prefetcher = I set it to 1 was set to 3. Still allot of files in prefetch = 45MB after a couple of restarts it is only 32 MB setting's after registry tweak below. Prefetch size depends on how many programs you have used in Vista and how often they are used. If you have installed programs you no longer use or rarely use some programs, Vista puts some parts of these programs in the Windows &gt; Prefetch folder and then loads them into memory for faster startup of these commonly used programs and sometimes all previously used programs. At startup the size of&nbsp; the contents of this folder is taken out of you memory size so if it is 48MB it come off of your 2GB or whatever, right at startup. You can delete all the contents of this folder except the Sub-Folder named ReadyBoot = do not mess with this folder or its contents. If you use allot of Different Programs and do not like waiting for them to startup, do not change these values, as some delay in starting these programs could occur. If you have allot of Memory then I would not change these values like 4GB or more of RAM.</p>
     <p>Prefetcher in most of the sites and tweaks you will find that they suggest that you do not mess with this feature, but it worked great for me. Tweak It for less memory usage.</p>
-    <p>Path: [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\]<br /> Location: Local Machine Value Name: EnablePrefetcher<br /> Data Type: DWORD (DWORD Value)<br /> Enabled Value:<br /> Disabled Value:<br /> Action Type: Modified</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <p>A ADDED VALUE!<br /> <br /> <a name="Turn off NV Cache" title="" data-original-title=""></a>Turn off for faster boot and resume time feature. Turn off NV Cache.</p>
+    <p>Path: [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\]<div class="clearfix">&nbsp;</div> Location: Local Machine Value Name: EnablePrefetcher<div class="clearfix">&nbsp;</div> Data Type: DWORD (DWORD Value)<div class="clearfix">&nbsp;</div> Enabled Value:<div class="clearfix">&nbsp;</div> Disabled Value:<div class="clearfix">&nbsp;</div> Action Type: Modified</p>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
+    <p>A ADDED VALUE!<div class="clearfix">&nbsp;</div> <div class="clearfix">&nbsp;</div> <a name="Turn off NV Cache" title="" data-original-title=""></a>Turn off for faster boot and resume time feature. Turn off NV Cache.</p>
     <p>Added registry entry for 32bit not 64 bit</p>
-    <p>Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\]<br /> <span>Location: Local Machine</span><br /> Value Name: NvCache<br /> <span>Data Type: Key</span> Enabled Value:<br /> Disabled Value: Action Type:<br /> Add an Entry Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NvCache\] Location: Local Machine Value Name: OptimizeBootAndResume<br /> Data Type: DWORD (DWORD Value) Enabled Value: 0<br /> <span>Disabled Value: 1</span><br /> Action Type: Add an Entry</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
-    <h3 class="center"><a name="Registry, Visual Tweaks," title="" data-original-title=""></a>Other&nbsp; Registry, Visual Tweaks</h3>
+    <p>Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\]<div class="clearfix">&nbsp;</div> <span>Location: Local Machine</span><div class="clearfix">&nbsp;</div> Value Name: NvCache<div class="clearfix">&nbsp;</div> <span>Data Type: Key</span> Enabled Value:<div class="clearfix">&nbsp;</div> Disabled Value: Action Type:<div class="clearfix">&nbsp;</div> Add an Entry Path: [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NvCache\] Location: Local Machine Value Name: OptimizeBootAndResume<div class="clearfix">&nbsp;</div> Data Type: DWORD (DWORD Value) Enabled Value: 0<div class="clearfix">&nbsp;</div> <span>Disabled Value: 1</span><div class="clearfix">&nbsp;</div> Action Type: Add an Entry</p>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
+    <h3><a name="Registry, Visual Tweaks," title="" data-original-title=""></a>Other&nbsp; Registry, Visual Tweaks</h3>
     <p>Get rid of the shortcut arrow on the Vista desktop. Frameworkx, it work's.</p>
-    <p>&nbsp;</p>
+    <div class="clearfix">&nbsp;</div>
     <p>A Changed Value!</p>
     <p>Tweak for the Registry Desktop Icon. The Icon Size is to large, my registry size was 36, I set it to 16. Worked great for me. I have dual 32 inch HDTV monitors with 1366 X 786 display resolutions so the icons are now a tolerable size. Smaller displays and resolutions 16 might be to small, and 16 is the smallest size, if you set it smaller than 16 will default and reset to 16.</p>
     <p>"HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics" and the key is "Shell Icon Size" was set at 36, I set it to 16.</p>
@@ -282,39 +289,41 @@
             <p>Navigate to the following branch:</p>
             <div class="registry">HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Explorer \ CLSID \ {645FF040-5081-101B-9F08-00AA002F954E}</div>
             <p>Double-click <strong>(default)</strong> and replace the existing text ("Recycle Bin") with your preferred text.</p>
-            <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
+            <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
         </div>
     </div>
-    <hr class="hr" />
+    <div class="clearfix">&nbsp;</div>
     <h3><a name="Icon Spacing" title="" data-original-title=""></a> <span>Change Desktop Icon Spacing Vista</span></h3>
-    <p><br /> <span> Changing Desktop Icon Spacing in Vista, "ALL Versions", adjustments can be made to horizontal and vertical alignment spacing.<br /> <strong> <em>&nbsp;</em><br /> Steps for spacing desktop icons horizontal and vertical. Also you can change Desktop, Explorer and Most Vista Program Fonts and sizes here also. </strong><br /> &nbsp; </span></p>
-    <div><span>1. Right Click Desktop + Choose &ldquo;Personalize&rdquo;</span><br /> <span>2. At the top + Choose "Window Color and Appearance".</span> &nbsp; &nbsp;<br /> <span>3. In the Window Color and Appearance Window, go to the bottom and click + Open classic appearance properties for more color options.</span> &nbsp; &nbsp;<br /> <span>4. In the Appearance Settings Window choose + Advanced.</span> &nbsp; &nbsp;<br /> <span>5. In the Advanced Appearance + Choose Item and select Icon Spacing (Horizontal) and to the right of the Item selection set the + spacing you desire =&nbsp; Repeat this step 5 for Icon Spacing (Vertical), Then click OK in the Advanced Appearance Window , and the click Apply and then OK in the Appearance Settings Window and close the Personalization window and you are done.</span> &nbsp; &nbsp;<br /> <span>I made the choice 16 for Horizontal and 30 for Vertical mainly because Recycle bin overlaps the bottom of other icons because of its large size, even though I made it smaller as in the above Visual Tweaks section of this document or you can put it on top or other icons and change Vertical to what ever works, CAUTION do not overlap icons as when you click on them it will activate both that are overlapped. Note this will change Icon spacing in Explorer also.&nbsp; You will notice the size and spacing in the Print Screen of my desktop on bottom right next to the sidebar.&nbsp;&nbsp;&nbsp;&nbsp; </span></div>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
+    <p><div class="clearfix">&nbsp;</div> <span> Changing Desktop Icon Spacing in Vista, "ALL Versions", adjustments can be made to horizontal and vertical alignment spacing.<div class="clearfix">&nbsp;</div> <strong> <em>&nbsp;</em><div class="clearfix">&nbsp;</div> Steps for spacing desktop icons horizontal and vertical. Also you can change Desktop, Explorer and Most Vista Program Fonts and sizes here also. </strong><div class="clearfix">&nbsp;</div> &nbsp; </span></p>
+    <div><span>1. Right Click Desktop + Choose &ldquo;Personalize&rdquo;</span><div class="clearfix">&nbsp;</div> <span>2. At the top + Choose "Window Color and Appearance".</span> &nbsp; &nbsp;<div class="clearfix">&nbsp;</div> <span>3. In the Window Color and Appearance Window, go to the bottom and click + Open classic appearance properties for more color options.</span> &nbsp; &nbsp;<div class="clearfix">&nbsp;</div> <span>4. In the Appearance Settings Window choose + Advanced.</span> &nbsp; &nbsp;<div class="clearfix">&nbsp;</div> <span>5. In the Advanced Appearance + Choose Item and select Icon Spacing (Horizontal) and to the right of the Item selection set the + spacing you desire =&nbsp; Repeat this step 5 for Icon Spacing (Vertical), Then click OK in the Advanced Appearance Window , and the click Apply and then OK in the Appearance Settings Window and close the Personalization window and you are done.</span> &nbsp; &nbsp;<div class="clearfix">&nbsp;</div> <span>I made the choice 16 for Horizontal and 30 for Vertical mainly because Recycle bin overlaps the bottom of other icons because of its large size, even though I made it smaller as in the above Visual Tweaks section of this document or you can put it on top or other icons and change Vertical to what ever works, CAUTION do not overlap icons as when you click on them it will activate both that are overlapped. Note this will change Icon spacing in Explorer also.&nbsp; You will notice the size and spacing in the Print Screen of my desktop on bottom right next to the sidebar.&nbsp;&nbsp;&nbsp;&nbsp; </span></div>
+    <div class="clearfix">&nbsp;</div>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
     <p><a name="Indexing problems" title="" data-original-title=""></a>A Changed Value!</p>
     <p>For Vista Indexing problems, or it will not start or stay running. = Indexing and search are file renaming problems</p>
     <p><span>Set the registry&nbsp;value <span style="font-family: 'Trebuchet MS', sans-serif;"><strong> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Search\SetupCompletedSuccessfully </strong></span> <span> ( set it to 0 and try restarting the Windows Search service.</span> </span></p>
     <p>See this post in MSDN</p>
-    <p>&nbsp;</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
+    <div class="clearfix">&nbsp;</div>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
     <p><a name="Multiple OSs" title="" data-original-title=""></a>If you want Multiple Operating Systems and Windows or DOS boot manager is not working for you or there is dual boot problems or Vista gets confused with the 32 bit OS. Then Install each on a different Hard Drive = "not a partition", and install the OS 32 bit or 64 bit on the Drive that does not have Vista 32 bit or 64 bit installed on it.</p>
     <p>You have to shut down computer and unplug the drive you have Vista on, or visa versa if you have installed Vista already. Then start up your computer and hit delete or escape and go to the BIOS and set the drive you want to install as boot drive and clear the drive vista was on. This creates a situation where if you want to change OS's you have to go to BIOS each time and select the drive you want. There are allot of different bios's so you will have to know somewhat how to do this on your machine.</p>
     <p>If you set them up in BIOS where they are complete different separate OS's there is some advantages and the only disadvantage is having to go to the Bios each time to change OS's</p>
     <p>Now my Vista Home Premium is smoking Fast and stable, quick startup and shutdown, but renaming files in explorer and some moving of files is still slow = Microsoft has not fixed this for their own Vista Computers!</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
-    <hr class="hr" />
+    <div class="clearfix">&nbsp;</div>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
     <p>If you use the Windows Explorer shortcut on your Start Menu, you probably notice that it always opens in the same window. For example, if you use Windows Vista, Windows Explorer always opens to the <span> &nbsp;Documents </span> <span>folder</span>.</p>
     <p>If you find this to be an annoyance, Explorer always opening to the Documents folder, you can configure it to open to a folder of your choice. You can do so by editing the properties of the Windows Explorer shortcut.</p>
     <p>Open <a title="" id="KonaLink1" href="http://www.lockergnome.com/windows/2007/08/27/start-explorer-in-a-different-folder-in-windows-vista/#" data-original-title=""> <span> Windows Explorer</span></a>and locate your Start Menu folder. Right click the shortcut to Windows Explorer and click Properties. From the Shortcut tab, change the target so it reads as follows: %systemroot%\explorer.exe /n, /e, x:\folder where x:\folder is the path to the folder that you want Explorer to open in. Click OK. Now when you launch Windows Explorer from the Start Menu, it will open in the folder that you specified.</p>
     <p>This is located in my computer in the Explorer Location Bar at:</p>
     <p>C:\Users\donboulton\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessories&nbsp;</p>
     <p>Just click your Explorer location Bar and it will give you the Exact Location.</p>
-    <hr class="hr" />
+    <div class="clearfix">&nbsp;</div>
     <p>For this to Work you have to put a shortcut to Windows Explorer on your desktop, it will not work if you right click on the start bar button and click on explorer it goes to its default location.</p>
     <p align="center" style="text-align: left;">YOU CAN PUT AS MANY OF THESE EXPLORER SHORTCUTS ON YOU DESKTOP AS YOU WANT.</p>
     <p>Make sure after you create each one you rename it. I call One D for D Drive I call on Doc for documents on another Drive or Folder that My Documents are stored; est.</p>
-    <hr class="hr" />
+    <div class="clearfix">&nbsp;</div>
     <p>Right Click the Explorer shortcut and a drop down list will appear go to send to and create a shortcut to the desktop.</p>
     <p>Then you will see the shortcut to Windows Explorer, right click on it and you will see target, change you link in this field.</p>
     <p>The Shortcut I used was to a different drive, as in drive D: = I changed it to = %SystemRoot%\explorer.exe /n /e, D:\Downloads</p>
@@ -322,11 +331,55 @@
     <p>Sometimes if you use a different drive as explained above for<a title="" href="#Multiple OSs" data-original-title=""> Loading Multiple OS's</a> you can save files, and all downloads on that separate Hard drive that gives you ability or can help eliminate the problems of downloading infected files and malware, thus helping separate from your OS from infection.</p>
     <p>This can be done in my system to %SystemRoot%\explorer.exe /n, /e, E:\Downloads, or whichever drive letter you have for the separate Hard Drive and/or Partition's, better on a separate Hard Drive.</p>
     <p>Thanks To:, Dana Huggins at: &nbsp; More of her Vista and Windows Tweaks at <a title="" href="http://www.lockergnome.com/windows/" data-original-title=""> Windows Fanatics</a>.</p>
-    <p><a title="" href="#Top" data-original-title="">Top Of the Page</a></p>
+    <div class="clearfix">&nbsp;</div>
+    <div><a title="" href="#Top" data-original-title="">Top Of the Page</a></div>
+    <div class="clearfix">&nbsp;</div>
+</div>
+<div id="disqus">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="disqus_thread"></div>
+            <script>
+                           var disqus_config = function() {
+                                var pageUrl = "https://mansbooks.com/Blog/Windows_tweaks";
+                                if (pageUrl.length > 0) {
+                                this.page.url = pageUrl;
+                                }
+
+                            var pageIdentifier = "Windows_Tweaks";
+                                if (pageIdentifier.length > 0) {
+                                this.page.identifier = pageIdentifier;
+                                }
+
+                            var pageTitle = "Windows Tweaks";
+                                if (pageTitle.length > 0) {
+                                this.page.title = pageTitle;
+                                }
+
+                            var pageCategoryId = "Blog";
+                                if (pageCategoryId.length > 0) {
+                                this.page.category_id = pageCategoryId;
+                                }
+                           };
+
+                           (function() {
+                               var d = document, s = d.createElement('script');
+                               s.src = '//mansbooks-1.disqus.com/embed.js';
+                               s.setAttribute('data-timestamp', +new Date());
+                               (d.head || d.body).appendChild(s);
+                           })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <script id="dsq-count-scr" src="//mansbooks.disqus.com/count.js" async></script>
+            <div class="clearfix">&nbsp;</div>
+            <div class="g-plus" data-action="share" data-href="https://mansbooks.com"></div>
+            <div class="clearfix">&nbsp;</div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <ul>
-        <li class="li"><a name="donboulton" title="Favorite" href="https://twitter.com/intent/favorite?tweet_id=503556322772516864" data-user-id="105217183" data-screen-=""><img class="favorite" alt="Favorite" src="https://d3n8k0cqgcsxxu.cloudfront.net/favorite.png" /></a>&nbsp; <a name="donboulton" title="Favorite" class="link" href="https://twitter.com/intent/favorite?tweet_id=503556322772516864" data-user-id="105217183" data-screen-="">Favorite</a> <a name="donboulton" title="Reply" href="https://twitter.com/intent/tweet?in_reply_to=503556322772516864" data-user-id="105217183" data-screen-=""> <img class="reply" alt="Reply" src="https://d3n8k0cqgcsxxu.cloudfront.net/reply.png" /></a>&nbsp;<a name="donboulton" title="Reply" class="link" href="https://twitter.com/intent/tweet?in_reply_to=503556322772516864" data-user-id="105217183" data-screen-="">Reply</a>&nbsp; <a name="donboulton" title="Retweet" href="http://twitter.com/intent/retweet?tweet_id=503556322772516864" data-user-id="105217183" data-screen-=""> <img class="retweet" alt="Retweet" src="https://d3n8k0cqgcsxxu.cloudfront.net/retweet.png" /></a>&nbsp;<a name="donboulton" title="Retweet" class="link" href="https://twitter.com/intent/retweet?tweet_id=503556322772516864" data-user-id="105217183" data-screen-="">Retweet</a></li>
+        <li class="li"><a name="donboulton" title="Favorite" href="https://twitter.com/intent/favorite?tweet_id=503556322772516864" data-user-id="105217183" data-screen-=""><img class="favorite" alt="Favorite" src="https://d13ie4yeey2dtq.cloudfront.net/favorite.png" /></a>&nbsp; <a name="donboulton" title="Favorite" class="link" href="https://twitter.com/intent/favorite?tweet_id=503556322772516864" data-user-id="105217183" data-screen-="">Favorite</a> <a name="donboulton" title="Reply" href="https://twitter.com/intent/tweet?in_reply_to=503556322772516864" data-user-id="105217183" data-screen-=""> <img class="reply" alt="Reply" src="https://d13ie4yeey2dtq.cloudfront.net/reply.png" /></a>&nbsp;<a name="donboulton" title="Reply" class="link" href="https://twitter.com/intent/tweet?in_reply_to=503556322772516864" data-user-id="105217183" data-screen-="">Reply</a>&nbsp; <a name="donboulton" title="Retweet" href="http://twitter.com/intent/retweet?tweet_id=503556322772516864" data-user-id="105217183" data-screen-=""> <img class="retweet" alt="Retweet" src="https://d13ie4yeey2dtq.cloudfront.net/retweet.png" /></a>&nbsp;<a name="donboulton" title="Retweet" class="link" href="https://twitter.com/intent/retweet?tweet_id=503556322772516864" data-user-id="105217183" data-screen-="">Retweet</a></li>
     </ul>
 </div>
 <div>

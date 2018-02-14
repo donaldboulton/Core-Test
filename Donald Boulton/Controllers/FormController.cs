@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net.Mail;
+using System.Net.Http;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Swagger;
 
-namespace Donald_Boulton.FormController
+namespace Mansbooks.FormController
 {
     public class FormController : Controller
     {
@@ -37,9 +38,33 @@ namespace Donald_Boulton.FormController
 
         public string Email { get; set; }
 
+        public string ConfirmEmail { get; set; }
+
+        public string Subject { get; set; }
+
         public string Message { get; set; }
     }
     public class Controller
     {
+    }
+    internal class SendMail
+    {
+        private static void Index()
+        {
+            Execute().Wait();
+        }
+
+        static async Task Execute()
+        {
+            var apiKey = Environment.GetEnvironmentVariable("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");
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("*", "User");
+            var subject = "Sending with SendGrid is Fun";
+            var to = new EmailAddress("donaldboulton@mansbooks.com", "Example User");
+            var plainTextContent = "Send Mail to Donald Boulton";
+            var htmlContent = "<strong>Send Mail</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
     }
 }

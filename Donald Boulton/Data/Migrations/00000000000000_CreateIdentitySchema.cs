@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Donald_Boulton.Data.Migrations
+namespace Mansbooks.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

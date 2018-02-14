@@ -3,7 +3,7 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Threading.Tasks;
 
-namespace Donald_Boulton.Services
+namespace Mansbooks.Services
 {
     public class EmailSender : IEmailSender
     {

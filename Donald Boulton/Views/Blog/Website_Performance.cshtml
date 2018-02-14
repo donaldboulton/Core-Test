@@ -1,0 +1,415 @@
+﻿@model Mansbooks.Models.Post
+
+@{
+    ViewData["Title"] = "Website Performance";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+
+<div class="row">
+    <div class="media">
+        <img alt="img" class="image-fluid mr-3" itemprop="primaryImageOfPage" src="https://d13ie4yeey2dtq.cloudfront.net/img/orchardburning.svg" title="Orchard Burning." />
+        <div class="media-body">
+            <div itemprop="description">
+                <p><span>Discussions on changes to Orchard 1.10 web.config, zipping files for AWS to Cloud-front, Proper Response and Request headers.</span></p>
+                <p><span>Web.config additions and changes, with different performance alternatives.</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <p><span>Orchard Cache, iDeliverable widgets, HTML Minified settings will be discussed. <span class="st">Conjugation routines of .css and .js before 7-zipping&nbsp; them with a&nbsp;gzip Ultra format.</span></span></p>
+    <p>This page is always under development. Web .config section is questionable.</p>
+    <p>You want straight A's from webpagetest.org.</p>
+    <p>I almost got straight A's; just one image and google-analytics.com stops straight A's.</p>
+    <p>Extensive caching section s Orchard up to 1.10.0 does not client cache correctly with VARY* have to change it in Orchard Cache filter and in the web.config to get proper response headers. Ad Caching in Orchard form 1.8.1 to 1.10 caches .xml and .rss making it unreadable to servers and browsers. Even if you tell orchard in the various was to not cache these routes it does anyway = more changes to the web.config.</p>
+    <p>How to use gzip on a shared server when they deny access to gzip.dll.</p>
+    <p>Follow the below content and test&nbsp;things locally first.</p>
+    <div class="col-6"><img alt="" class="image-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/orchard-performance.jpg" style="width: 400px; height: 307px;" /></div>
+    <p>My full test results:&nbsp; <a href="http://www.webpagetest.org/result/160227_P1_4P4/1/details/">http://www.webpagetest.org/result/160227_P1_4P4/1/details/</a></p>
+    <p><a href="http://www.webpagetest.org/result/160227_P1_4P4/1/details/">I</a> am getting a repeat view of 0kb and&nbsp;initially 380kb which is 1gb lower that a stock Orchard site with bootstrap and some images.</p>
+</div>
+<ul class="nav nav-tabs" id="tabs-menu" role="tablist">
+    <li class="nav-item" role="presentation"><a aria-controls="cache" data-pjax="data-pjax" class="nav-link active" data-toggle="tab" href="#cache" role="tab">Cache</a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link" aria-controls="webconfig" data-pjax="data-pjax" data-toggle="tab" href="#webconfig" role="tab">Web Config</a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link" aria-controls="htmlminifier" data-pjax="data-pjax" data-toggle="tab" href="#htmlminifier" role="tab">HTML Minifier</a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link" aria-controls="gzip" data-pjax="data-pjax" data-toggle="tab" href="#gzip" role="tab">Gzip</a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link" aria-controls="aws" data-pjax="data-pjax" data-toggle="tab" href="#aws" role="tab">AWS S3</a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link" aria-controls="httpheaders" data-pjax="data-pjax" data-toggle="tab" href="#httpheaders" role="tab">Http Headers</a></li>
+    <li class="nav-item" role="presentation"><a class="nav-link" aria-controls="x-pjax" data-pjax="data-pjax" data-toggle="tab" href="#x-pjax" role="tab">x-pjax </a></li>
+</ul>
+<div class="tab-content" data-pjax-container="data-pjax">
+    <div class="tab-pane fade show active" id="cache" role="tabpanel" aria-labelledby="cache-tab">
+        <h2 class="center">Orchard Cache settings.</h2>
+        <p>First Orchard caching still messes up .xml files like your sitemap.xml and the needed changes so caching in IIS or Orchard leaves it in the correct format. Then I add sitemap.xml at the root of my site, hard coding is pain in the ass, use a sitemap generator to do it for ya.</p>
+        <p>Cache settings of 259200 seconds or 72 hours on duration and max age. And a Accept-Encoding: gzip, deflate, sdhc = response header.</p>
+        <div class="col-6">
+            <img alt="img" class="image-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/cache-settings-min.jpg" />
+            <p>Default Grace time of 600 so I get a Grace time of 10 minutes, fine for me as I have nothing changing in 10 min.</p>
+        </div>
+        <p>Ignoring url /sitemap.xml</p>
+        <div class="col-6"><img alt="img" class="image-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/cache-duration-min.jpg" title="Cache duration" /></div>
+    </div>
+    <div class="tab-pane" id="webconfig" role="tabpanel" aria-labelledby="webconfig-tab">
+        <h2>Web.config</h2>
+        <p>Here is my web.config for Orchard 1.9.1 and it Orchard changed alot in 1.10, if using 1.10 check changes carefully. I comment in and on soon.</p>
+        <p>Leveraging prefetch cache and Vary policys, and caching on .XML.</p>
+
+        <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+            <div class="card-header">
+                <h5 class="text-muted">Cache Profiles</h5>
+                <button class="btn btn-sm btn-light float-right" data-clipboard-action="copy" data-clipboard-target="#ok">
+                    <img class="clippy" width="13" src="https://d13ie4yeey2dtq.cloudfront.net/img/clippy.svg" alt="">
+                </button>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <pre class="snippet">                         
+                    <code id="ok" class="language-javascript">
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">httpHandlers</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">clear</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">verb</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"*"</span> <span style="color: #cf4820;">path</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"sitemap.xml"</span> <span style="color: #cf4820;">type</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"System.Web.StaticFileHandler"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">httpHandlers</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">caching</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">outputCache</span> <span style="color: #cf4820;">omitVaryStar</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">outputCacheSettings</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">outputCacheProfiles</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">clientCache</span> <span style="color: #cf4820;">cacheControlCustom</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"public"</span> <span style="color: #cf4820;">cacheControlMode</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"UseMaxAge"</span> <span style="color: #cf4820;">cacheControlMaxAge</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"3.00:00:00"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">outputCacheProfiles</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">outputCacheSettings</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">caching</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">system.web</span><span style="color: #4f76ac;">&gt;</span>
+                            </code>
+                    </pre>
+                </p>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <p>Under System.WebServer we add the custom headers url compression and caching profiles with .xml exclusion.</p>
+        <p>&nbsp;</p>
+        <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+            <div class="card-header">
+                <h5 class="text-muted">Custom Headers</h5>
+                <button class="btn btn-sm btn-light float-right" data-clipboard-action="copy" data-clipboard-target="#http1">
+                    <img class="clippy" width="13" src="https://d13ie4yeey2dtq.cloudfront.net/img/clippy.svg" alt="">
+                </button>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <pre class="snippet">                         
+                    <code id="http1" class="language-javascript">      
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">security</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">httpProtocol</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">customHeaders</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"X-Powered-By"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"X-Aspnet-Version"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Vary"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Vary"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"allowKeepAlive"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span> <span style="color: #4f76ac;">/&gt;</span>                
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Expires"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Mon, 25 Dec 2017 21:31:12 GMT"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Access-Control-Allow-Origin"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"https://donboulton.com"</span> <span style="color: #4f76ac;">/&gt;</span>     
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Access-Control-Allow-Credentials"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span> <span style="color: #4f76ac;">/&gt;</span>                     
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"gzip,deflate,sdhc"</span> <span style="color: #4f76ac;">/&gt;</span>                          
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">customHeaders</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">httpProtocol</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">urlCompression</span> <span style="color: #cf4820;">dynamicCompressionBeforeCache</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span> <span style="color: #cf4820;">doStaticCompression</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span> <span style="color: #cf4820;">doDynamicCompression</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">staticContent</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">clientCache</span> <span style="color: #cf4820;">cacheControlCustom</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"public"</span> <span style="color: #cf4820;">cacheControlMode</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"UseMaxAge"</span> <span style="color: #cf4820;">cacheControlMaxAge</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"3.00:00:00"</span> <span style="color: #4f76ac;">/&gt;</span>                        
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".mp3"</span> <span style="color: #4f76ac;">/&gt;</span>              
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">mimeMap</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".mp3"</span> <span style="color: #cf4820;">mimeType</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"audio/mpeg"</span> <span style="color: #4f76ac;">/&gt;</span> 
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".mp4"</span> <span style="color: #4f76ac;">/&gt;</span> 
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">mimeMap</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".mp4"</span> <span style="color: #cf4820;">mimeType</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"video/mp4"</span> <span style="color: #4f76ac;">/&gt;</span> 
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".pdf"</span> <span style="color: #4f76ac;">/&gt;</span> 
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">mimeMap</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".pdf"</span> <span style="color: #cf4820;">mimeType</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"application/pdf"</span> <span style="color: #4f76ac;">/&gt;</span> 
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".svg"</span> <span style="color: #4f76ac;">/&gt;</span> 
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">mimeMap</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".svg"</span> <span style="color: #cf4820;">mimeType</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"image/svg+xml"</span> <span style="color: #4f76ac;">/&gt;</span> 
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".woff"</span><span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">mimeMap</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".woff"</span> <span style="color: #cf4820;">mimeType</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"application/font-woff"</span><span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">remove</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".woff2"</span><span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">mimeMap</span> <span style="color: #cf4820;">fileExtension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".woff2"</span> <span style="color: #cf4820;">mimeType</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"application/font-woff2"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">staticContent</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">caching</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">profiles</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">extension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".js"</span> <span style="color: #cf4820;">policy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheUntilChange"</span> <span style="color: #cf4820;">kernelCachePolicy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheUntilChange"</span> <span style="color: #cf4820;">location</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Any"</span> <span style="color: #cf4820;">varyByHeaders</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">extension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".css"</span> <span style="color: #cf4820;">policy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheUntilChange"</span> <span style="color: #cf4820;">kernelCachePolicy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheUntilChange"</span> <span style="color: #cf4820;">location</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Any"</span> <span style="color: #cf4820;">varyByHeaders</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">extension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".jpeg"</span> <span style="color: #cf4820;">policy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">kernelCachePolicy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">duration</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"7.00:00:00"</span> <span style="color: #cf4820;">varyByHeaders</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #4f76ac;">/&gt;</span>                
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">extension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".jpg"</span> <span style="color: #cf4820;">policy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">kernelCachePolicy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">duration</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"7.00:00:00"</span> <span style="color: #cf4820;">varyByHeaders</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #4f76ac;">/&gt;</span>                            
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">extension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".png"</span> <span style="color: #cf4820;">policy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">kernelCachePolicy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">duration</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"7.00:00:00"</span> <span style="color: #cf4820;">varyByHeaders</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #4f76ac;">/&gt;</span>                
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">extension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".gif"</span> <span style="color: #cf4820;">policy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">kernelCachePolicy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"CacheForTimePeriod"</span> <span style="color: #cf4820;">duration</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"7.00:00:00"</span> <span style="color: #cf4820;">varyByHeaders</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Accept-Encoding"</span> <span style="color: #4f76ac;">/&gt;</span>   
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">extension</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">".xml"</span> <span style="color: #cf4820;">policy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"DisableCache"</span> <span style="color: #cf4820;">kernelCachePolicy</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"DisableCache"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">profiles</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">caching</span><span style="color: #4f76ac;">&gt;</span>                
+                    <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">system.webServer</span><span style="color: #4f76ac;">&gt;</span>
+                  </code>
+             </pre>
+                </p>
+            </div>
+        </div>
+        <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+            <div class="card-header">
+                <h5 class="text-muted">ISS Web Config Performance settings</h5>
+                <button class="btn btn-sm btn-light float-right" data-clipboard-action="copy" data-clipboard-target="#perf">
+                    <img class="clippy" width="13" src="https://d13ie4yeey2dtq.cloudfront.net/img/clippy.svg" alt="">
+                </button>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <pre class="snippet">                         
+                    <code id="perf" class="language-javascript">
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">runtime</span><span style="color: #4f76ac;">&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">performanceScenario</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"HighDensityWebHosting"</span> <span style="color: #4f76ac;">/&gt;</span>
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">gcServer</span> <span style="color: #cf4820;">enabled</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span><span style="color: #4f76ac;">/&gt;</span>
+                </code>
+             </pre>
+                </p>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+    </div>
+    <div class="tab-pane" id="htmlminifier" role="tabpanel" aria-labelledby="htmlminifier-tab">
+        <h2 class="center"><span class="author" itemprop="author"><a class="url" href="https://github.com/JadeX" rel="author">JadeX</a></span><span class="path-divider">/</span><strong itemprop="name"><a href="https://github.com/JadeX/Orchard.HtmlMinifier">Orchard.HtmlMinifier</a></strong></h2>
+        <p>JadeX HTML Minifaction at: <a href="https://github.com/JadeX/Orchard.HtmlMinifier" title="HTML Minifier">https://github.com/JadeX/Orchard.HtmlMinifier</a></p>
+        <p>Module designed to reduce size of output HTML to bare minimum while maintaining same functionality for your Orchard website.</p>
+        <p>Size for simple pages gets reduced by 10% (gzipped) or 20% (uncompressed) respectively. As page gets more complex with more shapes and content, reduction ratio grows.</p>
+        <p>Minification makes full use of Output caching provided by Orchard.OutputCache module to prevent recurring minification for responses that were already recently minified.</p>
+        <p><strong>Supported versions:</strong> Orchard 1.9+</p>
+        <p>I use all the stock settings seems to work great and works with Orchard 1.10. The only thing you might do is set up the <code>Statistics Info Window Pattern instructions at: <a href="https://github.com/JadeX/Orchard.HtmlMinifier/wiki/Statistics-info-window" title="Stats patterns">https://github.com/JadeX/Orchard.HtmlMinifier/wiki/Statistics-info-window</a></code></p>
+    </div>
+    <div class="tab-pane" id="gzip" role="tabpanel" aria-labelledby="gzip-tab">
+        <h2 class="center">Gzip</h2>
+        <p>Gzipped file settings on upload I use reduuced redundancy storage and the on mime types uncheck figure out mime types automatically and the add Content type for .js add application/x-javascript for .css files add text/css,</p>
+        <p>I set Cache-Control to public, max-age=2592000,</p>
+        <p>Expires Wed, 01-Feb-2017 16:32:35 GMT should be at least a year ahead of today. Mine is not.</p>
+        <p>Content-Encoding set to gzip</p>
+        <p>The files uploaded will still have the extenshion like site-slate.min.css.gz so just rename them like site-slate.min.css no .gz.</p>
+        <p>Now if you read about this you should have one file gzipped and one file not, if you do not have the correct HTTP Request and&nbsp; Resopnse header for older browsers = I do not care anything about older browsers. so judge for yourself</p>
+    </div>
+    <div class="tab-pane" id="aws" role="tabpanel" aria-labelledby="aws-tab">
+        <h2 class="center">AWS S3</h2>
+        <p>There is allot of information on setting up AWS, S3 and Cloudfront so I will not go into that; just how I use it for file distribution, and I use my own static cookiesless, "except for oauth cookie from Cloud Front", subweb for my link as static.donboulton.com which can be set up on your server and then on AWS S3 and Cloud Front adding to your web.config</p>
+        <div class="card text-white bg-dark mr-3" style="min-width:100%;">
+            <div class="card-header">
+                <h5 class="text-muted">The light weight Javascript</h5>
+                <button class="btn btn-light btn-sm float-right" data-clipboard-action="copy" data-clipboard-target="#foo">
+                    <img class="clippy" width="13" src="https://d13ie4yeey2dtq.cloudfront.net/img/clippy.svg" alt="">
+                </button>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <pre class="snippet">                         
+                    <code id="foo" class="language-javascript">
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Access-Control-Allow-Origin"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"http://yoursite.com"</span> <span style="color: #4f76ac;">/&gt;</span>     
+                    <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">add</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Access-Control-Allow-Credentials"</span> <span style="color: #cf4820;">value</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"true"</span> <span style="color: #4f76ac;">/&gt;</span>  
+                            </code>
+                        </pre>
+                </p>
+            </div>
+        </div>
+        <p>For a Poor Mans CDN "WoW", for me about $0.30 a month added to the $25.00 Ultimate plan at Winhost.com and its very affordable and as you can see donboulton.com is super fast. A stock installation of Orchard on winhost servers is way slower.</p>
+        <p>All my static files are congregated, minified, then if its .css or .js its Gzipped and served from AWS through Cloudfront.</p>
+        <p>I used to use Combinator but it adds to the end of the file a timestamp =?whatever, well servers complain about the ? and sometimes it did what it wanted; so I just started to congregate or combine them together. My jquary.js file has about 12 other minified scripts added to it and then using 7-zip I gzip it to the Ultra max. ends up about 40kb would be served individually over 500kb and 12 round trips for the individual files. Even added pjax minified version at the bottom of my jquary file, works great.</p>
+        <p>Doing the same for all of my .css files. I use PJS.Bootstrap which has the ability to change styles so it injects the style sheet from settings through Models and Handlers, so eliminated Models and Handlers all the reference's to injection and add a direct link to my site-slate.min.css file minified and Gzipped to the Ultimate max, adding all font files .less files .sass file and progressive minified images to my AWS CDN so all static content is on AWS keeping the bootstrap file structure in tact.</p>
+        <p>So I get one .js file and one.css file for most of my site, have to add some others on certain pages like jquary- lightbox image gallery for my portfolios'.</p>
+    </div>
+    <div class="tab-pane" id="httpheaders" role="tabpanel">
+        <h2>Web Fundamentals Http Caching:</h2>
+        <p>Taken from <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=en">Page Insites Google developers</a></p>
+        <p>Fetching something over the network is both slow and expensive: large responses require many roundtrips between the client and server, which delays when they are available and can be processed by the browser, and also incurs data costs for the visitor. As a result, the ability to cache and reuse previously fetched resources is a critical aspect of optimizing for performance.</p>
+        <p>Contents</p>
+        <p>Validating cached responses with ETags<br /> Cache-Control<br /> Defining optimal Cache-Control policy<br /> Invalidating and updating cached responses<br /> Caching checklist</p>
+        <p>Great news, every browser ships with an implementation of an HTTP cache! All we have to do is ensure that each server response provides correct HTTP header directives to instruct the browser on when and for how long the response can be cached by the browser.</p>
+        <p>Remember</p>
+        <p>If you are using a Webview to fetch and display web content in your application, you may need to provide additional configuration flags to ensure that the HTTP cache is enabled, its size is set to a reasonable number to match your use case, and that the cache is persisted. Check the platform documentation and confirm your settings!</p>
+        <p><img class="image-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/http-request.png" /></p>
+        <p>When the server returns a response it also emits a collection of HTTP headers, describing its content-type, length, caching directives, validation token, and more. For example, in the above exchange the server returns a 1024 byte response, instructs the client to cache it for up to 120 seconds, and provides a validation token (x234dff) that can be used after the response has expired to check if the resource has been modified.</p>
+        <p>Validating cached responses with ETags</p>
+        <p>Validation token is communicated by the server via the ETag HTTP header<br /> Validation token enables efficient resource update checks: no data transfer if the resource has not changed.</p>
+        <p>Lets assume 120 seconds have passed since our initial fetch and the browser has initiated a new request for the same resource. First, the browser checks the local cache and finds the previous response, unfortunately it cannot use it as the response has now expired. At this point it could simply dispatch a new request and fetch the new full response, but thats inefficient because if the resource has not changed then there is no reason to download the exact same bytes that are already in cache!</p>
+        <p>Thats the problem that validation tokens, as specified in the ETag header, are designed to solve: the server generates and returns an arbitrary token which is typically a hash or some other fingerprint of the contents of the file. The client does not need to know how the fingerprint is generated, it only needs to send it to the server on the next request: if the fingerprint is still the same then the resource has not changed and we can skip the download.</p>
+        <div class="col-6"><img class="image-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/http-cache-control.png" /></div>
+        <p>In above example the client automatically provides the ETag token within the If-None-Match HTTP request header, the server checks the token against the current resource, and if it has not changed returns a 304 Not Modified response which tells the browser that the response it has in cache has not changed and can be renewed for another 120 seconds. Note that we do not have to download the response once more - this saves time and bandwidth.</p>
+        <p>As a web developer, how do you take advantage of efficient revalidation? The browser does all the work on our behalf. It will automatically detect if a validation token has been previously specified, it will append it to an outgoing request, and it will update the cache timestamps as necessary based on received response from the server. The only thing thats left for us to do is to ensure that the server is, in fact, providing the necessary ETag tokens: check your server documentation for necessary configuration flags.</p>
+        <p>Remember</p>
+        <p>Tip: HTML5 Boilerplate project contains sample configuration files for all the most popular servers with detailed comments for each configuration flag and setting: find your favorite server in the list, look for appropriate settings, and copy / confirm that your server is configured with recommended settings.</p>
+        <p>Cache-Control</p>
+        <p>Each resource can define its caching policy via Cache-Control HTTP header<br /> Cache-Control directives control who can cache the response, under which conditions, and for how long</p>
+        <p>The best request is a request that does not need to communicate with the server: a local copy of the response allows us to eliminate all network latency and avoid data charges for the data transfer. To achieve this, the HTTP specification allows the server to return a number of different Cache-Control directives that control how, and for how long, the individual response can be cached by the browser and other intermediate caches.</p>
+        <p>Remember</p>
+        <p>Cache-Control header was defined as part of the HTTP/1.1 specification and supersedes previous headers (e.g. Expires) used to define response caching policies. All modern browsers support Cache-Control, hence that is all we will need.</p>
+        <div class="col-6">
+            <img class="image-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/http-cache-control-highlight.png" />
+            <p>no-cache and no-store</p>
+        </div>
+        <p>no-cache indicates that the returned response cannot be used to satisfy a subsequent request to the same URL without first checking with the server if the response has changed. As a result, if a proper validation token (ETag) is present, no-cache will incur a roundtrip to validate the cached response, but can eliminate the download if the resource has not changed.</p>
+        <p>By contrast, no-store is much simpler, as it simply disallows the browser and all intermediate caches to store any version of the returned response - e.g. one containing private personal or banking data. Everytime the user requests this asset, a request is sent to the server and a full response is downloaded each and every time.</p>
+        <p>public vs. private</p>
+        <p>If the response is marked as public then it can be cached, even if it has HTTP authentication associated with it, and even when the response status code isnt normally cacheable. Most of the time, public isnt necessary, because explicit caching information (like max-age) indicates that the response is cacheable anyway.</p>
+        <p>By contrast, private responses can be cached by the browser but are typically intended for a single user and hence are not allowed to be cached by any intermediate cache - e.g. an HTML page with private user information can be cached by that users browser, but not by a CDN.</p>
+        <p>max-age</p>
+        <p>This directive specifies the maximum time in seconds that the fetched response is allowed to be reused for from the time of the request - e.g. max-age=60 indicates that the response can be cached and reused for the next 60 seconds.</p>
+        <p>Defining optimal Cache-Control policy</p>
+        <p><img class="transparent image-responsive" src="https://d13ie4yeey2dtq.cloudfront.net/http-cache-decision-tree.png" /></p>
+        <p>Follow the decision tree above to determine the optimal caching policy for a particular resource, or a set of resources used by your application. Ideally, you should aim to cache as many responses as possible on the client for the longest possible period, and provide validation tokens for each response to enable efficient revalidation.</p>
+        <p>Cache-Control directives Explanation<br /> max-age=86400 Response can be cached by browser and any intermediary caches (i.e. it is "public") for up to 1 day (60 seconds x 60 minutes x 24 hours)<br /> private, max-age=600 Response can be cached by the clients browser only for up to 10 minutes (60 seconds x 10 minutes)<br /> no-store Response is not allowed to be cached and must be fetched in full on every request.</p>
+        <p>According to HTTP Archive, amongst the top 300,000 sites (by Alexa rank), nearly half of all the downloaded responses can be cached by the browser, which is a huge savings for repeat pageviews and visits! Of course, that doesnt mean that your particular application will have 50% of resources that can be cached: some sites can cache 90%+ of their resources, while others may have a lot of private or time-sensitive data that cant be cached at all.</p>
+        <p>Audit your pages to identify which resources can be cached and ensure that they are returning appropriate Cache-Control and ETag headers.</p>
+        <p>Invalidating and updating cached responses</p>
+        <p>Locally cached responses are used until the resource 'expires'<br /> Embedding a file content fingerprint in the URL enables us to force the client to update to a new version of the response<br /> Each application needs to define its own cache hierarchy for optimal performance</p>
+        <p>All HTTP requests made by the browser are first routed to the browser cache to check if there is a valid cached response that can be used to fulfill the request. If there is a match, the response is read from the cache and we eliminate both the network latency and the data costs incurred by the transfer. However, what if we want to update or invalidate a cached response?</p>
+        <p>For example, lets say weve told our visitors to cache a CSS stylesheet for up to 24 hours (max-age=86400), but our designer has just committed an update that we would like to make available to all users. How do we notify all the visitors with what is now a stale cached copy of our CSS to update their caches? Its a trick question - we cant, at least not without changing the URL of the resource.</p>
+        <p>Once the response is cached by the browser, the cached version will be used until it is no longer fresh, as determined by max-age or expires, or until it is evicted from cache for some other reason - e.g. the user clearing their browser cache. As a result, different users might end up using different versions of the file when the page is constructed; users who just fetched the resource will use the new version, while users who cached an earlier (but still valid) copy will use an older version of its response.</p>
+        <p>So, how do we get the best of both worlds: client-side caching and quick updates? Simple, we can change the URL of the resource and force the user to download the new response whenever its content changes. Typically, this is done by embedding a fingerprint of the file, or a version number, in its filename - e.g. style.x234dff.css.</p>
+        <p><img class="transparent image-responsive" src="https://d13ie4yeey2dtq.cloudfront.net/http-cache-hierarchy.png" /></p>
+        <p>The ability to define per-resource caching policies allows us to define cache hierarchies that allow us to control not only how long each is cached for, but also how quickly new versions are seen by visitor. For example, lets analyze the above example:</p>
+        <p>The HTML is marked with no-cache, which means that the browser will always revalidate the document on each request and fetch the latest version if the contents change. Also, within the HTML markup we embed fingerprints in the URLs for CSS and JavaScript assets: if the contents of those files change, then the HTML of the page will change as well and new copy of the HTML response will be downloaded.<br /> The CSS is allowed to be cached by browsers and intermediate caches (e.g. a CDN), and is set to expire in 1 year. Note that we can use the far future expires of 1 year safely because we embed the file fingerprint its filename: if the CSS is updated, the URL will change as well.<br /> The JavaScript is also set to expire in 1 year, but is marked as private, perhaps because it contains some private user data that the CDN shouldnt cache.<br /> The image is cached without a version or unique fingerprint and is set to expire in 1 day.</p>
+        <p>The combination of ETag, Cache-Control, and unique URLs allows us to deliver the best of all worlds: long-lived expiry times, control over where the response can be cached, and on-demand updates.</p>
+        <p>Caching checklist</p>
+        <p>There is no one best cache policy. Depending on your traffic patterns, type of data served, and application-specific requirements for data freshness, you will have to define and configure the appropriate per-resource settings, as well as the overall caching hierarchy.</p>
+        <p>Some tips and techniques to keep in mind as you work on caching strategy:</p>
+        <p>Use consistent URLs: if you serve the same content on different URLs, then that content will be fetched and stored multiple times. Tip: note that URLs are case sensitive!<br /> Ensure the server provides a validation token (ETag): validation tokens eliminate the need to transfer the same bytes when a resource has not changed on the server.<br /> Identify which resources can be cached by intermediaries: those with responses that are identical for all users are great candidates to be cached by a CDN and other intermediaries.<br /> Determine the optimal cache lifetime for each resource: different resources may have different freshness requirements. Audit and determine the appropriate max-age for each one.<br /> Determine the best cache hierarchy for your site: the combination of resource URLs with content fingerprints, and short or no-cache lifetimes for HTML documents allows you to control how quickly updates are picked up by the client.<br /> Minimize churn: some resources are updated more frequently than others. If there is a particular part of resource (e.g. JavaScript function, or set of CSS styles) that are often updated, consider delivering that code as a separate file. Doing so allows the remainder of the content (e.g. library code that does not change very often), to be fetched from cache and minimizes the amount of downloaded content whenever an update is fetched.</p>
+        <p>Authors</p>
+        <div class="col-6"><img src="https://d13ie4yeey2dtq.cloudfront.net/ilyagrigorik.jpg" style="float: left; height: 20px; width: 20px;" class="image-fluid" />[Profile photo of Ilya Grigorik]<br /> Ilya Grigorik</div>
+        <p>Ilya is a Developer Advocate and Web Perf Guru</p>
+        <div>
+            <h2>My HTTP Headers</h2>
+            <p>Check web.config section for changes to Orchard to achive Vary: Accept-Encoding, With Accept-Encoding: gzip,deflate; With out these response headers we get no client cache</p>
+            <p>Request Headers</p>
+            <p>GET /blogs/are-you-human-checker HTTP/1.1</p>
+            <p>Host: donboulton.com</p>
+            <p>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</p>
+            <p>Accept-Encoding: gzip, deflate, sdch</p>
+            <p>Accept-Language: en-US,en;q=0.8</p>
+            <p>Cookie: cc_cookie_accept=cc_cookie_accept; _ga=GA1.2.6125818.1454086529; _gat=1</p>
+            <p>Referer: http://donboulton.com/blogs/prettyphoto</p>
+            <p>Upgrade-Insecure-Requests: 1</p>
+            <p>User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.47 Safari/537.36</p>
+            <h2>Responsed Headers</h2>
+            <p>HTTP/1.1 200 OK</p>
+            <p>Accept-Encoding: gzip,deflate,sdhc</p>
+            <p>Access-Control-Allow-Credentials: true</p>
+            <p>Access-Control-Allow-Origin: http://donboulton.com</p>
+            <p>allowKeepAlive: true</p>
+            <p>Cache-Control: public, max-age=258425</p>
+            <p>Connection: closev</p>
+            <p>Content-Length: 66745</p>
+            <p>Content-Type: text/html</p>
+            <p>Date: Mon, 15 Feb 2016 00:20:56 GMT</p>
+            <p>ETag: 45989130</p>
+            <p>Expires: Mon, 25 Dec 2017 21:31:12 GMT</p>
+            <p>Server: Microsoft-IIS/8.5</p>
+            <p>Vary: Accept-Encoding: gzip, deflate, HOST,Accept-Encoding</p>
+            <p>X-AspNet-Version: 4.0.30319</p>
+            <p>X-AspNetMvc-Version: 5.2</p>
+            <p>X-Generator: Orchard</p>
+        </div>
+    </div>
+    <div class="tab-pane" id="x-pjax" role="tabpanel" aria-labelledby="x-pjax-tab">
+        <h2 class="center">Pjax</h2>
+        <div>
+            <p>Using <a href="https://github.com/defunkt/jquery-pjax" title="Jquary pjax">jQuary-pjaxpjax</a> is a jQuery plugin that uses ajax and pushState to deliver a fast browsing experience with real permalinks, page titles, and a working back button. pjax works by grabbing html from your server via ajax and replacing the content of a container on <span>your page with the ajax'd html. It then updates the browser's current URL using pushState without reloading your page's layout or any resources (JS, CSS), giving the appearance of a fast, full page load. But really it's just ajax and pushState. Developed by Github Co-Founder </span><a href="https://github.com/defunkt" title="defunkt">Chris Wanstrath</a>, and is in all Github pages.</p>
+            <h2>What is pjax and why we should use it?</h2>
+            <a href="http://www.pixelstech.net/article/1366737736-What-is-pjax-and-why-we-should-use-it" title="Jquary pjax">Taken from pixelstech.net</a>
+            <p>Now many websites such as Facebook, Twitter support one browsing style which is when you click one link on their sites, the page will not be redirected, instead only the page contents are updated and URL on address bar is changed. This kind of user experience is much better compared to load the whole page with a blink.</p>
+            <p>There is one important component in the above browsing experience, these websites' AJAX refresh support browser history, when refreshing the page, the address on the address bar will also get updated, and when we click back button we can go back to the previous page.</p>
+            <p>How do we implement this function? Here we introduce one open source project named pjax which can realize this. The project URL is :https://github.com/defunkt/jquery-pjax&nbsp; The demo page is :http://pjax.heroku.com/ If we don't check the pjax option, then the page will be redirected on clicking the link, after checking that option, the link will change to AJAX refresh.</p>
+            <p>Why use pjax?</p>
+            <p>pjax has some advantages:</p>
+            <p>Good user experience</p>
+            <p>When the whole page is redirected, our eyes will re-checking the new page, while only updating partial page, we only need to check the page which gets updated.</p>
+            <p>Reduce bandwidth and server cost</p>
+            <p>Since only part of the page is updated, many requests such as CSS/JS requests will not be sent anymore. Although no testings did on how much cost can be saved, the estimation is around 40% and the server cost can be reduced by 30%.</p>
+            <p>pjax also has some disadvantages:</p>
+            <p>No support of IE6</p>
+            <p>Since pjax uses the new standard, old browsers may encounter some problems while running pjax. But pjax itself supports fallback, when it finds that the browser doesn't support this function, it will go back to the original redirect way.</p>
+            <p>Complex server side support.</p>
+            <p>Server side should decide whether a complete page refresh is required or a partial page refresh is required according to the request sent to the server. The server side complexity will be increased, but for the well designed server side codes, it's not a big issue to support this.</p>
+            <p>How to use pjax?</p>
+            <p>You can read the official documentation here.</p>
+            <p>How does pjax work?</p>
+            <p>pjax only has one source file :&nbsp;https://github.com/defunkt/jquery-pjax/blob/master/jquery.pjax.js.</p>
+            <p>You can read through all the codes if you want. Here is a brief explanation:</p>
+            <p>First users should specify what links should use pjax requests and what are the contents to be updated after clicking the links.</p>
+        </div>
+        <h2 class="center"><span>First install Pjax.Mvc</span></h2>
+        <div>
+            <h3>Pjax.Mvc</h3>
+            <p>Pjax.Mvc is a library to integrate ASP.NET MVC with <a href="https://github.com/defunkt/jquery-pjax">jQuery.pjax</a>.</p>
+            <h2>Installation</h2>
+            <p>To install Pjax.Mvc, run the following command in the <a href="http://docs.nuget.org/docs/start-here/using-the-package-manager-console">Package Manager Console</a>.</p>
+            <p>MVC 5</p>
+<pre><code>PM&gt; Install-Package Pjax.Mvc5</code></pre>
+            <p>MVC 4</p>
+<pre><code>PM&gt; Install-Package Pjax.Mvc4</code></pre>
+            <p>MVC 3</p>
+<pre><code>PM&gt; Install-Package Pjax.Mvc3</code></pre>
+        </div>
+        <p>Adding to your root packages.config</p>
+<pre><code>
+        <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">package</span> <span style="color: #cf4820;">id</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"Pjax.Mvc5"</span> <span style="color: #cf4820;">version</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"0.1.1"</span> <span style="color: #cf4820;">targetFramework</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"net452"</span> <span style="color: #4f76ac;">/&gt;</span> </code></pre>
+        Then add jquery.pjax.min.js to your Orchard.Resources or a link to jQuary.pjax CDN at <a href="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.min.js">https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.min.js</a>
+        <p>Adding to Themes\Views\Layout.cshtml for pjax enabled page to return just the main body contents, as the rest of my page does not <span style="color: #ffffe0;">change.</span></p>
+        <p><span style="color: #ffffe0;">just wrapped</span><span style="color: #ffffe0;"> @@Zone(Model.Content) in a div as:</span></p>
+        <div>
+<pre><code><span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">div</span> <span style="color: #cf4820;">id</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"pjax-container"</span> <span style="color: #cf4820;">data-pjax-container</span><span style="color: #4f76ac;">&gt;</span></code></pre>
+            In the Layout.cshtml file
+<pre><code>
+            <span style="color: #4f76ac;"><span style="color: #222222; background: #d7bf49;">@@*</span><span style="color: #46830d;"> the model content for the page is in the Content zone @@ the default position (nothing, zero, zilch) </span><span style="color: #222222; background: #d7bf49;">*@@</span>
+            <span style="color: #222222; background: #d7bf49;">@@</span><span style="color: #4f76ac;">if</span> </span><span style="color: #f0fff0;">(Model.Content !=</span><span style="color: #4f76ac;"> <span style="color: #4f76ac;">null</span><span style="color: #222222;">)</span> <span style="color: #222222;">{</span>
+            <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">div</span> <span style="color: #cf4820;">id</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"pjax-container"</span> <span style="color: #cf4820;">data-pjax-container</span><span style="color: #4f76ac;">&gt;</span>
+            <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">div</span> <span style="color: #cf4820;">id</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"content"</span> <span style="color: #cf4820;">class</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"group"</span><span style="color: #4f76ac;">&gt;</span>
+            <span style="color: #222222; background: #d7bf49;">@@</span><span style="color: #222222;">Zone</span><span style="color: #222222;">(</span><span style="color: #222222;">Model</span><span style="color: #222222;">.</span><span style="color: #222222;">Content</span><span style="color: #222222;">)</span>
+            <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">div</span><span style="color: #4f76ac;">&gt;</span>
+            <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">div</span><span style="color: #4f76ac;">&gt;</span>
+            <span style="color: #222222;">}</span></span>
+            </code></pre>
+        </div>
+        <p>My nav links, Recent Blog Posts links and Recent content links have data-pjax inserted.</p>
+<pre><code>
+        <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">a</span> <span style="color: #cf4820;">data-original-title</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"prettyPhoto"</span> <span style="color: #cf4820;">href</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"/blogs/prettyphoto"</span> <span style="color: #cf4820;">title</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"prettyPhoto"</span> <span style="color: #cf4820;">data-pjax</span><span style="color: #4f76ac;">&gt;&lt;/a&gt;</span>
+        </code></pre>
+        <p>All your have to do then is add a script file at the bottom of the Layout.cshtml file;</p>
+<pre><code>
+        <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">script</span> <span style="color: #cf4820;">type</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"text/javascript"</span><span style="color: #4f76ac;">&gt;</span>
+        <span style="color: #4f76ac;">if</span> <span style="color: #1e7c70;">(</span>$.support.pjax<span style="color: #1e7c70;">)</span> <span style="color: #1e7c70;">{</span>
+        $<span style="color: #1e7c70;">(</span>document<span style="color: #1e7c70;">)</span>.on<span style="color: #1e7c70;">(</span><span style="color: #823125;">'click'</span><span style="color: #1e7c70;">,</span> <span style="color: #823125;">'a[data-pjax]'</span><span style="color: #1e7c70;">,</span> <span style="color: #4f76ac;">function</span><span style="color: #1e7c70;">(</span>event<span style="color: #1e7c70;">)</span> <span style="color: #1e7c70;">{</span>
+        <span style="color: #4f76ac;">var</span> container <span style="color: #1e7c70;">=</span> $<span style="color: #1e7c70;">(</span><span style="color: #4f76ac;">this</span><span style="color: #1e7c70;">)</span>.closest<span style="color: #1e7c70;">(</span><span style="color: #823125;">'[data-pjax-container]'</span><span style="color: #1e7c70;">)</span>
+        $.pjax.click<span style="color: #1e7c70;">(</span>event<span style="color: #1e7c70;">,</span> <span style="color: #1e7c70;">{</span>container<span style="color: #1e7c70;">:</span> container<span style="color: #1e7c70;">})</span>
+        <span style="color: #1e7c70;">})</span>
+        <span style="color: #1e7c70;">}</span>
+        <span style="color: #4f76ac;">&lt;/</span><span style="color: #823125;">script</span><span style="color: #4f76ac;">&gt;</span></code></pre>
+        Last we need to add two meta tags. If you are using the latest verion of Pjax.Mvc5.0.1.1 in your library the below version is yours.
+<pre><code>
+        <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">meta</span> <span style="color: #cf4820;">name</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"pjax-timeout"</span> <span style="color: #cf4820;">content</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"1000"</span><span style="color: #4f76ac;">&gt;</span>
+        <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">meta</span> <span style="color: #cf4820;">http-equiv</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"x-pjax-version"</span> <span style="color: #cf4820;">content</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"d4d26263aff43b9e6848743a02fdedef"</span><span style="color: #4f76ac;">&gt;</span>
+        </code></pre>
+        <p>My tabs are pjaxed and I added this to Zone after content so the origional pjax container is bypassed for having no content in the content main pjax container.</p>
+<pre><code>
+        <span style="color: #4f76ac;">&lt;</span><span style="color: #823125;">div</span> <span style="color: #cf4820;">id</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"tabs-container"</span> <span style="color: #cf4820;">class</span><span style="color: #4f76ac;">=</span><span style="color: #4f76ac;">"data-pjax-container"</span>
+        <span style="color: #4f76ac;"> </span>
+    </code></pre>
+        <pre><code><span style="color: #4f76ac;">data-pjax-container</span>
+            </code></pre>
+    </div>
+</div>
+<div class="clearfix">&nbsp;</div>
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = https://mansbooks.com/Blog/Website_Tweaks;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = Webite_Tweaks; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://mansbooks-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<div class="row">
+    <ul>
+        <li class="li"><a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=715603437170216960" name="donboulton" title="Favorite"><img alt="Favorite" class="favorite" src="https://d13ie4yeey2dtq.cloudfront.net/favorite.min.png" /></a>&nbsp; <a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/favorite?tweet_id=715603437170216960" name="donboulton" title="Favorite">Favorite</a> <a data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=715603437170216960" name="donboulton" title="Reply"> <img alt="Reply" class="reply" src="https://d13ie4yeey2dtq.cloudfront.net/reply.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/tweet?in_reply_to=715603437170216960" name="donboulton" title="Reply">Reply</a>&nbsp; <a data-screen="data-screen" data-user-id="105217183" href="http://twitter.com/intent/retweet?tweet_id=715603437170216960" name="donboulton" title="Retweet"> <img alt="Retweet" class="retweet" src="https://d13ie4yeey2dtq.cloudfront.net/retweet.min.png" /></a>&nbsp;<a class="link" data-screen="data-screen" data-user-id="105217183" href="https://twitter.com/intent/retweet?tweet_id=715603437170216960" name="donboulton" title="Retweet">Retweet</a></li>
+    </ul>
+</div>
+<div>
+    <a asp-action="Blog">Back to Blog List</a>
+</div>

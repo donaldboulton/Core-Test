@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Donald_Boulton.Models.Repository;
+using Mansbooks.Models.Repository;
 
-namespace Donald_Boulton.Models.Repository.Concrete
+namespace Mansbooks.Models.Repository.Concrete
 {
     public class InMemoryPostRepository : IPostRepository
     {

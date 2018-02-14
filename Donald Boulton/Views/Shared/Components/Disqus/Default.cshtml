@@ -1,0 +1,40 @@
+﻿@model Mansbooks.Models.DisqusViewModel
+@{
+    ViewData["Title"] = "Default";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function() {
+        var pageUrl = "@Model.PageUrl";
+        if (pageUrl.length > 0) {
+            this.page.url = pageUrl;
+        }
+
+        var pageIdentifier = "@Model.PageIdentifier";
+        if (pageIdentifier.length > 0) {
+            this.page.identifier = pageIdentifier;
+        }
+
+        var pageTitle = "@Model.PageTitle";
+        if (pageTitle.length > 0) {
+            this.page.title = pageTitle;
+        }
+
+        var pageCategoryId = "@Model.PageCategoryId";
+        if (pageCategoryId.length > 0) {
+            this.page.category_id = pageCategoryId;
+        }
+    };
+
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//@(Model.ShortName).disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//@(Model.ShortName).disqus.com/count.js" async></script>
+

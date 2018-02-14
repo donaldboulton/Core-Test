@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Donald_Boulton": {
+    "Mansbooks": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

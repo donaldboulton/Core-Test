@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Donald_Boulton.Models;
-using Donald_Boulton.Models.ManageViewModels;
-using Donald_Boulton.Services;
+using Mansbooks.Models;
+using Mansbooks.Models.ManageViewModels;
+using Mansbooks.Services;
 
-namespace Donald_Boulton.Controllers
+namespace Mansbooks.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
@@ -522,7 +522,7 @@ namespace Donald_Boulton.Controllers
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("Donald_Boulton"),
+                _urlEncoder.Encode("Mansbooks"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

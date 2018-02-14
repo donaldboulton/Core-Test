@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Donald_Boulton.Models.Repository
+namespace Mansbooks.Models.Repository
 {
     public interface IPostRepository
     {

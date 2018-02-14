@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System.Threading.Tasks;
 
-namespace Donald_Boulton.Services
+namespace Mansbooks.Services
 {
     public class AuthMessageSenderOptions
     {

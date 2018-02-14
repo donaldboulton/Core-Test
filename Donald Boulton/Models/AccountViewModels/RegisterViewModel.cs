@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Donald_Boulton.Models.AccountViewModels
+namespace Mansbooks.Models.AccountViewModels
 {
     public class RegisterViewModel
     {

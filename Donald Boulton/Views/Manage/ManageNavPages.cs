@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace Donald_Boulton.Views.Manage
+namespace Mansbooks.Views.Manage
 {
     public static class ManageNavPages
     {

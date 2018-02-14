@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Donald_Boulton.Models;
+using Mansbooks.Models;
 
-namespace Donald_Boulton.Controllers
+namespace Mansbooks.Controllers
 {
     public class ContactController : Controller
     {
@@ -39,6 +35,13 @@ namespace Donald_Boulton.Controllers
         public IActionResult Terms()
         {
             ViewData["Message"] = "Terms";
+
+            return View();
+        }
+
+        public IActionResult Search()
+        {
+            ViewData["Message"] = "Search";
 
             return View();
         }

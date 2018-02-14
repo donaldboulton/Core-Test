@@ -1,4 +1,4 @@
-﻿@using Donald_Boulton.Views.Manage
+﻿@using Mansbooks.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

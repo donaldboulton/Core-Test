@@ -1,0 +1,23 @@
+﻿@model Mansbooks.Models.Post
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_ContactLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-4">
+        Bing Search customied for this site.
+    </div>
+</div>
+<section id="search">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="customSearch">
+                <script type="text/javascript"
+                        id="bcs_js_snippet"
+                        src="https://ui.customsearch.ai/api/ux/render?customConfig=3836815317&&market=en-US&safeSearch=Moderate">
+                </script>
+            </div>
+        </div>
+    </div>
+</section>

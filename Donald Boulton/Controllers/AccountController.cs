@@ -10,15 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Donald_Boulton.Models;
-using Donald_Boulton.Models.AccountViewModels;
-using Donald_Boulton.Services;
+using Mansbooks.Models;
+using Mansbooks.Models.AccountViewModels;
+using Mansbooks.Services;
 
-namespace Donald_Boulton.Controllers
+namespace Mansbooks.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
-    public class AccountController : Microsoft.AspNetCore.Mvc.Controller
+    public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -59,17 +59,6 @@ namespace Donald_Boulton.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                // Require the user to have a confirmed email before they can log on.
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user != null)
-                {
-                    if (!await _userManager.IsEmailConfirmedAsync(user))
-                    {
-                        ModelState.AddModelError(string.Empty,
-                                      "You must have a confirmed email to log in.");
-                        return View(model);
-                    }
-                }
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
@@ -241,7 +230,7 @@ namespace Donald_Boulton.Controllers
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -258,7 +247,7 @@ namespace Donald_Boulton.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(ContactController.Index), "Home");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         [HttpPost]
@@ -346,7 +335,7 @@ namespace Donald_Boulton.Controllers
         {
             if (userId == null || code == null)
             {
-                return RedirectToAction(nameof(ContactController.Index), "Home");
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
@@ -466,7 +455,7 @@ namespace Donald_Boulton.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(ContactController.Index), "Home");
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
 

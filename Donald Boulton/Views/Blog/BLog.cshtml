@@ -1,4 +1,4 @@
-﻿@model Donald_Boulton.Models.Post
+﻿@model Mansbooks.Models.Post
 @{
     ViewData["Title"] = "Blog";
     Layout = "~/Views/Shared/_ContactLayout.cshtml";
@@ -6,8 +6,9 @@
 
 <div class="card-columns">
     <div class="card text-white bg-dark mb-3">
-        <div class="card-header"><h4>Letter Avatar</h4></div>
-        <a href="/Blog/Letter_Avatar"><img class="card-img-top img-fluid" src="~/images/pages/svg/myLetterAvatar.svg" alt="Card image cap"></a>
+        <div class="card-header"><h4>Letter Avatar</h4></div>        
+            <a asp-controller="Blog" asp-action="Letter_Avatar"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/myLetterAvatar.svg" alt="Card image cap">
+        </a>
         <div class="card-body">
             <h5 class="card-title">Letter Avatar replacing the Slow Gravatar Service</h5>
             <p class="card-text">Gravatar makes multiple calls to gravatar service's and its down alot, most people do not even know about Gravatar...</p>
@@ -22,8 +23,8 @@
         </div>
     </div>
     <div class="card text-white bg-dark mb-3">
-        <div class="card-header"><h4>Website Tweaks</h4></div>
-        <a href="/Blog/Website_Tweaks"><img class="card-img-top img-fluid" src="~/images/pages/svg/orchardburning.svg" alt="Card image cap"></a>
+        <div class="card-header"><h4>Website Performance</h4></div>
+        <a asp-controller="Blog" asp-action="Website_Performance"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/orchardburning.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">Using web.config Changes, Gzip, HTTP Headers</h5>
             <p class="card-text">Gravatar makes multiple calls to gravatar service's and its down alot, most people do not even know about Gravatar...</p>
@@ -36,7 +37,7 @@
     </div>
     <div class="card text-white bg-dark mb-3">
         <div class="card-header"><h4>Windows Tweaks</h4></div>
-        <a href="/Blog/Windows_Tweaks"><img class="card-img-top img-fluid" src="~/images/pages/svg/windows7tweaks.svg" alt="Card image cap"></a>
+        <a asp-controller="Blog" asp-action="Windows_Tweaks"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/windows7tweaks.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">Windows XP to Windows 10 Tweaks</h5>
             <p class="card-text">This page is my additions to Normal Vista\Seven\Windows 8 and windows 10 Tweaks. Some of these work on XP...</p>
@@ -53,7 +54,7 @@
     </div>
     <div class="card text-white bg-dark mb-3">
         <div class="card-header"><h4>SQL Fragmentation</h4></div>
-        <a href="/Blog/Check_Fragmentation"><img class="card-img-top img-fluid" src="~/images/pages/svg/check_sql_fragmentation-min.svg" alt="Card image cap"></a>
+        <a asp-controller="Blog" asp-action="Check_Fragmentation"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/check_sql_fragmentation-min.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">Script To Check SQL Fragmentation</h5>
             <p class="card-text">This T-SQL sample script illustrates how to check index fragmentation of a specified database in SQL Server...</p>
@@ -66,7 +67,7 @@
     </div>
     <div class="card text-white bg-dark mb-3">
         <div class="card-header"><h4>Defrag SQL Index</h4></div>
-        <a href="/Blog/Defragment_SQL"><img class="card-img-top img-fluid" src="~/images/pages/svg/check_sql_fragmentation-min.svg" alt="Card image cap"></a>
+        <a asp-controller="Blog" asp-action="SQL_Defrag"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/defrag-sql-2014.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">Script To Check SQL Fragmentation</h5>
             <p class="card-text">This T-SQL sample script illustrates how to check index fragmentation of a specified database in SQL Server...</p>
@@ -79,7 +80,7 @@
     </div>
     <div class="card text-white bg-dark mb-3">
         <div class="card-header"><h4>SQL Sessions</h4></div>
-        <a href="/Blog/SQL_Session_State"><img class="card-img-top img-fluid" src="~/images/pages/svg/sql_session_state.svg" alt="Card image cap"></a>
+        <a asp-controller="Blog" asp-action="SQL_Session_State"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/sql_session_state.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">Session State using SQL Server</h5>
             <p class="card-text">This page is about ASP.NET Session State and or in some cases to use SQL Session state over the normal in-proc session state...</p>
@@ -92,7 +93,7 @@
     </div>
     <div class="card text-white bg-dark mb-3">
         <div class="card-header"><h4>Mobile Colorbox</h4></div>
-        <a href="/Blog/Mobile_Colorbox"><img class="card-img-top img-fluid" src="~/images/pages/svg/mobile_colorbox.svg" alt="Card image cap"></a>
+        <a asp-controller="Blog" asp-action="Mobile_Colorbox"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/mobile_colorbox.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">Fully Responsive Mobile Colorbox</h5>
             <p class="card-text">Mobile First Responsive Colorbox Window to Open and Link, div, code, about anything including a iframe using external data, within Bootstrap 4 beta 3...</p>
@@ -105,7 +106,7 @@
     </div>
     <div class="card text-white bg-dark mb-3">
         <div class="card-header"><h4>Social Sharing</h4></div>
-        <a href="/Blog/Social_Sharing"><img class="card-img-top img-fluid" src="~/images/pages/svg/social_sharing.svg" alt="Card image cap"></a>
+        <a asp-controller="Blog" asp-action="Social_Sharing"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/social_sharing.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">Social Sharing NO .js</h5>
             <p class="card-text">Using just links and one simple Orchard module Mofit.Social to model the url of the page your sharing...</p>
@@ -117,8 +118,8 @@
         </div>
     </div>
     <div class="card text-white bg-dark mb-3">
-        <div class="card-header"><h4>AWS Free</h4></div>
-        <a href="/Blog/AWS_Free_Tier"><img class="card-img-top img-fluid" src="~/images/pages/svg/AWS_Free_Tier.svg" alt="Card image cap"></a>
+        <div class="card-header"><h4>AWS Free Tier</h4></div>
+        <a asp-controller="Blog" asp-action="AWS_Free_Tier"><img class="card-img-top img-fluid" src="https://d13ie4yeey2dtq.cloudfront.net/img/powered-by-aws-white.svg" alt="Card image cap"></a>
         <div class="card-body">
             <h5 class="card-title">AWS Free Tier</h5>
             <p class="card-text">Got really burnt out on old Shared Server junk on WinHost.com. And Since I was going to change AWS Free Tier was the best choice.</p>

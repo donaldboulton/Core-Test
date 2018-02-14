@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Donald_Boulton.Models.Repository;
+using Mansbooks.Models.Repository;
 
-namespace Donald_Boulton.ViewComponents
+namespace Mansbooks.ViewComponents
 {
     public class ArticleCarouselViewComponent : ViewComponent
     {

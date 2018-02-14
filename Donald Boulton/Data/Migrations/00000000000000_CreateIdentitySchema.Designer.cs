@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Donald_Boulton.Data.Migrations
+namespace Mansbooks.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
@@ -126,7 +126,7 @@ namespace Donald_Boulton.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Donald_Boulton.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Mansbooks.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
 
@@ -185,7 +185,7 @@ namespace Donald_Boulton.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Donald_Boulton.Models.ApplicationUser")
+                    b.HasOne("Mansbooks.Models.ApplicationUser")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -193,7 +193,7 @@ namespace Donald_Boulton.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Donald_Boulton.Models.ApplicationUser")
+                    b.HasOne("Mansbooks.Models.ApplicationUser")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -206,7 +206,7 @@ namespace Donald_Boulton.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Donald_Boulton.Models.ApplicationUser")
+                    b.HasOne("Mansbooks.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

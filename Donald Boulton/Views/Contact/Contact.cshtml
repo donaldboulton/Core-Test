@@ -1,4 +1,4 @@
-﻿@model Donald_Boulton.FormController.FormModel
+﻿@model Mansbooks.FormController.FormModel
 
 @{
     ViewData["Title"] = "Contact";
@@ -49,9 +49,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-10">
-                            <button class="btn btn-primary btn-lg" type="submit"><i class="fas fa-paper-plane"></i>&nbsp;Send</button>
+                        <div class="clearfix"></div>
+                        <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="" />
+                        <input id="Id" name="Id" type="hidden" value="" />
+                        <div class="g-recaptcha"
+                             data-sitekey="6LeDCEAUAAAAAHli9WYua3IAAWa5rnslJasIIRGC"
+                             data-callback="onSubmit"
+                             data-size="invisible">
                         </div>
+                        <div class="col-md-10">
+                            <button id="sendMessage" class="g-recaptcha invisible-recaptcha btn btn-primary btn-xl text-uppercase" data-sitekey="6Le_8DAUAAAAAC2B902PFAI_HpazMMZ6vhTkaTAW" data-callback="submit" name="sendMessage" type="submit"><i class="fas fa-paper-plane"></i>&nbsp;Send</button>
+                        </div>
+                        <label class="sr-only">Keep this field blank</label>
+                        <input id="honeypot" type="text" name="honeypot" value="" hidden>
                     </div>
                 </form>
             </div>

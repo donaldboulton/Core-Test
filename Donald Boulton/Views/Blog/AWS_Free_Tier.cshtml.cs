@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Donald_Boulton.Views.Blog
+namespace Mansbooks.Views.Blog
 {
-    public class SocialSharingModel : PageModel
+    public class AWSFreeTierModel : PageModel
     {
         public void OnGet()
         {

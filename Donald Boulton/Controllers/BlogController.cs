@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Donald_Boulton.Models;
+using Mansbooks.Models;
 
-namespace Donald_Boulton.Controllers
+namespace Mansbooks.Controllers
 {
     public class BlogController : Controller
     {
@@ -29,9 +29,9 @@ namespace Donald_Boulton.Controllers
             return View();
         }
 
-        public IActionResult Site_Tweaks()
+        public IActionResult Website_Performance()
         {
-            ViewData["Message"] = "Site Tweaks";
+            ViewData["Message"] = "Website Performance";
 
             return View();
         }

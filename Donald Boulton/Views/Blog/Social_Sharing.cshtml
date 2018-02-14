@@ -1,4 +1,4 @@
-﻿@model Donald_Boulton.Models.Post
+﻿@model Mansbooks.Models.Post
 
 @{
     ViewData["Title"] = "Social Sharing";
@@ -6,11 +6,14 @@
 }
 
 <div class="media">
-    <img class="img-fluid mr-3" alt="Social Sharing" src="~/images/pages/svg/social_sharing.svg" itemprop="primaryImageOfPage" />
+    <img class="img-fluid mr-3" alt="Social Sharing" src="https://d13ie4yeey2dtq.cloudfront.net/img/social_sharing.svg" itemprop="primaryImageOfPage" />
     <div class="media-body">
         <div itemprop="description">
             <h5 class="text-center mt-0">Social Sharing Bootstrapped with no external JavaScript</h5>
-            <p>Using just links and one simple Orchard module Mofit.Social to model the url of the page your sharing.</p>
+            <p>
+                Using just links in Asp.NET Core 2
+                add @@Context.Request.GetDisplayUrl()  to get the url of the page your sharing.
+            </p>
         </div>
     </div>
 </div>

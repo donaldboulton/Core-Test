@@ -1,6 +1,6 @@
 using System;
 
-namespace Donald_Boulton.Models
+namespace Mansbooks.Models
 {
     public class ErrorViewModel
     {

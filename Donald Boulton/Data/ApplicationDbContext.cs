@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Donald_Boulton.Models;
+using Mansbooks.Models;
 
-namespace Donald_Boulton.Data
+namespace Mansbooks.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -23,8 +23,8 @@ namespace Donald_Boulton.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<Donald_Boulton.Models.Post> Post { get; set; }
+        public DbSet<Mansbooks.Models.Post> Post { get; set; }
 
-        public DbSet<Donald_Boulton.Models.ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Mansbooks.Models.ApplicationUser> ApplicationUser { get; set; }
     }
 }

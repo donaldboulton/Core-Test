@@ -1,0 +1,18 @@
+﻿User-agent: *
+Allow: /
+Disallow: /bin/
+Disallow: /Account/
+Disallow: /Manage/
+Disallow: /blog/
+Disallow: /search/
+
+User-agent: Twitterbot: *
+Allow:/
+
+User-agent: dotbot:
+Allow:/
+Disallow: /Account/
+Disallow: /Manage/
+Disallow: /wwwroot/
+
+Sitemap: https://mansbooks.com/sitemap.xml
